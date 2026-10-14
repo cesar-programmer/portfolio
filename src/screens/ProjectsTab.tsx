@@ -136,9 +136,12 @@ function ProjectPreview({ project, content }: { project: Project; content: Conte
           {project.subtitle && <p className="m-0">{project.subtitle}</p>}
           <p className="text-scr-muted m-0">{project.role}</p>
         </div>
-        <ProjectTags project={project} ui={ui} />
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+          <Stars count={project.stars} label={ui.projects.difficulty} showLabel />
+          <ProjectTags project={project} ui={ui} />
+        </div>
         <p className="m-0">{project.mission}</p>
-        <StackChips project={project} content={content} />
+        <StackChips project={project} content={content} limit={5} />
         <div className="flex flex-wrap items-center gap-3">
           <Link to={sectionPath(lang, 'projects', project.slug)} className="px-btn px-btn--primary" onClick={() => play('confirm')}>
             {project.name} <PixelIcon name="right" size="sm" />

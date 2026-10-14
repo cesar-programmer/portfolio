@@ -84,7 +84,8 @@
     "prev": "Previous",
     "next": "Next",
     "back": "List",
-    "skip": "A: finish text"
+    "skip": "A: finish text",
+    "screenshots": "Screenshots"
   },
   "about": {
     "class": "Class",

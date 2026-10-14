@@ -153,10 +153,17 @@ export function Speaker({ ui }: { ui: ConsoleUi }) {
   )
 }
 
-export function Brand() {
+/** Logo grabado y, junto a él, la línea de identidad en azul marino. */
+export function Brand({ lang }: { lang: Lang }) {
+  const { profile } = getContent(lang)
   return (
-    <div className="brand" aria-hidden="true">
-      CESAR<span>.DEV</span>
+    <div className="brand-block">
+      <div className="brand" aria-hidden="true">
+        CESAR<span>.DEV</span>
+      </div>
+      <p className="brand-tagline">
+        {profile.shortName} · {profile.title.toUpperCase()}
+      </p>
     </div>
   )
 }

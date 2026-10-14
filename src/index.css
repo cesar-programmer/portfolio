@@ -304,6 +304,10 @@ body {
 .px-btn--primary:hover {
   background: var(--scr-surface-2);
 }
+.px-btn--current {
+  border-color: var(--scr-title);
+  color: var(--scr-title);
+}
 .px-btn[aria-disabled='true'] {
   opacity: 0.7;
   cursor: default;
@@ -592,8 +596,14 @@ body {
   color: var(--scr-muted);
 }
 .stack-chips li {
+  max-width: 100%;
   padding: calc(2px * var(--fz)) calc(6px * var(--fz));
   background: var(--scr-surface-2);
+  overflow-wrap: anywhere;
+}
+.stack-chips .stack-chips__more {
+  background: transparent;
+  color: var(--scr-ink);
 }
 
 /* Ficha de proyecto */

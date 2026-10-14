@@ -107,7 +107,7 @@ function DetailBody({ project, content, onPrev, onNext, onBack, scroll }: BodyPr
   return (
     <div className="detail-grid">
       <div className="detail-media flex flex-col gap-2">
-        <ProjectVisual project={project} ui={ui} toggle />
+        <ProjectVisual project={project} ui={ui} detail />
         {project.medal === 'nasa-2025' && (
           <div className="px-box text-scr-title flex items-center gap-2 p-2">
             <PixelIcon name="badges" />
@@ -128,7 +128,7 @@ function DetailBody({ project, content, onPrev, onNext, onBack, scroll }: BodyPr
             <span>
               {d.year}: {project.year ?? d.yearPending}
             </span>
-            <Stars count={project.stars} label={ui.projects.difficulty} />
+            <Stars count={project.stars} label={ui.projects.difficulty} showLabel />
           </p>
           <div className="mt-2">
             <ProjectTags project={project} ui={ui} />

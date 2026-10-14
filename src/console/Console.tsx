@@ -65,7 +65,7 @@ function Horizontal({ compact, style, lang, ui, screen }: LayoutProps & { compac
           </div>
           {!compact && (
             <div className="strip">
-              <Brand />
+              <Brand lang={lang} />
               <ShellKeys lang={lang} ui={ui} />
             </div>
           )}
@@ -109,7 +109,7 @@ function Clamshell({ state, style, lang, ui, screen }: LayoutProps & { state: La
           <BezelDecor />
           {screen}
         </div>
-        <Brand />
+        <Brand lang={lang} />
       </div>
       <div className="hinge">
         <Shoulder side="l" ui={ui} />
