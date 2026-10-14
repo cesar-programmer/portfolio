@@ -5,6 +5,7 @@ import { useControls } from '../console/useControls'
 import type { Content } from '../content'
 import { sectionPath } from '../routes'
 import { PixelIcon } from '../ui/PixelIcon'
+import { ScrollBox } from '../ui/ScrollBox'
 import { Stars } from './projectBits'
 
 /**
@@ -101,7 +102,7 @@ export function SkillsTab({ content }: { content: Content }) {
           })}
         </ul>
 
-        <aside className="skills-detail px-box flex flex-col gap-3 p-4" aria-live="polite">
+        <ScrollBox as="aside" className="skills-detail" innerClassName="px-box flex flex-col gap-3 p-4" resetKey={item.id} aria-live="polite">
           <div>
             <h2 className="scr-title text-title m-0">{item.label}</h2>
             {item.note && <p className="text-scr-muted m-0">{item.note}</p>}
@@ -136,7 +137,7 @@ export function SkillsTab({ content }: { content: Content }) {
           {!used.length && !item.experience.length && !item.badges.length && (
             <p className="text-scr-muted m-0">{skillsText.noProof}</p>
           )}
-        </aside>
+        </ScrollBox>
       </div>
     </div>
   )

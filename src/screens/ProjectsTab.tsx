@@ -6,6 +6,7 @@ import type { Content, Project, ZoneId } from '../content'
 import { sectionPath } from '../routes'
 import { useGame } from '../store/game'
 import { PixelIcon, type IconName } from '../ui/PixelIcon'
+import { ScrollBox } from '../ui/ScrollBox'
 import { ProjectTags, ProjectVisual, StackChips, Stars } from './projectBits'
 
 const ZONE_ICON: Record<ZoneId, IconName> = { lab: 'ai', city: 'city', workshop: 'systems' }
@@ -128,8 +129,7 @@ function ProjectItem({ project, content, selected, visited, itemRef, onPoint }: 
 function ProjectPreview({ project, content }: { project: Project; content: Content }) {
   const { lang, ui } = content
   return (
-    <aside className="projects-preview" aria-live="polite">
-      <div className="px-box flex flex-col gap-4 p-4">
+    <ScrollBox as="aside" className="projects-preview" innerClassName="px-box flex flex-col gap-4 p-4" resetKey={project.slug} aria-live="polite">
         <ProjectVisual project={project} ui={ui} />
         <div className="flex flex-col gap-1">
           <h2 className="scr-title text-title m-0">{project.name}</h2>
@@ -148,8 +148,7 @@ function ProjectPreview({ project, content }: { project: Project; content: Conte
           </Link>
           <span className="text-scr-muted">{ui.projects.openHint}</span>
         </div>
-      </div>
-    </aside>
+    </ScrollBox>
   )
 }
 

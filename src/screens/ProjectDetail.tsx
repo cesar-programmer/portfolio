@@ -6,6 +6,7 @@ import type { Content, Project } from '../content'
 import { sectionPath } from '../routes'
 import { useGame } from '../store/game'
 import { PixelIcon } from '../ui/PixelIcon'
+import { ScrollBox } from '../ui/ScrollBox'
 import { Typewriter } from '../ui/Typewriter'
 import { ProjectTags, ProjectVisual, StackChips, Stars } from './projectBits'
 import { useScreenScroll } from './ScrollContext'
@@ -106,7 +107,7 @@ function DetailBody({ project, content, onPrev, onNext, onBack, scroll }: BodyPr
   const links = project.links
   return (
     <div className="detail-grid">
-      <div className="detail-media flex flex-col gap-2">
+      <ScrollBox className="detail-media" innerClassName="flex flex-col gap-2" resetKey={project.slug}>
         <ProjectVisual project={project} ui={ui} detail />
         {project.medal === 'nasa-2025' && (
           <div className="px-box text-scr-title flex items-center gap-2 p-2">
@@ -114,7 +115,7 @@ function DetailBody({ project, content, onPrev, onNext, onBack, scroll }: BodyPr
             <span className="font-pixel text-sub">NASA SPACE APPS 2025</span>
           </div>
         )}
-      </div>
+      </ScrollBox>
 
       <div className="flex min-w-0 flex-col gap-3" onClick={() => setComplete(true)}>
         <header>

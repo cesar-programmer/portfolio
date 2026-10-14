@@ -242,11 +242,38 @@ body {
 }
 
 .scr-scroll {
+  /* Contenedor de tamaño: los paneles fijos se limitan a su alto (100cqh). */
+  container: body / size;
   overflow-y: auto;
   overscroll-behavior: contain;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: thin;
   scrollbar-color: var(--scr-line) transparent;
+}
+
+/* Panel con scroll propio (vista previa, imagen de la ficha, detalle de skills) */
+.scroll-box-wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+.scroll-box {
+  min-height: 0;
+  max-height: inherit;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--scr-line) transparent;
+}
+.scroll-more {
+  position: absolute;
+  right: calc(6px * var(--fz));
+  bottom: calc(6px * var(--fz));
+  padding: calc(2px * var(--fz)) calc(6px * var(--fz));
+  background: var(--scr-surface-2);
+  color: var(--scr-muted);
+  pointer-events: none;
 }
 
 /* Título ámbar con sombra pixel dura */
@@ -570,6 +597,7 @@ body {
   .projects-preview {
     position: sticky;
     top: calc(8px * var(--fz));
+    max-height: calc(100cqh - 32px * var(--fz));
   }
 }
 .proj-item {
@@ -642,6 +670,7 @@ body {
   .detail-media {
     position: sticky;
     top: calc(8px * var(--fz));
+    max-height: calc(100cqh - 32px * var(--fz));
   }
 }
 
@@ -755,6 +784,7 @@ body {
   .skills-detail {
     position: sticky;
     top: calc(8px * var(--fz));
+    max-height: calc(100cqh - 32px * var(--fz));
   }
 }
 
