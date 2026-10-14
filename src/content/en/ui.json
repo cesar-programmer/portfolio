@@ -4,92 +4,131 @@
     "description": "Portfolio of Cesar Cordova Contreras, AI & Backend Developer (Python · JS) based in Tijuana, Mexico. AI, RAG, agents and production backend projects."
   },
   "console": {
-    "hint": "Use ← ↑ → ↓, Enter and Esc · or click",
-    "hintExtra": "M: menu · L: language",
+    "hint": "Click any option · ← ↑ → ↓ · Enter / Esc · Q/E or L/R: tabs · M: menu · I: language · F: TV mode",
     "screenLabel": "Portfolio screen",
+    "controlsLabel": "Console controls",
     "dpad": { "up": "Up", "down": "Down", "left": "Left", "right": "Right" },
     "a": "A — confirm",
     "b": "B — back",
-    "start": "START — main menu",
-    "select": "SELECT — switch language",
+    "start": "MENU — options",
+    "select": "ES/EN — switch language",
+    "l": "L — previous tab",
+    "r": "R — next tab",
+    "cv": "Download CV in English",
+    "contact": "Go to contact",
+    "tv": "TV mode: full screen",
+    "tvExit": "Exit TV mode",
     "soundOn": "Sound on. Click to mute.",
     "soundOff": "Sound muted. Click to turn on.",
-    "power": "Power",
-    "skip": "Skip to content"
+    "skip": "Skip to content",
+    "labels": { "start": "MENU", "select": "ES/EN", "l": "◀ L", "r": "R ▶", "cv": "CV ⬇", "contact": "✉ CONTACT", "tv": "📺" }
   },
-  "title": {
-    "pressStart": "PRESS START",
+  "tip": "Click any option or use the arrow keys!",
+  "tabs": {
+    "label": "Sections",
+    "projects": "PROJECTS",
+    "about": "ME",
+    "skills": "SKILLS",
+    "missions": "MISSIONS",
+    "badges": "BADGES",
+    "contact": "CONTACT"
+  },
+  "header": {
     "recruiter": "Recruiter mode ⏩",
     "recruiterLabel": "See the single-page version, no game"
   },
-  "menu": {
-    "heading": "MENU",
-    "items": {
-      "map": { "label": "PROJECTS", "description": "Project map: AI, production software and systems." },
-      "trainer": { "label": "ID CARD", "description": "Who I am: profile, languages and education." },
-      "bag": { "label": "BAG", "description": "Technical skills and where I used them." },
-      "journal": { "label": "JOURNAL", "description": "Work experience and education." },
-      "badges": { "label": "BADGES", "description": "Certifications and achievements." },
-      "save": { "label": "SAVE", "description": "Contact info and CV download." },
-      "options": { "label": "OPTIONS", "description": "Language, sound, palette and recruiter mode." }
-    }
-  },
-  "common": {
-    "back": "Back",
-    "yes": "YES",
-    "no": "NO",
-    "next": "Next",
-    "language": "Language",
-    "spanish": "Español",
-    "english": "English",
-    "illustration": "Illustration",
-    "viewColor": "View in color",
-    "viewDemo": "View demo",
-    "viewCode": "View code",
-    "caseStudy": "Case study",
-    "privateCode": "Private code 🔒",
-    "inProduction": "IN PRODUCTION",
+  "projects": {
+    "listLabel": "Project list",
+    "filterLabel": "Filter by world",
+    "all": "ALL",
+    "world": "World",
+    "classicZone": "Classic zone",
+    "seeMore": "See more",
+    "seeLess": "See less",
+    "openHint": "Click or press A to open",
     "visited": "Visited",
-    "difficulty": "Difficulty",
+    "difficulty": "Difficulty"
+  },
+  "tags": {
+    "production": "IN PRODUCTION",
+    "nasa": "NASA 2025",
+    "private": "PRIVATE",
+    "bonus": "BONUS",
+    "zoneBoss": "BOSS",
+    "caseStudy": "CASE STUDY"
+  },
+  "detail": {
     "mission": "Mission",
     "whatIDid": "What I did",
     "finalBoss": "Final boss",
     "stack": "Stack",
     "role": "Role",
     "year": "Year",
-    "seeMore": "See more",
-    "classicZone": "Classic zone",
+    "yearPending": "—",
+    "viewDemo": "View demo",
+    "viewCode": "View code",
+    "viewFront": "View frontend",
+    "caseStudy": "Case study",
+    "privateCode": "Private code 🔒",
+    "viewColor": "View in color",
+    "viewPixel": "View in pixels",
+    "illustration": "Illustration",
+    "prev": "Previous",
+    "next": "Next",
+    "back": "List",
+    "skip": "A: finish text"
+  },
+  "about": {
+    "class": "Class",
+    "base": "Base",
+    "languages": "Languages",
+    "education": "Education",
+    "specialMoves": "Special moves"
+  },
+  "skills": {
+    "pockets": "Pockets"
+  },
+  "missions": {
+    "experience": "Missions",
+    "education": "Education",
+    "seeProject": "See project"
+  },
+  "badges": {
+    "case": "Badge case",
+    "verify": "Verify",
+    "locked": "Badge not earned yet"
+  },
+  "contact": {
+    "heading": "Let's talk",
+    "email": "Email",
     "copy": "Copy",
     "copied": "Copied!",
-    "downloadCv": "Download CV",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "cv": "Download CV",
     "cvEs": "CV in Spanish",
-    "cvEn": "CV in English",
-    "verify": "Verify",
-    "backToGame": "▶ Back to the game"
-  },
-  "save": {
-    "question": "Do you want to save your progress?",
-    "saving": "SAVING…",
-    "done": "Progress saved! Here's how to reach me:"
+    "cvEn": "CV in English"
   },
   "options": {
     "heading": "OPTIONS",
+    "close": "Close",
+    "language": "Language",
     "sound": "Sound",
     "on": "ON",
     "off": "OFF",
-    "palette": "Palette",
-    "palettes": { "classic": "Classic green", "pocket": "Pocket", "color": "Color" },
-    "textSpeed": "Text speed",
+    "palette": "Screen",
+    "palettes": { "arcade": "Arcade", "classic": "Classic green", "pocket": "Pocket" },
+    "shell": "Shell",
+    "shells": { "indigo": "Indigo", "silver": "Silver", "black": "Black" },
+    "textSpeed": "Text",
     "speeds": { "slow": "Slow", "normal": "Normal", "instant": "Instant" },
-    "recruiter": "Recruiter mode"
+    "recruiter": "Recruiter mode ⏩"
   },
   "achievements": {
     "unlocked": "Badge unlocked!"
   },
-  "phase1": {
-    "heading": "CONTROL TEST",
-    "lastInput": "Last input",
-    "none": "—",
-    "help": "SELECT switches language. A confirms."
+  "recruiter": {
+    "soon": "Recruiter mode arrives in the next phase.",
+    "backToGame": "▶ Back to the game"
   }
 }

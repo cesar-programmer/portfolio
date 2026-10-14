@@ -1,9 +1,39 @@
 {
   "slots": 8,
   "badges": [
-    { "id": "aws-cloud-architecting", "name": "AWS Academy Graduate", "detail": "Cloud Architecting", "issuer": "AWS Academy", "verifyUrl": null, "secret": false },
-    { "id": "tensorflow-developer", "name": "TensorFlow Developer", "detail": "Specialization", "issuer": "DeepLearning.AI", "verifyUrl": null, "secret": false },
-    { "id": "explorer", "name": "Explorador", "detail": "Visitaste todos los proyectos del mapa.", "issuer": "CESAR.DEV", "verifyUrl": null, "secret": true }
+    {
+      "id": "aws-cloud-architecting",
+      "name": "AWS Academy Graduate",
+      "detail": "Cloud Architecting",
+      "issuer": "AWS Academy",
+      "verifyUrl": null,
+      "secret": false
+    },
+    {
+      "id": "tensorflow-developer",
+      "name": "TensorFlow Developer",
+      "detail": "Specialization",
+      "issuer": "DeepLearning.AI",
+      "verifyUrl": null,
+      "secret": false
+    },
+    {
+      "id": "space-apps-2025",
+      "name": "NASA Space Apps 2025",
+      "detail": "Líder del equipo Sofonques y desarrollador backend.",
+      "issuer": "NASA International Space Apps Challenge",
+      "verifyUrl": null,
+      "secret": false,
+      "project": "sofonques-explorer"
+    },
+    {
+      "id": "explorer",
+      "name": "Explorador",
+      "detail": "Visitaste todos los proyectos del mapa.",
+      "issuer": "CESAR.DEV",
+      "verifyUrl": null,
+      "secret": true
+    }
   ],
   "lockedLabel": "???",
   "secretHint": "Medalla secreta. Explora el mapa…"

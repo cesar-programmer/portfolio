@@ -1,8 +1,30 @@
 {
   "zones": [
-    { "id": "lab", "projects": ["stepable", "vector-service-api", "sofonques-explorer", "finance-chatbot"] },
-    { "id": "city", "projects": ["mesa-espejo", "reportes-docentes", "koa-caffe"] },
-    { "id": "workshop", "projects": ["antigravity", "alerta-acv", "walletg"] }
+    {
+      "id": "lab",
+      "projects": [
+        "stepable",
+        "vector-service-api",
+        "sofonques-explorer",
+        "finance-chatbot"
+      ]
+    },
+    {
+      "id": "city",
+      "projects": [
+        "mesa-espejo",
+        "reportes-docentes",
+        "koa-caffe"
+      ]
+    },
+    {
+      "id": "workshop",
+      "projects": [
+        "antigravity",
+        "alerta-acv",
+        "walletg"
+      ]
+    }
   ],
   "projects": [
     {
@@ -12,9 +34,30 @@
       "zoneBoss": true,
       "bonus": false,
       "year": "2026",
-      "stack": ["nextjs", "react", "typescript", "supabase", "postgresql", "pgvector", "openai", "vitest", "playwright"],
-      "image": { "kind": "screenshot", "src": "/screenshots/stepable-recorrido.png", "gallery": ["/screenshots/stepable-asistente.png", "/screenshots/stepable-editor.png"] },
-      "links": { "demo": null, "code": "https://github.com/cesar-programmer/stepable", "caseStudy": null },
+      "stack": [
+        "nextjs",
+        "react",
+        "typescript",
+        "supabase",
+        "postgresql",
+        "pgvector",
+        "openai",
+        "vitest",
+        "playwright"
+      ],
+      "image": {
+        "kind": "screenshot",
+        "src": "/screenshots/stepable-recorrido.webp",
+        "gallery": [
+          "/screenshots/stepable-asistente.webp",
+          "/screenshots/stepable-editor.webp"
+        ]
+      },
+      "links": {
+        "demo": null,
+        "code": "https://github.com/cesar-programmer/stepable",
+        "caseStudy": null
+      },
       "codePrivate": false,
       "production": false,
       "medal": null
@@ -26,9 +69,27 @@
       "zoneBoss": false,
       "bonus": false,
       "year": "2025",
-      "stack": ["python", "fastapi", "chromadb", "openai", "onnx", "streamlit", "beautifulsoup", "docker", "uv"],
-      "image": { "kind": "pending", "src": null, "gallery": [] },
-      "links": { "demo": null, "code": "https://github.com/cesar-programmer/Microservicio-FastAPI-para-gesti-n-de-base-de-datos-vectorial-con-ChromaDB", "caseStudy": null },
+      "stack": [
+        "python",
+        "fastapi",
+        "chromadb",
+        "openai",
+        "onnx",
+        "streamlit",
+        "beautifulsoup",
+        "docker",
+        "uv"
+      ],
+      "image": {
+        "kind": "pending",
+        "src": null,
+        "gallery": []
+      },
+      "links": {
+        "demo": null,
+        "code": "https://github.com/cesar-programmer/Microservicio-FastAPI-para-gesti-n-de-base-de-datos-vectorial-con-ChromaDB",
+        "caseStudy": null
+      },
       "codePrivate": false,
       "production": false,
       "medal": null
@@ -41,12 +102,30 @@
       "bonus": false,
       "year": "2025",
       "nodeShape": "star",
-      "stack": ["nodejs", "express", "gemini", "multer", "react", "threejs", "openseadragon", "mui", "zustand"],
-      "image": { "kind": "illustration", "src": "/illustrations/sofonques.svg", "gallery": [] },
-      "links": { "demo": null, "code": null, "caseStudy": null },
+      "stack": [
+        "nodejs",
+        "express",
+        "gemini",
+        "multer",
+        "react",
+        "threejs",
+        "openseadragon",
+        "mui",
+        "zustand"
+      ],
+      "image": {
+        "kind": "illustration",
+        "src": null,
+        "gallery": []
+      },
+      "links": {
+        "demo": null,
+        "code": null,
+        "caseStudy": null
+      },
       "codePrivate": true,
       "production": false,
-      "medal": "space-apps-2025"
+      "medal": "nasa-2025"
     },
     {
       "slug": "finance-chatbot",
@@ -55,9 +134,22 @@
       "zoneBoss": false,
       "bonus": true,
       "year": "2024",
-      "stack": ["python", "langchain", "chainlit", "openai"],
-      "image": { "kind": "illustration", "src": "/illustrations/finance-chatbot.svg", "gallery": [] },
-      "links": { "demo": null, "code": "https://github.com/cesar-programmer/financeChatbot-", "caseStudy": null },
+      "stack": [
+        "python",
+        "langchain",
+        "chainlit",
+        "openai"
+      ],
+      "image": {
+        "kind": "illustration",
+        "src": null,
+        "gallery": []
+      },
+      "links": {
+        "demo": null,
+        "code": "https://github.com/cesar-programmer/financeChatbot-",
+        "caseStudy": null
+      },
       "codePrivate": false,
       "production": false,
       "medal": null
@@ -69,9 +161,23 @@
       "zoneBoss": true,
       "bonus": false,
       "year": null,
-      "stack": ["react", "nodejs", "express", "postgresql", "postgis"],
-      "image": { "kind": "illustration", "src": "/illustrations/mesa-espejo.svg", "gallery": [] },
-      "links": { "demo": null, "code": null, "caseStudy": null },
+      "stack": [
+        "react",
+        "nodejs",
+        "express",
+        "postgresql",
+        "postgis"
+      ],
+      "image": {
+        "kind": "illustration",
+        "src": null,
+        "gallery": []
+      },
+      "links": {
+        "demo": null,
+        "code": null,
+        "caseStudy": null
+      },
       "codePrivate": true,
       "production": false,
       "medal": null
@@ -82,10 +188,23 @@
       "stars": 4,
       "zoneBoss": false,
       "bonus": false,
-      "year": null,
-      "stack": ["react", "nodejs", "mysql", "docker"],
-      "image": { "kind": "illustration", "src": "/illustrations/reportes-docentes.svg", "gallery": [] },
-      "links": { "demo": null, "code": null, "caseStudy": null },
+      "year": "2025",
+      "stack": [
+        "react",
+        "nodejs",
+        "mysql",
+        "docker"
+      ],
+      "image": {
+        "kind": "illustration",
+        "src": null,
+        "gallery": []
+      },
+      "links": {
+        "demo": null,
+        "code": null,
+        "caseStudy": null
+      },
       "codePrivate": true,
       "production": true,
       "medal": null
@@ -97,9 +216,21 @@
       "zoneBoss": false,
       "bonus": false,
       "year": "2026",
-      "stack": ["react", "vite", "tailwind"],
-      "image": { "kind": "pending", "src": null, "gallery": [] },
-      "links": { "demo": "https://cesar-programmer.github.io/coffe-menu/", "code": "https://github.com/cesar-programmer/coffe-menu", "caseStudy": null },
+      "stack": [
+        "react",
+        "vite",
+        "tailwind"
+      ],
+      "image": {
+        "kind": "pending",
+        "src": null,
+        "gallery": []
+      },
+      "links": {
+        "demo": "https://cesar-programmer.github.io/coffe-menu/",
+        "code": "https://github.com/cesar-programmer/coffe-menu",
+        "caseStudy": null
+      },
       "codePrivate": false,
       "production": true,
       "medal": null
@@ -110,10 +241,31 @@
       "stars": 5,
       "zoneBoss": true,
       "bonus": false,
-      "year": null,
-      "stack": ["python", "fastapi", "langgraph", "langchain", "sqlalchemy", "postgresql", "alembic", "streamlit", "mql5", "docker", "nginx", "github-actions"],
-      "image": { "kind": "illustration", "src": "/illustrations/antigravity.svg", "gallery": [] },
-      "links": { "demo": null, "code": null, "caseStudy": null },
+      "year": "2026",
+      "stack": [
+        "python",
+        "fastapi",
+        "langgraph",
+        "langchain",
+        "sqlalchemy",
+        "postgresql",
+        "alembic",
+        "streamlit",
+        "mql5",
+        "docker",
+        "nginx",
+        "github-actions"
+      ],
+      "image": {
+        "kind": "illustration",
+        "src": null,
+        "gallery": []
+      },
+      "links": {
+        "demo": null,
+        "code": null,
+        "caseStudy": null
+      },
       "codePrivate": true,
       "production": false,
       "medal": null
@@ -124,10 +276,24 @@
       "stars": 4,
       "zoneBoss": true,
       "bonus": false,
-      "year": null,
-      "stack": ["flutter", "kotlin", "mediapipe", "camerax", "sqlite"],
-      "image": { "kind": "illustration", "src": "/illustrations/alerta-acv.svg", "gallery": [] },
-      "links": { "demo": null, "code": null, "caseStudy": null },
+      "year": "2025",
+      "stack": [
+        "flutter",
+        "kotlin",
+        "mediapipe",
+        "camerax",
+        "sqlite"
+      ],
+      "image": {
+        "kind": "illustration",
+        "src": null,
+        "gallery": []
+      },
+      "links": {
+        "demo": null,
+        "code": null,
+        "caseStudy": null
+      },
       "codePrivate": true,
       "production": false,
       "medal": null
@@ -139,18 +305,51 @@
       "zoneBoss": false,
       "bonus": true,
       "year": "2024",
-      "stack": ["django", "python", "react"],
-      "image": { "kind": "illustration", "src": "/illustrations/walletg.svg", "gallery": [] },
-      "links": { "demo": null, "code": "https://github.com/cesar-programmer/WalletG-backend", "codeFront": "https://github.com/cesar-programmer/WalletG-Front", "caseStudy": null },
+      "stack": [
+        "django",
+        "python",
+        "react"
+      ],
+      "image": {
+        "kind": "illustration",
+        "src": null,
+        "gallery": []
+      },
+      "links": {
+        "demo": null,
+        "code": "https://github.com/cesar-programmer/WalletG-backend",
+        "codeFront": "https://github.com/cesar-programmer/WalletG-Front",
+        "caseStudy": null
+      },
       "codePrivate": false,
       "production": false,
       "medal": null
     }
   ],
   "classic": [
-    { "id": "ecommerce-shopy", "url": "https://github.com/cesar-programmer/ecommerceShopy", "year": "2023" },
-    { "id": "machine-learning-js", "url": "https://github.com/cesar-programmer/machineLearningJS", "year": "2023" },
-    { "id": "bootcamp", "url": "https://github.com/cesar-programmer?tab=repositories&q=boot", "year": "2024" }
+    {
+      "id": "ecommerce-shopy",
+      "url": "https://github.com/cesar-programmer/ecommerceShopy",
+      "year": "2023"
+    },
+    {
+      "id": "machine-learning-js",
+      "url": "https://github.com/cesar-programmer/machineLearningJS",
+      "year": "2023"
+    },
+    {
+      "id": "bootcamp",
+      "url": "https://github.com/cesar-programmer?tab=repositories&q=boot",
+      "year": "2024"
+    }
   ],
-  "recruiterHighlights": ["stepable", "antigravity", "mesa-espejo", "sofonques-explorer", "reportes-docentes", "vector-service-api", "alerta-acv"]
+  "recruiterHighlights": [
+    "stepable",
+    "antigravity",
+    "mesa-espejo",
+    "sofonques-explorer",
+    "reportes-docentes",
+    "vector-service-api",
+    "alerta-acv"
+  ]
 }

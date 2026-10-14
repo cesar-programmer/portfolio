@@ -1,8 +1,17 @@
 {
   "zones": {
-    "lab": { "name": "Laboratorio IA", "tagline": "Agentes, RAG y búsqueda semántica." },
-    "city": { "name": "Ciudad", "tagline": "Software en producción para clientes e instituciones reales." },
-    "workshop": { "name": "Taller", "tagline": "Móvil, tiempo real y sistemas." }
+    "lab": {
+      "name": "IA",
+      "tagline": "Agentes, RAG y búsqueda semántica."
+    },
+    "city": {
+      "name": "Producción",
+      "tagline": "Software en uso por clientes e instituciones reales."
+    },
+    "workshop": {
+      "name": "Sistemas",
+      "tagline": "Móvil, tiempo real y sistemas."
+    }
   },
   "projects": {
     "stepable": {
@@ -17,7 +26,10 @@
       ],
       "boss": "Evitar que la IA invente. Si no hay evidencia suficiente en las fuentes, no se genera contenido.",
       "imageAlt": "Captura de Stepable: recorrido de onboarding con lecciones y progreso.",
-      "galleryAlt": ["Captura de Stepable: asistente respondiendo con citas verificadas.", "Captura de Stepable: editor de rutas antes de publicar."]
+      "galleryAlt": [
+        "Captura de Stepable: asistente respondiendo con citas verificadas.",
+        "Captura de Stepable: editor de rutas antes de publicar."
+      ]
     },
     "vector-service-api": {
       "name": "Vector Service API",
@@ -127,7 +139,7 @@
         "Desarrollé las pruebas de asimetría facial, caída de brazos y habla, con guía por voz.",
         "Agregué llamada y SMS automáticos al 911 con geolocalización."
       ],
-      "boss": "Correr visión por computadora en tiempo real en el teléfono: el procesamiento se movió a un módulo nativo en Kotlin con CameraX y MediaPipe, y Flutter solo recibe los resultados.",
+      "boss": "Lograr que MediaPipe analizara el rostro en tiempo real dentro de una app Flutter con rendimiento aceptable en Android. Se resolvió moviendo el análisis a un módulo nativo en Kotlin (CameraX + MediaPipe) conectado a Flutter por method channel.",
       "imageAlt": "Ilustración: pantallas de prueba de rostro, brazos y habla, y botón de emergencia."
     },
     "walletg": {
@@ -144,8 +156,17 @@
     }
   },
   "classic": {
-    "ecommerce-shopy": { "name": "ecommerceShopy", "description": "Marketplace con JavaScript y React." },
-    "machine-learning-js": { "name": "machineLearningJS", "description": "Regresión lineal con TensorFlow.js." },
-    "bootcamp": { "name": "Proyectos del bootcamp", "description": "Ejercicios y proyectos del Full Stack Developer." }
+    "ecommerce-shopy": {
+      "name": "ecommerceShopy",
+      "description": "Marketplace con JavaScript y React."
+    },
+    "machine-learning-js": {
+      "name": "machineLearningJS",
+      "description": "Regresión lineal con TensorFlow.js."
+    },
+    "bootcamp": {
+      "name": "Proyectos del bootcamp",
+      "description": "Ejercicios y proyectos del Full Stack Developer."
+    }
   }
 }

@@ -1,8 +1,17 @@
 {
   "zones": {
-    "lab": { "name": "AI Lab", "tagline": "Agents, RAG and semantic search." },
-    "city": { "name": "City", "tagline": "Production software for real clients and institutions." },
-    "workshop": { "name": "Workshop", "tagline": "Mobile, real time and systems." }
+    "lab": {
+      "name": "AI",
+      "tagline": "Agents, RAG and semantic search."
+    },
+    "city": {
+      "name": "Production",
+      "tagline": "Software used by real clients and institutions."
+    },
+    "workshop": {
+      "name": "Systems",
+      "tagline": "Mobile, real time and systems."
+    }
   },
   "projects": {
     "stepable": {
@@ -17,7 +26,10 @@
       ],
       "boss": "Keeping the AI from making things up. If the sources don't hold enough evidence, no content is generated.",
       "imageAlt": "Stepable screenshot: onboarding path with lessons and progress.",
-      "galleryAlt": ["Stepable screenshot: assistant answering with verified citations.", "Stepable screenshot: path editor before publishing."]
+      "galleryAlt": [
+        "Stepable screenshot: assistant answering with verified citations.",
+        "Stepable screenshot: path editor before publishing."
+      ]
     },
     "vector-service-api": {
       "name": "Vector Service API",
@@ -127,7 +139,7 @@
         "Developed the facial asymmetry, arm drift and speech tests, with voice guidance.",
         "Added automatic calls and SMS to 911 with geolocation."
       ],
-      "boss": "Running computer vision in real time on the phone: processing moved to a native Kotlin module with CameraX and MediaPipe, and Flutter only receives the results.",
+      "boss": "Getting MediaPipe to analyze a face in real time inside a Flutter app with acceptable performance on Android. Solved by moving the analysis into a native Kotlin module (CameraX + MediaPipe) connected to Flutter through a method channel.",
       "imageAlt": "Illustration: face, arms and speech test screens, and the emergency button."
     },
     "walletg": {
@@ -144,8 +156,17 @@
     }
   },
   "classic": {
-    "ecommerce-shopy": { "name": "ecommerceShopy", "description": "Marketplace built with JavaScript and React." },
-    "machine-learning-js": { "name": "machineLearningJS", "description": "Linear regression with TensorFlow.js." },
-    "bootcamp": { "name": "Bootcamp projects", "description": "Exercises and projects from the Full Stack Developer program." }
+    "ecommerce-shopy": {
+      "name": "ecommerceShopy",
+      "description": "Marketplace built with JavaScript and React."
+    },
+    "machine-learning-js": {
+      "name": "machineLearningJS",
+      "description": "Linear regression with TensorFlow.js."
+    },
+    "bootcamp": {
+      "name": "Bootcamp projects",
+      "description": "Exercises and projects from the Full Stack Developer program."
+    }
   }
 }
