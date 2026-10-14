@@ -7,7 +7,12 @@
     "hint": "Haz clic en cualquier opción · ← ↑ → ↓ · Enter / Esc · Q/E o L/R: pestañas · M: menú · I: idioma · F: Modo TV",
     "screenLabel": "Pantalla del portafolio",
     "controlsLabel": "Controles de la consola",
-    "dpad": { "up": "Arriba", "down": "Abajo", "left": "Izquierda", "right": "Derecha" },
+    "dpad": {
+      "up": "Arriba",
+      "down": "Abajo",
+      "left": "Izquierda",
+      "right": "Derecha"
+    },
     "a": "A — confirmar",
     "b": "B — regresar",
     "start": "MENÚ — opciones",
@@ -21,7 +26,17 @@
     "soundOn": "Sonido activado. Clic para silenciar.",
     "soundOff": "Sonido silenciado. Clic para activar.",
     "skip": "Saltar al contenido",
-    "labels": { "start": "MENÚ", "select": "ES/EN", "l": "◀ L", "r": "R ▶", "cv": "CV ⬇", "contact": "✉ CONTACTO", "tv": "📺" }
+    "labels": {
+      "start": "MENÚ",
+      "select": "ES/EN",
+      "l": "◀ L",
+      "r": "R ▶",
+      "cv": "CV",
+      "contact": "CONTACTO",
+      "tv": "TV",
+      "recruiter": "RECLUTADOR"
+    },
+    "recruiter": "Modo reclutador: versión de una sola página, sin juego"
   },
   "tip": "¡Haz clic en cualquier opción o usa las flechas!",
   "tabs": {
@@ -33,15 +48,8 @@
     "badges": "MEDALLAS",
     "contact": "CONTACTO"
   },
-  "header": {
-    "recruiter": "Modo reclutador ⏩",
-    "recruiterLabel": "Ver la versión de una sola página, sin juego"
-  },
   "projects": {
     "listLabel": "Lista de proyectos",
-    "filterLabel": "Filtrar por mundo",
-    "all": "TODOS",
-    "world": "Mundo",
     "classicZone": "Zona clásica",
     "seeMore": "Ver más",
     "seeLess": "Ver menos",
@@ -117,11 +125,24 @@
     "on": "SÍ",
     "off": "NO",
     "palette": "Pantalla",
-    "palettes": { "arcade": "Arcade", "classic": "Verde clásico", "pocket": "Pocket" },
+    "palettes": {
+      "arcade": "Arcade",
+      "classic": "Verde clásico",
+      "pocket": "Pocket"
+    },
     "shell": "Carcasa",
-    "shells": { "indigo": "Índigo", "silver": "Plateado", "black": "Negro" },
+    "shells": {
+      "classic": "Gris clásico",
+      "indigo": "Índigo",
+      "silver": "Plateado",
+      "black": "Negro"
+    },
     "textSpeed": "Texto",
-    "speeds": { "slow": "Lento", "normal": "Normal", "instant": "Instantáneo" },
+    "speeds": {
+      "slow": "Lento",
+      "normal": "Normal",
+      "instant": "Instantáneo"
+    },
     "recruiter": "Modo reclutador ⏩"
   },
   "achievements": {

@@ -28,7 +28,7 @@ export function Options({ content, onLang }: { content: Content; onLang: (lang: 
   }
 
   const palettes: Palette[] = ['arcade', 'classic', 'pocket']
-  const shells: ShellColor[] = ['indigo', 'silver', 'black']
+  const shells: ShellColor[] = ['classic', 'indigo', 'silver', 'black']
   const speeds: TextSpeed[] = ['slow', 'normal', 'instant']
 
   const rows: Row[] = [
@@ -112,7 +112,7 @@ export function Options({ content, onLang }: { content: Content; onLang: (lang: 
                 }}
                 type="button"
                 data-menu-item
-                className={`options__row ${i === cursor ? 'is-selected' : ''}`}
+                className={`options__row ${i === cursor ? "is-selected" : ""}`}
                 onPointerEnter={(e) => e.pointerType === 'mouse' && setCursor(i)}
                 onFocus={() => setCursor(i)}
                 onClick={() => {
@@ -120,7 +120,7 @@ export function Options({ content, onLang }: { content: Content; onLang: (lang: 
                   activate(row)
                 }}
               >
-                <PixelIcon name="cursor" className={i === cursor ? 'text-scr-accent' : 'invisible'} />
+                <PixelIcon name="cursor" className={i === cursor ? 'text-scr-title' : 'invisible'} />
                 <span className="flex-1 text-left">{row.label}</span>
                 {row.value && (
                   <span className="text-scr-title flex items-center gap-2">

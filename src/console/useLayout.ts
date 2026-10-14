@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react'
  * - clamshell: celular y tablet en vertical (concha abierta).
  *
  * Todas las medidas de la carcasa usan la unidad --u (px por unidad de diseño).
+ * La consola nunca ocupa más del 90% del ancho ni del 88% del alto del viewport.
  */
 export type Layout = 'horizontal' | 'compact' | 'clamshell'
 
@@ -22,15 +23,16 @@ export type LayoutState = {
   hint: boolean
 }
 
-// Consola horizontal: 1000 × 536 unidades (incluye gatillos), pantalla 576 × 384 (3:2).
-export const H = { w: 1000, h: 536, screenW: 576, screenH: 384, minU: 0.5, maxU: 2 }
-// Horizontal compacta: 896 × 404 unidades.
-export const C = { w: 896, h: 404, screenW: 576, screenH: 384 }
-// Concha: 400 unidades de ancho; la base con controles mide 300 y la bisagra 34.
-export const S = { w: 400, base: 300, hinge: 34, lidPad: 10, bezelPad: 8, maxW: 640 }
+const MAX_W = 0.9
+const MAX_H = 0.88
 
-const HINT_H = 40
-const MARGIN = 16
+// Consola horizontal: 956 × 548 unidades (incluye gatillos), pantalla 576 × 384 (3:2).
+export const H = { w: 956, h: 548, screenW: 576, screenH: 384, minU: 0.5, maxU: 2 }
+// Horizontal compacta: 880 × 434 unidades.
+export const C = { w: 880, h: 434, screenW: 576, screenH: 384 }
+// Concha: 400 unidades de ancho. Base con controles 290, bisagra 30, y la tapa
+// suma 64 de márgenes, leyenda y logo alrededor de la pantalla.
+export const S = { w: 400, base: 290, hinge: 30, lidV: 64, lidH: 36, maxW: 640 }
 
 function compute(): LayoutState {
   const vw = window.innerWidth
@@ -38,23 +40,24 @@ function compute(): LayoutState {
   const portrait = vh >= vw
 
   if (vh < 500 && !portrait) {
-    const u = Math.min(vw / C.w, vh / C.h)
+    const u = Math.min((vw * MAX_W) / C.w, (vh * MAX_H) / C.h)
     return { layout: 'compact', u, screenW: C.screenW * u, screenH: C.screenH * u, width: C.w * u, height: C.h * u, hint: false }
   }
 
   if (vw < 600 || (vw < 1024 && portrait)) {
-    const width = vw < 600 ? vw : Math.min(vw - MARGIN * 2, S.maxW)
-    const height = vw < 600 ? vh : vh - MARGIN * 2
-    const u = Math.min(Math.max(width / S.w, 0.75), 1.6)
-    const screenW = width - 2 * (S.lidPad + S.bezelPad) * u
-    // La tapa se queda con todo el alto que no necesitan los controles, hasta ~1:1.3.
-    const available = height - (S.base + S.hinge + 2 * (S.lidPad + S.bezelPad)) * u
+    const height = vh * MAX_H
+    // Ancho máximo para que, con la pantalla al menos en 3:2, todo quepa en el alto.
+    const fixedPerWidth = (S.base + S.hinge + S.lidV) / S.w + ((1 - S.lidH / S.w) * 2) / 3
+    const width = Math.min(vw * MAX_W, S.maxW, height / fixedPerWidth)
+    const u = width / S.w
+    const screenW = width - S.lidH * u
+    // La tapa se queda con el alto que no necesitan los controles, hasta ~1:1.3.
+    const available = height - (S.base + S.hinge + S.lidV) * u
     const screenH = Math.max(Math.min(available, screenW * 1.3), (screenW * 2) / 3)
     return { layout: 'clamshell', u, screenW, screenH, width, height, hint: false }
   }
 
-  const fit = Math.min((vw - MARGIN * 2) / H.w, (vh - MARGIN * 2 - HINT_H) / H.h)
-  const u = Math.min(Math.max(fit, H.minU), H.maxU)
+  const u = Math.max(H.minU, Math.min((vw * MAX_W) / H.w, (vh * MAX_H) / H.h, H.maxU))
   return { layout: 'horizontal', u, screenW: H.screenW * u, screenH: H.screenH * u, width: H.w * u, height: H.h * u, hint: true }
 }
 

@@ -48,7 +48,7 @@ export function ProjectDetail({ project, content }: { project: Project; content:
           <Link to={sectionPath(lang, 'projects', prev.slug)} className="px-btn" onClick={() => play('cursor')} aria-label={`${ui.detail.prev}: ${prev.name}`}>
             <PixelIcon name="left" /> {ui.detail.prev}
           </Link>
-          <span className="text-scr-muted text-small">
+          <span className="text-scr-muted text-body">
             {i + 1}/{projects.length}
           </span>
           <Link to={sectionPath(lang, 'projects', next.slug)} className="px-btn" onClick={() => play('cursor')} aria-label={`${ui.detail.next}: ${next.name}`}>
@@ -111,7 +111,7 @@ function DetailBody({ project, content, onPrev, onNext, onBack, scroll }: BodyPr
         {project.medal === 'nasa-2025' && (
           <div className="px-box text-scr-title flex items-center gap-2 p-2">
             <PixelIcon name="badges" />
-            <span className="font-pixel text-head">NASA SPACE APPS 2025</span>
+            <span className="font-pixel text-sub">NASA SPACE APPS 2025</span>
           </div>
         )}
       </div>
@@ -119,8 +119,8 @@ function DetailBody({ project, content, onPrev, onNext, onBack, scroll }: BodyPr
       <div className="flex min-w-0 flex-col gap-3" onClick={() => setComplete(true)}>
         <header>
           <h1 className="scr-title text-title m-0">{project.name}</h1>
-          {project.subtitle && <p className="text-scr-accent m-0">{project.subtitle}</p>}
-          <p className={leader ? 'scr-title text-head m-0 mt-2 leading-normal' : 'm-0 mt-1'}>
+          {project.subtitle && <p className="m-0">{project.subtitle}</p>}
+          <p className={leader ? 'scr-title text-sub m-0 mt-2 leading-normal' : 'm-0 mt-1'}>
             {!leader && <span className="text-scr-muted">{d.role}: </span>}
             {project.role}
           </p>
@@ -143,7 +143,7 @@ function DetailBody({ project, content, onPrev, onNext, onBack, scroll }: BodyPr
           <ul className="m-0 flex list-none flex-col gap-2 p-0">
             {project.did.map((item) => (
               <li key={item} className="flex gap-2">
-                <PixelIcon name="right" size="sm" className="text-scr-accent mt-[0.4em]" />
+                <PixelIcon name="right" size="sm" className="text-scr-title-dim mt-[0.4em]" />
                 <span>{item}</span>
               </li>
             ))}
@@ -160,7 +160,7 @@ function DetailBody({ project, content, onPrev, onNext, onBack, scroll }: BodyPr
 
         {(project.fact || project.note) && (
           <div className="px-box text-scr-muted flex flex-col gap-1 p-2">
-            {project.fact && <p className="text-scr-accent m-0">{project.fact}</p>}
+            {project.fact && <p className="text-scr-ink m-0">{project.fact}</p>}
             {project.note && <p className="m-0">{project.note}</p>}
           </div>
         )}
@@ -200,7 +200,7 @@ function DetailBody({ project, content, onPrev, onNext, onBack, scroll }: BodyPr
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <section>
-      <h2 className="text-head text-scr-accent-2 m-0 mb-1 font-pixel">{title.toUpperCase()}</h2>
+      <h2 className="text-sub text-scr-title-dim m-0 mb-1 font-pixel">{title.toUpperCase()}</h2>
       {children}
     </section>
   )

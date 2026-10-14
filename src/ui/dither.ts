@@ -2,7 +2,8 @@
 // (Bayer 4×4), como si la mostrara la consola. Se hace en un <canvas> oculto.
 
 const BAYER = [0, 8, 2, 10, 12, 4, 14, 6, 3, 11, 1, 9, 15, 7, 13, 5].map((v) => (v + 0.5) / 16)
-const TOKENS = ['--scr-bg', '--scr-surface-2', '--scr-line', '--scr-accent-2', '--scr-title', '--scr-accent', '--scr-ink']
+// Rampa sobria: solo los tonos neutros de la pantalla.
+const TOKENS = ['--scr-bg', '--scr-surface-2', '--scr-line', '--scr-muted', '--scr-ink']
 
 type Rgb = [number, number, number]
 

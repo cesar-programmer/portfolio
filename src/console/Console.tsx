@@ -4,7 +4,7 @@ import { getContent } from '../content'
 import { useGame } from '../store/game'
 import './console.css'
 import { installKeyboard } from './input'
-import { ABButtons, Brand, DPad, ShellKeys, Shoulder, Speaker, StartSelect } from './parts'
+import { ABButtons, BezelDecor, Brand, DPad, ShellKeys, Shoulder, Speaker, StartSelect } from './parts'
 import { useLayout, type LayoutState } from './useLayout'
 import { useTvMode } from './useTvMode'
 
@@ -60,7 +60,7 @@ function Horizontal({ compact, style, lang, ui, screen }: LayoutProps & { compac
         </div>
         <div className="console__center">
           <div className="bezel">
-            <span className="led" aria-hidden="true" />
+            <BezelDecor />
             {screen}
           </div>
           {!compact && (
@@ -106,9 +106,10 @@ function Clamshell({ state, style, lang, ui, screen }: LayoutProps & { state: La
     <section className="console console--clamshell" style={size} aria-label={ui.controlsLabel}>
       <div className={`lid ${opening ? 'lid--opening' : ''}`}>
         <div className="bezel">
-          <span className="led" aria-hidden="true" />
+          <BezelDecor />
           {screen}
         </div>
+        <Brand />
       </div>
       <div className="hinge">
         <Shoulder side="l" ui={ui} />
@@ -116,17 +117,14 @@ function Clamshell({ state, style, lang, ui, screen }: LayoutProps & { state: La
         <Shoulder side="r" ui={ui} />
       </div>
       <div className="base">
-        <div className="base__keys">
-          <ShellKeys lang={lang} ui={ui} />
-          <Speaker ui={ui} />
-        </div>
+        <ShellKeys lang={lang} ui={ui} />
         <div className="base__controls">
           <DPad ui={ui} />
           <ABButtons ui={ui} />
         </div>
         <div className="base__bottom">
           <StartSelect ui={ui} />
-          <Brand />
+          <Speaker ui={ui} />
         </div>
       </div>
     </section>

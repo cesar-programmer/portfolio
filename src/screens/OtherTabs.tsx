@@ -12,7 +12,7 @@ function Heading({ children }: { children: React.ReactNode }) {
   return <h1 className="scr-title text-title m-0">{children}</h1>
 }
 function Sub({ children }: { children: React.ReactNode }) {
-  return <h2 className="text-head text-scr-accent-2 m-0 mb-2 font-pixel">{children}</h2>
+  return <h2 className="text-sub text-scr-title-dim m-0 mb-2 font-pixel">{children}</h2>
 }
 
 export function AboutTab({ content }: { content: Content }) {
@@ -36,7 +36,7 @@ export function AboutTab({ content }: { content: Content }) {
           ))}
         </dl>
         <p className="m-0">{profile.summary}</p>
-        <p className="text-scr-accent m-0">{profile.lookingFor}</p>
+        <p className="m-0">{profile.lookingFor}</p>
       </section>
       <section>
         <Sub>{ui.about.specialMoves.toUpperCase()}</Sub>
@@ -45,7 +45,7 @@ export function AboutTab({ content }: { content: Content }) {
             const project = projects.find((p) => p.slug === move.project)
             return (
               <li key={move.id} className="px-box p-2">
-                <p className="text-scr-title m-0 font-pixel text-head">{move.name.toUpperCase()}</p>
+                <p className="text-scr-title m-0 font-pixel text-sub">{move.name.toUpperCase()}</p>
                 <p className="m-0">
                   {move.evidence}{' '}
                   {project && (
@@ -93,7 +93,7 @@ export function SkillsTab({ content }: { content: Content }) {
         </section>
       ))}
       <section className="px-box sticky bottom-0 p-3" aria-live="polite">
-        <p className="scr-title text-head m-0">{item.label}</p>
+        <p className="scr-title text-sub m-0">{item.label}</p>
         {item.note && <p className="text-scr-muted m-0">{item.note}</p>}
         {item.projects.length > 0 && (
           <p className="m-0">
@@ -139,14 +139,14 @@ export function MissionsTab({ content }: { content: Content }) {
         <ul className="m-0 grid list-none gap-2 p-0">
           {experience.missions.map((m) => (
             <li key={m.id} className="px-box p-3">
-              <p className="text-scr-accent m-0 font-pixel text-tag">✓ {m.status.toUpperCase()}</p>
-              <p className="scr-title text-head m-0 mt-1">{m.role}</p>
+              <p className="text-scr-muted m-0 font-pixel text-sub">✓ {m.status.toUpperCase()}</p>
+              <p className="scr-title text-sub m-0 mt-1">{m.role}</p>
               <p className="m-0">{m.org}</p>
               {m.period && <p className="text-scr-muted m-0">{m.period}</p>}
               <ul className="m-0 mt-1 list-none p-0">
                 {m.points.map((pt) => (
                   <li key={pt} className="flex gap-2">
-                    <PixelIcon name="right" size="sm" className="text-scr-accent mt-[0.4em]" />
+                    <PixelIcon name="right" size="sm" className="text-scr-title-dim mt-[0.4em]" />
                     {pt}
                   </li>
                 ))}
@@ -165,7 +165,7 @@ export function MissionsTab({ content }: { content: Content }) {
         <ul className="m-0 grid list-none gap-2 p-0">
           {experience.education.map((e) => (
             <li key={e.id} className="px-box p-3">
-              <p className="scr-title text-head m-0">{e.title}</p>
+              <p className="scr-title text-sub m-0">{e.title}</p>
               <p className="m-0">
                 {e.org}
                 {e.period && <span className="text-scr-muted"> · {e.period}</span>}
@@ -193,9 +193,9 @@ export function BadgesTab({ content }: { content: Content }) {
           b ? (
             <li key={b.id} className="px-box flex flex-col items-center gap-1 p-2 text-center">
               <PixelIcon name="badges" className="text-scr-title" />
-              <p className="scr-title text-head m-0">{b.name}</p>
+              <p className="scr-title text-sub m-0">{b.name}</p>
               <p className="m-0">{b.detail}</p>
-              <p className="text-scr-muted text-small m-0">{b.issuer}</p>
+              <p className="text-scr-muted text-body m-0">{b.issuer}</p>
               {b.verifyUrl && (
                 <a href={b.verifyUrl} target="_blank" rel="noreferrer" className="text-scr-accent underline">
                   {ui.badges.verify} ↗
@@ -204,10 +204,10 @@ export function BadgesTab({ content }: { content: Content }) {
             </li>
           ) : (
             <li key={`empty-${i}`} className="badge-empty flex flex-col items-center justify-center gap-1 p-2 text-center">
-              <span className="font-pixel text-head" aria-label={ui.badges.locked}>
+              <span className="font-pixel text-sub" aria-label={ui.badges.locked}>
                 {badges.lockedLabel}
               </span>
-              {!explorer && i === earned.length && secret && <span className="text-scr-muted text-small">{badges.secretHint}</span>}
+              {!explorer && i === earned.length && secret && <span className="text-scr-muted text-body">{badges.secretHint}</span>}
             </li>
           ),
         )}

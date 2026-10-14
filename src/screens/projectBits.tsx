@@ -5,7 +5,7 @@ import { ProjectArt } from '../ui/ProjectArt'
 
 export function Stars({ count, label }: { count: number; label: string }) {
   return (
-    <span className="inline-flex gap-px text-scr-title" role="img" aria-label={`${label}: ${count}/5`}>
+    <span className="inline-flex shrink-0 gap-px text-scr-title" role="img" aria-label={`${label}: ${count}/5`}>
       {Array.from({ length: count }, (_, i) => (
         <PixelIcon key={i} name="star" size="sm" />
       ))}
@@ -13,31 +13,37 @@ export function Stars({ count, label }: { count: number; label: string }) {
   )
 }
 
+/** Hasta dos etiquetas, monocromas. Solo PRIVADO lleva color (rosa). */
 export function ProjectTags({ project, ui }: { project: Project; ui: Content['ui'] }) {
   const t = ui.tags
+  const tags = [
+    project.production && { id: 'production', text: t.production, live: true },
+    project.medal === 'nasa-2025' && { id: 'nasa', text: t.nasa },
+    project.slug === 'mesa-espejo' && { id: 'case', text: t.caseStudy },
+    project.codePrivate && { id: 'private', text: t.private },
+    project.bonus && { id: 'bonus', text: t.bonus },
+  ]
+    .filter((tag): tag is { id: string; text: string; live?: boolean } => !!tag)
+    .slice(0, 2)
+  if (!tags.length) return null
   return (
-    <span className="flex flex-wrap gap-1.5">
-      {project.production && <span className="px-tag px-blink text-scr-accent">{t.production}</span>}
-      {project.medal === 'nasa-2025' && <span className="px-tag text-scr-title">{t.nasa}</span>}
-      {project.slug === 'mesa-espejo' && <span className="px-tag text-scr-accent">{t.caseStudy}</span>}
-      {project.codePrivate && (
-        <span className="px-tag text-scr-accent-2">
-          <PixelIcon name="lock" size="sm" />
-          {t.private}
+    <span className="flex flex-wrap gap-2">
+      {tags.map((tag) => (
+        <span key={tag.id} className={`px-tag ${tag.id === 'private' ? 'text-scr-accent-2' : 'text-scr-muted'}`}>
+          {tag.id === 'private' && <PixelIcon name="lock" size="sm" />}
+          {tag.live && <span className="px-tag__dot px-blink" aria-hidden="true" />}
+          {tag.text}
         </span>
-      )}
-      {project.bonus && <span className="px-tag text-scr-muted">{t.bonus}</span>}
+      ))}
     </span>
   )
 }
 
 export function StackChips({ project, content }: { project: Project; content: Content }) {
   return (
-    <ul className="m-0 flex list-none flex-wrap gap-1.5 p-0">
+    <ul className="stack-chips">
       {project.stack.map((id) => (
-        <li key={id} className="border-scr-line bg-scr-surface-2 text-small border-[length:var(--bw)] px-2 py-0.5 leading-tight">
-          {content.techLabel(id)}
-        </li>
+        <li key={id}>{content.techLabel(id)}</li>
       ))}
     </ul>
   )

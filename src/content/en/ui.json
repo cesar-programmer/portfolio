@@ -7,7 +7,12 @@
     "hint": "Click any option · ← ↑ → ↓ · Enter / Esc · Q/E or L/R: tabs · M: menu · I: language · F: TV mode",
     "screenLabel": "Portfolio screen",
     "controlsLabel": "Console controls",
-    "dpad": { "up": "Up", "down": "Down", "left": "Left", "right": "Right" },
+    "dpad": {
+      "up": "Up",
+      "down": "Down",
+      "left": "Left",
+      "right": "Right"
+    },
     "a": "A — confirm",
     "b": "B — back",
     "start": "MENU — options",
@@ -21,7 +26,17 @@
     "soundOn": "Sound on. Click to mute.",
     "soundOff": "Sound muted. Click to turn on.",
     "skip": "Skip to content",
-    "labels": { "start": "MENU", "select": "ES/EN", "l": "◀ L", "r": "R ▶", "cv": "CV ⬇", "contact": "✉ CONTACT", "tv": "📺" }
+    "labels": {
+      "start": "MENU",
+      "select": "ES/EN",
+      "l": "◀ L",
+      "r": "R ▶",
+      "cv": "CV",
+      "contact": "CONTACT",
+      "tv": "TV",
+      "recruiter": "RECRUITER"
+    },
+    "recruiter": "Recruiter mode: single-page version, no game"
   },
   "tip": "Click any option or use the arrow keys!",
   "tabs": {
@@ -33,15 +48,8 @@
     "badges": "BADGES",
     "contact": "CONTACT"
   },
-  "header": {
-    "recruiter": "Recruiter mode ⏩",
-    "recruiterLabel": "See the single-page version, no game"
-  },
   "projects": {
     "listLabel": "Project list",
-    "filterLabel": "Filter by world",
-    "all": "ALL",
-    "world": "World",
     "classicZone": "Classic zone",
     "seeMore": "See more",
     "seeLess": "See less",
@@ -117,11 +125,24 @@
     "on": "ON",
     "off": "OFF",
     "palette": "Screen",
-    "palettes": { "arcade": "Arcade", "classic": "Classic green", "pocket": "Pocket" },
+    "palettes": {
+      "arcade": "Arcade",
+      "classic": "Classic green",
+      "pocket": "Pocket"
+    },
     "shell": "Shell",
-    "shells": { "indigo": "Indigo", "silver": "Silver", "black": "Black" },
+    "shells": {
+      "classic": "Classic gray",
+      "indigo": "Indigo",
+      "silver": "Silver",
+      "black": "Black"
+    },
     "textSpeed": "Text",
-    "speeds": { "slow": "Slow", "normal": "Normal", "instant": "Instant" },
+    "speeds": {
+      "slow": "Slow",
+      "normal": "Normal",
+      "instant": "Instant"
+    },
     "recruiter": "Recruiter mode ⏩"
   },
   "achievements": {

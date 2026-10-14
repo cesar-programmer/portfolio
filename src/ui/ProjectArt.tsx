@@ -20,7 +20,8 @@ export function ProjectArt({ project, label, className = '' }: { project: Projec
   const rand = seeded(project.slug)
   const bars = Array.from({ length: 7 }, () => 4 + Math.floor(rand() * 12))
   const rows = Array.from({ length: 4 }, () => 8 + Math.floor(rand() * 16))
-  const accent = project.zone === 'lab' ? 'var(--scr-accent)' : project.zone === 'city' ? 'var(--scr-title)' : 'var(--scr-accent-2)'
+  const accent = 'var(--scr-title)'
+  const soft = 'var(--scr-muted)'
 
   return (
     <figure className={`relative m-0 ${className}`}>
@@ -36,9 +37,9 @@ export function ProjectArt({ project, label, className = '' }: { project: Projec
           {/* ventana */}
           <rect x="3" y="3" width={W - 6} height={H - 6} fill="var(--scr-bg)" />
           <rect x="3" y="3" width={W - 6} height="4" fill="var(--scr-surface-2)" />
-          <rect x="5" y="4" width="2" height="2" fill="var(--scr-accent-2)" />
-          <rect x="8" y="4" width="2" height="2" fill="var(--scr-title)" />
-          <rect x="11" y="4" width="2" height="2" fill="var(--scr-accent)" />
+          <rect x="5" y="4" width="2" height="2" fill="var(--scr-line)" />
+          <rect x="8" y="4" width="2" height="2" fill="var(--scr-line)" />
+          <rect x="11" y="4" width="2" height="2" fill="var(--scr-line)" />
           {/* barra lateral */}
           <rect x="3" y="7" width="10" height={H - 10} fill="var(--scr-surface)" />
           {[10, 14, 18, 22].map((y, i) => (
@@ -48,24 +49,24 @@ export function ProjectArt({ project, label, className = '' }: { project: Projec
           {[16, 29, 42].map((x, i) => (
             <g key={x}>
               <rect x={x} y="10" width="11" height="7" fill="var(--scr-surface-2)" />
-              <rect x={x + 2} y="12" width="3" height="3" fill={i === 1 ? 'var(--scr-accent-2)' : accent} />
+              <rect x={x + 2} y="12" width="3" height="3" fill={i === 1 ? soft : accent} />
               <rect x={x + 6} y="12" width="3" height="1" fill="var(--scr-muted)" />
               <rect x={x + 6} y="14" width="2" height="1" fill="var(--scr-line)" />
             </g>
           ))}
           {/* gráfica */}
           {bars.map((h, i) => (
-            <rect key={i} x={16 + i * 3} y={34 - h} width="2" height={h} fill={i % 3 === 0 ? 'var(--scr-title)' : accent} />
+            <rect key={i} x={16 + i * 3} y={34 - h} width="2" height={h} fill={i % 3 === 0 ? accent : soft} />
           ))}
           {/* filas de tabla */}
           {rows.map((w, i) => (
             <g key={i}>
-              <rect x="38" y={21 + i * 3} width="2" height="2" fill={i % 2 ? 'var(--scr-accent-2)' : accent} />
+              <rect x="38" y={21 + i * 3} width="2" height="2" fill={i % 2 ? soft : accent} />
               <rect x="41" y={21.5 + i * 3} width={Math.min(w, 17)} height="1" fill="var(--scr-muted)" />
             </g>
           ))}
         </svg>
-        <span className="px-tag absolute top-2 right-2 bg-scr-bg text-scr-muted">{label}</span>
+        <span className="px-tag absolute top-2 right-2 bg-scr-bg">{label}</span>
       </div>
     </figure>
   )

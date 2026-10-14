@@ -2,7 +2,7 @@ import { create } from 'zustand'
 import { readJSON, writeJSON } from './storage'
 
 export type Palette = 'arcade' | 'classic' | 'pocket'
-export type ShellColor = 'indigo' | 'silver' | 'black'
+export type ShellColor = 'classic' | 'indigo' | 'silver' | 'black'
 export type TextSpeed = 'slow' | 'normal' | 'instant'
 
 type Settings = { sound: boolean; palette: Palette; shell: ShellColor; textSpeed: TextSpeed }
@@ -11,9 +11,9 @@ const SETTINGS_KEY = 'cesardev:settings'
 const VISITED_KEY = 'cesardev:visited'
 const SEEN_KEY = 'cesardev:seen'
 
-const defaults: Settings = { sound: false, palette: 'arcade', shell: 'indigo', textSpeed: 'normal' }
+const defaults: Settings = { sound: false, palette: 'arcade', shell: 'classic', textSpeed: 'normal' }
 const PALETTES: Palette[] = ['arcade', 'classic', 'pocket']
-const SHELLS: ShellColor[] = ['indigo', 'silver', 'black']
+const SHELLS: ShellColor[] = ['classic', 'indigo', 'silver', 'black']
 
 function loadSettings(): Settings {
   const s = { ...defaults, ...readJSON<Partial<Settings>>(SETTINGS_KEY, {}) }
@@ -32,11 +32,9 @@ type GameState = Settings & {
   optionsOpen: boolean
   tv: boolean
   toast: string | null
-  /** Último proyecto señalado en la lista y filtro activo (para volver al mismo lugar). */
+  /** Último proyecto señalado en la lista (para volver al mismo lugar). */
   projectCursor: string | null
-  projectFilter: string
   setProjectCursor: (slug: string | null) => void
-  setProjectFilter: (filter: string) => void
   toggleSound: () => void
   setPalette: (palette: Palette) => void
   setShell: (shell: ShellColor) => void
@@ -61,9 +59,7 @@ export const useGame = create<GameState>((set, get) => {
     tv: false,
     toast: null,
     projectCursor: null,
-    projectFilter: 'all',
     setProjectCursor: (projectCursor) => set({ projectCursor }),
-    setProjectFilter: (projectFilter) => set({ projectFilter }),
     toggleSound: () => {
       set({ sound: !get().sound })
       saveSettings()

@@ -4,40 +4,40 @@
    Tokens
    ================================================================== */
 :root {
-  /* Pantalla — paleta "Arcade" (por defecto) */
-  --scr-bg: #140c2e;
-  --scr-surface: #1e1442;
-  --scr-surface-2: #2a1c5c;
-  --scr-line: #4b3796;
-  --scr-ink: #f3eeff;
-  --scr-muted: #bfb2e8;
+  /* Pantalla — paleta "Arcade" (por defecto): un solo acento ámbar;
+     cian solo para enlaces y acciones secundarias; rosa solo para PRIVADO. */
+  --scr-bg: #15102a;
+  --scr-surface: #1c1634;
+  --scr-surface-2: #29214a;
+  --scr-line: #3a3060;
+  --scr-ink: #ece8f6;
+  --scr-muted: #a79fc2;
   --scr-title: #ffb000;
-  --scr-title-shadow: #a3195b;
+  --scr-title-dim: #c9922f;
+  --scr-title-shadow: #4a2c00;
   --scr-accent: #38e8ff;
   --scr-accent-2: #ff4fa3;
-  --scr-shadow: #07041a;
-  --scr-on-accent: #140c2e;
+  --scr-shadow: #08060f;
+  --scr-on-accent: #15102a;
 
-  /* Carcasa — índigo (por defecto) */
-  --shell: #4b3fa8;
-  --shell-hi: #6a5ecf;
-  --shell-lo: #2f2678;
-  --shell-edge: #241d5c;
-  --shell-ink: #e6e1ff;
-  --shell-ink-muted: #b4abef;
-  --bezel: #17142b;
-  --bezel-ink: #8d86b8;
-  --btn-ab: #2a2540;
-  --btn-ab-hi: #463f66;
-  --btn-ab-ink: #e6e1ff;
-  --dpad: #1d1a2e;
-  --dpad-hi: #34304d;
-  --pill: #2a2540;
-  --shoulder: #3a2f8c;
-  --shell-key: #2a2160;
-  --shell-key-ink: #f1edff;
+  /* Carcasa — gris cálido clásico (por defecto) */
+  --shell: #cbc8c0;
+  --shell-hi: #e3e0d8;
+  --shell-lo: #a9a69d;
+  --shell-ink: #2f3a8a;
+  --line-2: #2f3a8a;
+  --bezel: #50545f;
+  --bezel-lo: #3c3f48;
+  --bezel-ink: #b4b8c3;
+  --btn-ab: #9a2453;
+  --btn-ab-hi: #c4497a;
+  --btn-ab-lo: #651636;
+  --dpad: #26282e;
+  --dpad-hi: #3d4048;
+  --pill: #6d6f78;
+  --pill-hi: #8d8f98;
 
-  --page-bg: #07040f;
+  --page-bg: #0e0c14;
   color-scheme: dark;
 }
 
@@ -50,6 +50,7 @@
   --scr-ink: #0f380f;
   --scr-muted: #306230;
   --scr-title: #0f380f;
+  --scr-title-dim: #306230;
   --scr-title-shadow: #8bac0f;
   --scr-accent: #0f380f;
   --scr-accent-2: #306230;
@@ -64,6 +65,7 @@
   --scr-ink: #1e1f1c;
   --scr-muted: #3f413a;
   --scr-title: #1e1f1c;
+  --scr-title-dim: #3f413a;
   --scr-title-shadow: #a2a59a;
   --scr-accent: #1e1f1c;
   --scr-accent-2: #55574f;
@@ -71,37 +73,45 @@
   --scr-on-accent: #c5c8bc;
 }
 
-/* Carcasa: variantes */
+/* Carcasa: variantes sobrias */
+:root[data-shell='indigo'] {
+  --shell: #4b4868;
+  --shell-hi: #615e82;
+  --shell-lo: #36344d;
+  --shell-ink: #d9d6ee;
+  --line-2: #8f8bc0;
+  --bezel: #2b2a36;
+  --bezel-lo: #22212b;
+  --bezel-ink: #8d8aa3;
+  --pill: #2b2a36;
+  --pill-hi: #3e3c4d;
+}
 :root[data-shell='silver'] {
-  --shell: #b9bcc6;
-  --shell-hi: #dcdee5;
-  --shell-lo: #8e919c;
-  --shell-edge: #6f727c;
-  --shell-ink: #2c2f3a;
-  --shell-ink-muted: #555966;
-  --bezel: #23242b;
-  --bezel-ink: #8a8d98;
-  --shoulder: #9da0aa;
-  --shell-key: #8a8d98;
-  --shell-key-ink: #1d1f26;
+  --shell: #b7bac3;
+  --shell-hi: #d9dbe2;
+  --shell-lo: #8e919b;
+  --shell-ink: #2a2e3d;
+  --line-2: #2a2e3d;
+  --bezel: #33353d;
+  --bezel-lo: #26282e;
+  --bezel-ink: #9a9da8;
 }
 :root[data-shell='black'] {
-  --shell: #25252b;
-  --shell-hi: #3b3b44;
-  --shell-lo: #141418;
-  --shell-edge: #0b0b0e;
-  --shell-ink: #d9d9e3;
-  --shell-ink-muted: #8f8f9c;
-  --bezel: #0e0e12;
-  --bezel-ink: #6f6f7c;
-  --btn-ab: #3a3a44;
-  --btn-ab-hi: #565663;
-  --dpad: #101014;
-  --dpad-hi: #2a2a33;
-  --pill: #3a3a44;
-  --shoulder: #1c1c22;
-  --shell-key: #3a3a44;
-  --shell-key-ink: #ececf5;
+  --shell: #2b2b31;
+  --shell-hi: #3d3d45;
+  --shell-lo: #1a1a1e;
+  --shell-ink: #c9c9d4;
+  --line-2: #6d6d7a;
+  --bezel: #141418;
+  --bezel-lo: #0e0e11;
+  --bezel-ink: #77778a;
+  --btn-ab: #46464f;
+  --btn-ab-hi: #62626d;
+  --btn-ab-lo: #222227;
+  --dpad: #121215;
+  --dpad-hi: #2a2a30;
+  --pill: #3a3a42;
+  --pill-hi: #4c4c55;
 }
 
 @theme inline {
@@ -112,6 +122,7 @@
   --color-scr-ink: var(--scr-ink);
   --color-scr-muted: var(--scr-muted);
   --color-scr-title: var(--scr-title);
+  --color-scr-title-dim: var(--scr-title-dim);
   --color-scr-accent: var(--scr-accent);
   --color-scr-accent-2: var(--scr-accent-2);
   --color-scr-on-accent: var(--scr-on-accent);
@@ -121,16 +132,12 @@
 
   /* Tamaños de texto de la pantalla: dependen del tamaño real de la pantalla
      (container queries en .scr), siempre múltiplos de 8px. */
-  --text-tag: var(--t-tag);
-  --text-tag--line-height: 1.5;
-  --text-head: var(--t-head);
-  --text-head--line-height: 1.5;
   --text-title: var(--t-title);
   --text-title--line-height: 1.35;
+  --text-sub: var(--t-sub);
+  --text-sub--line-height: 1.6;
   --text-body: var(--t-body);
-  --text-body--line-height: 1.4;
-  --text-small: var(--t-small);
-  --text-small--line-height: 1.35;
+  --text-body--line-height: 1.45;
 }
 
 html,
@@ -153,11 +160,9 @@ body {
 .scr {
   /* Escala de contenido: 1 · 1.5 · 2 según el tamaño real de la pantalla. */
   --fz: 1;
-  --t-tag: 8px;
-  --t-head: 8px;
   --t-title: 16px;
+  --t-sub: 8px;
   --t-body: 16px;
-  --t-small: 16px;
   --spacing: calc(4px * var(--fz));
   --bw: 2px;
 
@@ -180,16 +185,12 @@ body {
   container: screen / size;
 }
 
-@container screen (min-width: 640px) {
-  .scr {
-    --t-head: 16px;
-  }
-}
-@container screen (min-width: 1000px) {
+/* Tres tamaños de texto (título, subtítulo, cuerpo), en múltiplos de 8px. */
+@container screen (min-width: 960px) {
   .scr {
     --fz: 1.5;
-    --t-tag: 16px;
     --t-title: 24px;
+    --t-sub: 16px;
     --t-body: 24px;
     --bw: 3px;
   }
@@ -197,10 +198,8 @@ body {
 @container screen (min-width: 1700px) {
   .scr {
     --fz: 2;
-    --t-head: 24px;
     --t-title: 32px;
     --t-body: 32px;
-    --t-small: 24px;
     --bw: 4px;
   }
 }
@@ -238,21 +237,26 @@ body {
 /* Caja con borde pixel y sombra dura */
 .px-box {
   background: var(--scr-surface);
-  border: var(--bw) solid var(--scr-line);
-  box-shadow: calc(var(--bw) * 2) calc(var(--bw) * 2) 0 var(--scr-shadow);
+  border: max(1px, calc(var(--bw) / 2)) solid var(--scr-line);
+  box-shadow: var(--bw) var(--bw) 0 var(--scr-shadow);
 }
 
 /* Etiqueta tipo chip */
 .px-tag {
   display: inline-flex;
   align-items: center;
-  gap: 0.5em;
-  padding: calc(var(--bw) * 1.5) calc(var(--bw) * 2.5);
+  gap: 0.6em;
+  padding: calc(4px * var(--fz)) calc(6px * var(--fz));
   font-family: var(--font-pixel);
-  font-size: var(--t-tag);
-  line-height: 1.2;
-  border: var(--bw) solid currentColor;
+  font-size: var(--t-sub);
+  line-height: 1;
+  border: max(1px, calc(var(--bw) / 2)) solid currentColor;
   white-space: nowrap;
+}
+.px-tag__dot {
+  width: calc(4px * var(--fz));
+  height: calc(4px * var(--fz));
+  background: var(--scr-title);
 }
 
 /* Todo lo seleccionable se ve tocable */
@@ -293,13 +297,12 @@ body {
   box-shadow: none;
 }
 .px-btn--primary {
-  background: var(--scr-accent);
+  background: transparent;
   border-color: var(--scr-accent);
-  color: var(--scr-on-accent);
+  color: var(--scr-accent);
 }
 .px-btn--primary:hover {
-  color: var(--scr-on-accent);
-  filter: brightness(1.1);
+  background: var(--scr-surface-2);
 }
 .px-btn[aria-disabled='true'] {
   opacity: 0.7;
@@ -425,7 +428,7 @@ body {
 .toast {
   padding: calc(8px * var(--fz)) calc(16px * var(--fz));
   font-family: var(--font-pixel);
-  font-size: var(--t-head);
+  font-size: var(--t-sub);
   color: var(--scr-title);
   border-color: var(--scr-title);
 }
@@ -515,7 +518,7 @@ body {
 }
 .tab[aria-current='page'] {
   color: var(--scr-title);
-  border-bottom-color: var(--scr-accent-2);
+  border-bottom-color: var(--scr-title);
   background: var(--scr-bg);
 }
 /* Pantalla muy angosta: icono arriba, etiqueta abajo */
@@ -530,7 +533,8 @@ body {
 /* Proyectos: lista + vista previa */
 .projects-grid {
   display: grid;
-  gap: calc(12px * var(--fz));
+  grid-template-columns: minmax(0, 1fr);
+  gap: calc(20px * var(--fz));
 }
 @container screen (min-width: 640px) {
   .projects-grid {
@@ -544,29 +548,59 @@ body {
 }
 .proj-item {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: calc(8px * var(--fz));
-  padding: calc(6px * var(--fz)) calc(6px * var(--fz));
+  padding: calc(6px * var(--fz)) calc(8px * var(--fz));
   color: var(--scr-ink);
   text-decoration: none;
-  border: var(--bw) solid transparent;
-}
-.proj-item > .px-icon:first-child {
-  margin-top: calc(2px * var(--fz));
 }
 .proj-item:hover,
-.proj-item.is-selected {
+.proj-item[aria-current] {
   background: var(--scr-surface-2);
-  border-color: var(--scr-line);
 }
-.proj-item.is-selected {
-  border-color: var(--scr-accent);
+
+/* Encabezados de grupo: discretos */
+.zone-head {
+  display: flex;
+  align-items: center;
+  gap: calc(6px * var(--fz));
+  margin: 0 0 calc(6px * var(--fz));
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--scr-title-dim);
+  font-family: var(--font-pixel);
+  font-size: var(--t-sub);
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0.04em;
+  opacity: 0.85;
+}
+.zone-head--button:hover {
+  opacity: 1;
+  color: var(--scr-title);
+}
+
+/* Stack: lista de texto sobria */
+.stack-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(6px * var(--fz)) calc(8px * var(--fz));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--scr-muted);
+}
+.stack-chips li {
+  padding: calc(2px * var(--fz)) calc(6px * var(--fz));
+  background: var(--scr-surface-2);
 }
 
 /* Ficha de proyecto */
 .detail-grid {
   display: grid;
-  gap: calc(12px * var(--fz));
+  grid-template-columns: minmax(0, 1fr);
+  gap: calc(20px * var(--fz));
 }
 @container screen (min-width: 700px) {
   .detail-grid {
@@ -626,5 +660,4 @@ body {
 .options__row:hover,
 .options__row.is-selected {
   background: var(--scr-surface-2);
-  border-color: var(--scr-accent);
 }

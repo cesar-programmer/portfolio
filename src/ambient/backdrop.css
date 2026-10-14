@@ -1,0 +1,22 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    /* resplandor muy tenue y difuso detrás de la consola */
+    radial-gradient(ellipse 55% 50% at 50% 50%, rgb(120 96 200 / 0.12), transparent 70%),
+    /* viñeta suave */
+    radial-gradient(ellipse 120% 100% at 50% 50%, transparent 55%, rgb(0 0 0 / 0.55) 100%),
+    var(--page-bg);
+}
+.backdrop__stars {
+  position: absolute;
+  inset: 0;
+  opacity: 0.18;
+  background-repeat: repeat;
+  image-rendering: pixelated;
+}
+:root[data-tv] .backdrop {
+  display: none;
+}

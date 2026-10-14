@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { Navigate, useLocation, useNavigate } from 'react-router'
-import { ArcadeRoom } from './ambient/ArcadeRoom'
+import { Backdrop } from './ambient/Backdrop'
 import { play } from './audio/sfx'
 import { Console } from './console/Console'
 import { useControls } from './console/useControls'
@@ -63,7 +63,7 @@ function Game({ loc }: { loc: GameLocation }) {
 
   return (
     <>
-      <ArcadeRoom />
+      <Backdrop />
       <Console lang={loc.lang}>
         <GameScreen loc={loc} content={content} onLang={switchLang} />
       </Console>

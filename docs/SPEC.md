@@ -23,45 +23,65 @@ La estética retro es el gancho para que lo recuerden; el contenido es lo que co
 
 ## 2. Dirección visual
 
+**Principio: la consola es la protagonista; todo lo demás se calma.**
+
 ### Referencia
-Consolas portátiles de la era Game Boy Advance (horizontal y de concha) con el lenguaje de interfaz de los menús arcade y RPG retro: cursor ▶, cajas con borde pixel, efecto máquina de escribir.
+La forma de las portátiles de la era Game Boy Advance (horizontal y de concha) con el acabado del Game Boy original: plástico gris cálido, marco de pantalla gris oscuro, A/B magenta y rótulos en azul marino. El lenguaje de interfaz es el de los menús retro: cursor ▶ y cajas con borde pixel.
 **Homenaje, no copia**: nada de logos, nombres, personajes ni sprites de Nintendo o Pokémon. Todo el arte y los nombres son originales.
 
-### Pantalla a color (por defecto) — paleta "Arcade"
-Referencia: menús arcade retro tipo "START GAME / PLAYER 1". Pixel duro siempre (sombras sin desenfoque).
+### Fondo
+- Casi negro con un toque morado (`--page-bg: #0e0c14`), viñeta suave en los bordes y un resplandor muy tenue y difuso detrás de la consola.
+- Estrellas pixel **estáticas** a muy baja opacidad. Nada animado: sin neón, letreros, marcadores, rejilla en perspectiva ni parallax.
 
+### Consola
+- **Color por defecto:** gris cálido/crema (`--shell: #cbc8c0`), A/B magenta (`#9a2453`), rótulos y logo en azul marino (`#2f3a8a`).
+- **Opciones de carcasa** (en Opciones, sobrias): índigo, plateado y negro.
+- **Volumen y material:** degradados sutiles, luz arriba y sombra abajo, y una sombra suave debajo de la consola. Nada de color plano.
+- **Marco de la pantalla:** gris oscuro, con la leyenda fina arriba ("PIXEL SCREEN · 32K COLORS" entre dos líneas), LED rojo y la palabra POWER.
+- **Logo** "CESAR.DEV" en cursiva, grabado en la carcasa.
+- **Bocina:** rejilla con ranuras; el ícono de sonido va integrado ahí, pequeño. Empieza silenciado.
+- **Cruceta y A/B** con volumen (sombra interior y exterior). Letras A/B grabadas debajo.
+- **Gatillos L/R** discretos, integrados a la silueta. Su área táctil es amplia aunque solo asome una franja.
+- **Teclas de goma** iguales a START/SELECT (mismo material oscuro), en una fila bajo la pantalla, con la etiqueta grabada debajo en azul marino:
+  - **CV** (descarga el CV del idioma activo)
+  - **CONTACTO** (abre la pestaña Contacto)
+  - **TV** (Modo TV)
+  - **RECLUTADOR** (abre `/es/cv` o `/en/cv`)
+  Área táctil mínima de 44px.
+- Rótulos: START = **"MENÚ"**, SELECT = **"ES/EN"**, L = **"◀ L"**, R = **"R ▶"**.
+- **Tamaño:** nunca más del ~90% del ancho ni del ~88% del alto del viewport; siempre con aire alrededor. Proporciones compactas, con alas laterales cortas.
+
+### Pantalla: menos colores, más jerarquía
 | Token | Valor | Uso |
 |---|---|---|
-| `--scr-bg` | `#140c2e` | fondo de la pantalla |
-| `--scr-surface` / `--scr-surface-2` | `#1e1442` / `#2a1c5c` | cajas y elementos elevados |
-| `--scr-ink` | `#f3eeff` | texto |
-| `--scr-muted` | `#bfb2e8` | texto secundario |
-| `--scr-title` | `#ffb000` | títulos (ámbar, con sombra pixel dura) |
-| `--scr-accent` | `#38e8ff` | acento cian (cursor, foco, enlaces) |
-| `--scr-accent-2` | `#ff4fa3` | acento rosa (etiquetas, avisos) |
+| `--scr-bg` | `#15102a` | fondo morado muy oscuro |
+| `--scr-surface` / `--scr-surface-2` | `#1c1634` / `#29214a` | cajas; fila seleccionada (ligeramente más clara) |
+| `--scr-ink` / `--scr-muted` | `#ece8f6` / `#a79fc2` | texto / texto secundario |
+| `--scr-title` | `#ffb000` | **único acento principal**: pestaña activa, cursor ▶, títulos y estrellas |
+| `--scr-title-dim` | `#c9922f` | encabezados de grupo y de sección (ámbar tenue) |
+| `--scr-accent` | `#38e8ff` | **solo** enlaces y acciones secundarias |
+| `--scr-accent-2` | `#ff4fa3` | **solo** la etiqueta PRIVADO |
 
-**Easter eggs en Opciones:** paleta *Verde clásico* (los 4 tonos `#0f380f · #306230 · #8bac0f · #9bbc0f`) y *Pocket* (grises). Se guardan en `localStorage` con try/catch.
+- **Selección:** fondo ligeramente más claro y cursor ▶ ámbar, sin bordes gruesos.
+- **Etiquetas** (EN PRODUCCIÓN, NASA 2025, CASO DE ESTUDIO, PRIVADO, BONUS): texto pequeño monocromo con borde fino del mismo color. Máximo 2 visibles, y solo en la vista previa y la ficha (nunca en las filas de la lista).
+- **Tipografía:** máximo 3 tamaños dentro de la pantalla, en múltiplos de 8px:
+  - **Título:** Press Start 2P, 16 / 24 / 32px.
+  - **Subtítulo:** Press Start 2P, 8 / 16px.
+  - **Cuerpo:** Pixelify Sans, 16 / 24 / 32px.
+  El tamaño sube según el ancho real de la pantalla (≥ 960px y ≥ 1700px). Hay más espacio entre elementos.
+- **Easter eggs en Opciones:** paleta *Verde clásico* (4 tonos `#0f380f · #306230 · #8bac0f · #9bbc0f`) y *Pocket* (grises).
+- Las capturas con dithering usan solo los tonos neutros de la pantalla.
 
-### Carcasa
-- Color por defecto: **morado índigo**. Opciones: **plateado** y **negro**. Todo con tokens CSS (`data-shell` en `<html>`).
-- Rótulos: START = **"MENÚ"**, SELECT = **"ES/EN"**, L = **"◀ L"**, R = **"R ▶"**.
-- Botones físicos siempre visibles, fuera de la pantalla:
-  - **"CV ⬇"**: descarga directa del CV en el idioma activo.
-  - **"✉ CONTACTO"**: abre la pestaña Contacto.
-  - **"📺"**: Modo TV (§7).
-  - **Bocina**: activa/silencia el sonido (empieza silenciado).
-
-### Tipografía
-- Títulos, pestañas de la carcasa y etiquetas: **Press Start 2P** en múltiplos de 8px.
-- Texto largo: **Pixelify Sans**. Cuerpo mínimo **16px reales** (24px y 32px en pantallas grandes).
+### Tipografía de la carcasa
+Rótulos en sans-serif bold azul marino; logo en Press Start 2P cursiva.
 
 ### Sonido
 - Efectos chiptune con **Web Audio API** (onda cuadrada: cursor, confirmar, cancelar, pestaña, logro). Sin archivos de audio.
 - **Silenciado por defecto.**
 
 ### Movimiento
-- Animaciones en pasos discretos (`steps()`).
-- Con `prefers-reduced-motion`: sin parpadeos, sin parallax, sin animación de concha; el texto aparece completo.
+- Animaciones en pasos discretos (`steps()`). El fondo nunca se anima.
+- Con `prefers-reduced-motion`: sin parpadeos ni animación de concha; el texto aparece completo.
 
 ---
 
@@ -110,9 +130,9 @@ Ya no hay "PRESS START" obligatorio, menú principal ni mapa con sprite caminand
 - Cada pestaña y cada proyecto tiene su URL por idioma (§7).
 
 ### 4.3 PROYECTOS (estilo enciclopedia)
-- Encabezado compacto: nombre, "AI & Backend Developer" y botón **"Modo reclutador ⏩"**.
-- **Lista** a la izquierda agrupada por mundo (**IA / Producción / Sistemas**) con filtro rápido. Visitados marcados ✓. Al final, "Zona clásica" colapsada (solo enlaces).
-- **Vista previa** a la derecha (imagen o ilustración, misión, stack, etiquetas como EN PRODUCCIÓN, NASA 2025, PRIVADO) que cambia con **hover** o con las flechas, sin clic.
+- Sin encabezado ni filtros: el nombre y el título ya están en la carcasa y en YO, y el Modo reclutador es una tecla de la carcasa.
+- **Lista** a la izquierda agrupada por mundo (**IA / Producción / Sistemas**) con encabezados discretos. Cada fila muestra solo nombre, estrellas y ✓ si ya se visitó. ← → saltan al mundo anterior o siguiente. Al final, "Zona clásica" colapsada (solo enlaces).
+- **Vista previa** a la derecha (imagen o ilustración, nombre, rol, hasta 2 etiquetas, misión y stack) que cambia con **hover** o con las flechas, sin clic.
 - **Un clic (o A)** abre la ficha. Si el espacio es angosto, lista y vista previa se apilan.
 - Visitar todos los proyectos desbloquea la medalla secreta **"Explorador"** con sonido de logro.
 
@@ -175,7 +195,7 @@ Textos en `src/content/{es,en}/projects.json`; metadatos sin idioma (stack, enla
 
 ## 6. Modo reclutador
 
-Ruta propia: `/es/cv` y `/en/cv`. Se llega desde el encabezado de PROYECTOS, desde Opciones o por URL.
+Ruta propia: `/es/cv` y `/en/cv`. Se llega desde la tecla **RECLUTADOR** de la carcasa, desde Opciones o por URL.
 - Una sola página limpia, sin consola ni animaciones: nombre, título y contacto; resumen; proyectos destacados (Stepable, Ecosistema Antigravity, Mesa Espejo, Sofonques Explorer, Reportes Docentes, Vector Service API, Alerta ACV); experiencia; habilidades; certificaciones; educación; descargar CV.
 - Usa la paleta a color y la tipografía pixel en títulos, con cuerpo en fuente normal.
 - Imprimible (`@media print`). Botón "▶ Volver al juego".
@@ -203,14 +223,14 @@ Vite + React + TypeScript · Tailwind CSS 4 · Zustand · React Router · textos
 ### Distribución responsiva
 | Viewport | Consola |
 |---|---|
-| Celular vertical (< 600px) | **Concha abierta** a pantalla completa (`100dvh`); controles nunca tapados por la barra del navegador. Animación de apertura ≤ 1 s en la primera visita (saltable; desactivada con reduced-motion). |
+| Celular vertical (< 600px) | **Concha abierta** centrada, al 90% × 88% del viewport; los controles nunca quedan tapados por la barra del navegador. Animación de apertura ≤ 1 s en la primera visita (saltable; desactivada con reduced-motion). |
 | Celular horizontal (alto < 500px) | **Horizontal compacta**: la pantalla llena casi toda la altura; controles reducidos a los lados. |
 | Tablet vertical (600–1023px) | Concha centrada con ancho máximo. |
 | Laptop (1024–1439px) | Horizontal ajustada a la altura; pantalla ≥ 55% del ancho de la consola. |
-| ≥ 1440px, 2K, 4K, ultra ancho | Horizontal con **tamaño máximo**, limitada por la altura. El espacio sobrante muestra un **fondo ambiental**: habitación arcade nocturna con neón y estrellas pixel, con parallax sutil (desactivado con reduced-motion). |
+| ≥ 1440px, 2K, 4K, ultra ancho | Horizontal con **tamaño máximo**, limitada por la altura. El espacio sobrante muestra el fondo sobrio de §2. |
 
 - **Pantalla 3:2** en las consolas horizontales. En la concha la pantalla ocupa todo el alto disponible de la tapa (hasta ~1:1.1) para que el contenido sea legible en celular.
-- Escalado con una variable CSS (`--u`) calculada del ancho y alto disponibles, con mínimo y máximo.
+- Escalado con una variable CSS (`--u`) calculada del ancho y alto disponibles (≤ 90% × 88% del viewport), con mínimo y máximo.
 - El contenido de la pantalla usa **container queries sobre la pantalla** (no sobre el viewport).
 - Sprites, iconos y bordes pixel con escalado entero e `image-rendering: pixelated`. Fuentes pixel en múltiplos de 8px.
 
@@ -223,7 +243,7 @@ src/
   content/es|en/   profile, projects, skills, experience, badges, ui (.json)
   content/shared/  metadatos sin idioma
   console/         Console (horizontal / concha), partes de la carcasa, input y useControls, useLayout, TV
-  ambient/         fondo arcade
+  ambient/         fondo sobrio
   screens/         GameScreen (pestañas), Projects, ProjectDetail, About, Skills, Missions, Badges, Contact, Options, Boot
   ui/              Menu, Panel, Typewriter, PixelImage, PixelIcon, TipBubble, Toast
   recruiter/       RecruiterPage
@@ -247,7 +267,7 @@ Pixel art propio (SVG/PNG pequeños). Ilustraciones de proyectos sin captura (Me
 ## 8. Fases
 
 1. **Base** ✅ — proyecto, tokens, contenido ES/EN, controles.
-2. **Rediseño de consola y Proyectos** ✅ — consola horizontal y de concha, botones de la carcasa, paleta a color, pestañas con rutas, PROYECTOS completo (lista + vista previa + ficha con ◀ ▶), Opciones, Modo TV, fondo ambiental.
+2. **Rediseño de consola y Proyectos** ✅ — consola horizontal y de concha, botones de la carcasa, paleta a color, pestañas con rutas, PROYECTOS completo (lista + vista previa + ficha con ◀ ▶), Opciones y Modo TV. Corrección de estilo: acabado clásico, fondo sobrio, un solo acento.
 3. **Resto de pestañas** — pulir YO, SKILLS, MISIONES, MEDALLAS y CONTACTO; ilustraciones pixel art de los proyectos sin captura.
 4. **Modo reclutador, accesibilidad, SEO, rendimiento y deploy** en Vercel.
 5. **NPC con IA — "El Profesor"** — responde preguntas sobre Cesar usando el **Vector Service API** (FastAPI + ChromaDB) con su CV y fichas indexadas, más un LLM. Cita la ficha de origen, límite de uso por visitante y respuesta de respaldo.
