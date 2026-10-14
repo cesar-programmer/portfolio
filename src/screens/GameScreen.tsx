@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react'
-import { useControls } from '../console/useControls'
 import type { Lang } from '../config'
 import type { Content } from '../content'
 import type { GameLocation } from '../routes'
@@ -8,10 +7,14 @@ import { Boot } from '../ui/Boot'
 import { TipBubble } from '../ui/TipBubble'
 import { Toast } from '../ui/Toast'
 import { Options } from './Options'
-import { AboutTab, BadgesTab, ContactTab, MissionsTab, SkillsTab } from './OtherTabs'
+import { AboutTab } from './AboutTab'
+import { BadgesTab } from './BadgesTab'
+import { ContactTab } from './ContactTab'
+import { MissionsTab } from './MissionsTab'
+import { SkillsTab } from './SkillsTab'
 import { ProjectDetail } from './ProjectDetail'
 import { ProjectsTab } from './ProjectsTab'
-import { ScrollContext, useScreenScroll } from './ScrollContext'
+import { ScrollContext } from './ScrollContext'
 import { Tabs } from './Tabs'
 
 type Props = { loc: GameLocation; content: Content; onLang: (lang: Lang) => void }
@@ -33,11 +36,11 @@ export function GameScreen({ loc, content, onLang }: Props) {
         <div ref={scrollRef} className="scr-scroll min-h-0 flex-1">
           {loc.section === 'projects' &&
             (project ? <ProjectDetail project={project} content={content} /> : <ProjectsTab content={content} />)}
-          {loc.section === 'about' && <ScrollableSection content={content} Tab={AboutTab} />}
-          {loc.section === 'skills' && <ScrollableSection content={content} Tab={SkillsTab} />}
-          {loc.section === 'missions' && <ScrollableSection content={content} Tab={MissionsTab} />}
-          {loc.section === 'badges' && <ScrollableSection content={content} Tab={BadgesTab} />}
-          {loc.section === 'contact' && <ScrollableSection content={content} Tab={ContactTab} />}
+          {loc.section === 'about' && <AboutTab content={content} />}
+          {loc.section === 'skills' && <SkillsTab content={content} />}
+          {loc.section === 'missions' && <MissionsTab content={content} />}
+          {loc.section === 'badges' && <BadgesTab content={content} />}
+          {loc.section === 'contact' && <ContactTab content={content} />}
         </div>
         <Boot />
         <TipBubble text={content.ui.tip} />
@@ -46,16 +49,4 @@ export function GameScreen({ loc, content, onLang }: Props) {
       </main>
     </ScrollContext.Provider>
   )
-}
-
-/** Pestañas de solo lectura: ↑ ↓ desplazan el contenido. */
-function ScrollableSection({ content, Tab }: { content: Content; Tab: (p: { content: Content }) => React.ReactNode }) {
-  const scroll = useScreenScroll()
-  useControls((action) => {
-    if (action === 'up') scroll(-80)
-    else if (action === 'down') scroll(80)
-    else return false
-    return true
-  })
-  return <Tab content={content} />
 }

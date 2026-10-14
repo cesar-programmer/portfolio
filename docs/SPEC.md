@@ -147,17 +147,17 @@ Ya no hay "PRESS START" obligatorio, menú principal ni mapa con sprite caminand
 8. **◀ ▶** para ir al proyecto anterior/siguiente sin cerrar; ← → también. B / Esc vuelve a la lista.
 
 ### 4.5 YO (Sobre mí)
-Credencial: nombre, clase "AI / Backend Dev", base "Tijuana, B.C.", idiomas, estudios y resumen de 2–3 líneas.
+Credencial con retrato pixel (respira en 2 cuadros), nombre, clase "AI / Backend Dev", base "Tijuana, B.C.", idiomas, estudios y resumen de 2–3 líneas.
 **Habilidades especiales** (estilo movimientos de RPG): nombre + una línea con evidencia concreta. Sin valores numéricos ni barras.
 
 ### 4.6 SKILLS (Mochila)
-Bolsillos: IA & ML · Backend · Frontend · Herramientas. Al elegir un ítem se ve en qué proyectos se usó (enlaces a las fichas).
+Bolsillos como pestañas: IA & ML · Backend · Frontend · Herramientas (← →). Lista de ítems con cursor (↑ ↓, hover) y, a la derecha, en qué proyectos se usó cada uno (enlaces a las fichas), experiencia o certificación. A abre el primer proyecto.
 
 ### 4.7 MISIONES (Experiencia y educación)
-Bitácora: Clever Cloud (Full-Stack, mar–sep 2025), Gobierno del Estado de B.C. (prácticas, Mesa Espejo), formación UABC y SDGKU (2024).
+Bitácora en línea de tiempo: Clever Cloud (Full-Stack, mar–sep 2025), Gobierno del Estado de B.C. (prácticas, Mesa Espejo), formación UABC y SDGKU (2024).
 
 ### 4.8 MEDALLAS
-Vitrina de 8 huecos: AWS Academy Graduate — Cloud Architecting · DeepLearning.AI — TensorFlow Developer · **NASA Space Apps 2025 — líder del equipo Sofonques** · (secreta) **Explorador**. Huecos vacíos con "???". Cada medalla abre su detalle y enlace de verificación si existe.
+Vitrina de 8 huecos con medallas pixel (emblema por medalla): AWS Academy Graduate — Cloud Architecting · DeepLearning.AI — TensorFlow Developer · **NASA Space Apps 2025 — líder del equipo Sofonques** · (secreta) **Explorador**. Huecos vacíos con "???". Las flechas recorren la vitrina; abajo se ve el detalle, el enlace de verificación si existe y el proyecto relacionado.
 
 ### 4.9 CONTACTO
 Email `cesarcordova.developer@gmail.com` (copiar → "¡Copiado!"), LinkedIn, GitHub `cesar-programmer`, descarga del CV (ES y EN). **Sin teléfono** en ninguna parte del sitio.
@@ -268,7 +268,7 @@ Pixel art propio (SVG/PNG pequeños). Ilustraciones de proyectos sin captura (Me
 
 1. **Base** ✅ — proyecto, tokens, contenido ES/EN, controles.
 2. **Rediseño de consola y Proyectos** ✅ — consola horizontal y de concha, botones de la carcasa, paleta a color, pestañas con rutas, PROYECTOS completo (lista + vista previa + ficha con ◀ ▶), Opciones y Modo TV. Corrección de estilo: acabado clásico, fondo sobrio, un solo acento.
-3. **Resto de pestañas** — pulir YO, SKILLS, MISIONES, MEDALLAS y CONTACTO; ilustraciones pixel art de los proyectos sin captura.
+3. **Resto de pestañas** ✅ — YO, SKILLS, MISIONES, MEDALLAS y CONTACTO pulidas; ilustraciones pixel art propias por proyecto; retrato y medallas pixel.
 4. **Modo reclutador, accesibilidad, SEO, rendimiento y deploy** en Vercel.
 5. **NPC con IA — "El Profesor"** — responde preguntas sobre Cesar usando el **Vector Service API** (FastAPI + ChromaDB) con su CV y fichas indexadas, más un LLM. Cita la ficha de origen, límite de uso por visitante y respuesta de respaldo.
 
@@ -292,7 +292,7 @@ Un commit por bloque de trabajo terminado; repo público `cesar-programmer/portf
 - [ ] Revisar las Habilidades especiales propuestas (marcadas con `"review": true` en `profile.json`).
 - [ ] Revisar textos de "Jefe final" (Mesa Espejo, Reportes Docentes, Koa Caffe, Finance Chatbot, WalletG).
 - [ ] CV en PDF (ES y EN) en `public/cv/`.
-- [ ] Capturas de Vector Service API (panel Streamlit y `/docs`) y Koa Caffe.
+- [ ] Capturas reales de Vector Service API (panel Streamlit y `/docs`) y Koa Caffe, si se quieren en lugar de las ilustraciones.
 
 ## 10. Fuera del sitio (pero suma)
 - Fijar en GitHub: portfolio, Stepable, Vector Service API y Koa Caffe Menu.

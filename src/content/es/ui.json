@@ -116,7 +116,8 @@
     "github": "GitHub",
     "cv": "Descargar CV",
     "cvEs": "CV en español",
-    "cvEn": "CV en inglés"
+    "cvEn": "CV en inglés",
+    "profiles": "Perfiles"
   },
   "options": {
     "heading": "OPCIONES",

@@ -19,6 +19,14 @@
   --scr-accent-2: #ff4fa3;
   --scr-shadow: #08060f;
   --scr-on-accent: #15102a;
+  /* Retrato */
+  --scr-skin: #b27a4e;
+  --scr-skin-lo: #8a5733;
+  --scr-hair: #2b1d17;
+  --scr-glass: #0d0a16;
+  --scr-lens: #d8e4f0;
+  --scr-hoodie: #5a4aa0;
+  --scr-hoodie-lo: #463a80;
 
   /* Carcasa — gris cálido clásico (por defecto) */
   --shell: #cbc8c0;
@@ -56,6 +64,13 @@
   --scr-accent-2: #306230;
   --scr-shadow: #306230;
   --scr-on-accent: #9bbc0f;
+  --scr-skin: #8bac0f;
+  --scr-skin-lo: #306230;
+  --scr-hair: #0f380f;
+  --scr-glass: #0f380f;
+  --scr-lens: #9bbc0f;
+  --scr-hoodie: #306230;
+  --scr-hoodie-lo: #0f380f;
 }
 :root[data-palette='pocket'] {
   --scr-bg: #c5c8bc;
@@ -71,6 +86,13 @@
   --scr-accent-2: #55574f;
   --scr-shadow: #55574f;
   --scr-on-accent: #c5c8bc;
+  --scr-skin: #a2a59a;
+  --scr-skin-lo: #55574f;
+  --scr-hair: #1e1f1c;
+  --scr-glass: #1e1f1c;
+  --scr-lens: #c5c8bc;
+  --scr-hoodie: #55574f;
+  --scr-hoodie-lo: #1e1f1c;
 }
 
 /* Carcasa: variantes sobrias */
@@ -623,21 +645,194 @@ body {
   }
 }
 
-/* Vitrina de medallas */
-.badge-case {
+/* Enlaces: cian, solo para navegar */
+.link {
+  color: var(--scr-accent);
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+  text-decoration-thickness: max(1px, calc(var(--bw) / 2));
+}
+.link:hover {
+  text-decoration-style: dotted;
+}
+
+/* YO: credencial */
+.trainer-card {
   display: grid;
-  gap: calc(8px * var(--fz));
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: start;
+  gap: calc(16px * var(--fz));
+  padding: calc(16px * var(--fz));
+}
+.trainer-card__portrait {
+  padding: calc(8px * var(--fz));
+  background: var(--scr-bg);
+  border: max(1px, calc(var(--bw) / 2)) solid var(--scr-line);
+}
+@container screen (min-width: 520px) {
+  .trainer-card {
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: start;
+  }
+}
+.trainer-card__stats {
+  display: grid;
+  gap: calc(4px * var(--fz));
+  margin: 0;
+}
+.trainer-card__stats > div {
+  display: grid;
+  grid-template-columns: minmax(calc(96px * var(--fz)), auto) minmax(0, 1fr);
+  gap: calc(12px * var(--fz));
+}
+.trainer-card__stats dt {
+  color: var(--scr-muted);
+}
+.trainer-card__stats dd {
+  margin: 0;
+}
+
+/* YO: habilidades especiales */
+.moves {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: calc(16px * var(--fz));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+@container screen (min-width: 760px) {
+  .moves {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+.move {
+  display: flex;
+  flex-direction: column;
+  gap: calc(4px * var(--fz));
+}
+.move__name {
+  display: flex;
+  align-items: center;
+  gap: calc(6px * var(--fz));
+  margin: 0;
+  color: var(--scr-title);
+}
+
+/* SKILLS: bolsillos y detalle */
+.pockets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(4px * var(--fz)) calc(16px * var(--fz));
+  border-bottom: max(1px, calc(var(--bw) / 2)) solid var(--scr-line);
+}
+.pocket {
+  padding: calc(4px * var(--fz)) 0;
+  border: 0;
+  border-bottom: var(--bw) solid transparent;
+  margin-bottom: calc(max(1px, calc(var(--bw) / 2)) * -1);
+  background: none;
+  color: var(--scr-muted);
+  font: inherit;
+}
+.pocket:hover {
+  color: var(--scr-ink);
+}
+.pocket[aria-selected='true'] {
+  color: var(--scr-title);
+  border-bottom-color: var(--scr-title);
+}
+.skills-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: calc(20px * var(--fz));
 }
 @container screen (min-width: 640px) {
+  .skills-grid {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    align-items: start;
+  }
+  .skills-detail {
+    position: sticky;
+    top: calc(8px * var(--fz));
+  }
+}
+
+/* MISIONES: línea de tiempo */
+.timeline {
+  margin: 0;
+  padding: 0 0 0 calc(28px * var(--fz));
+  list-style: none;
+  border-left: max(1px, calc(var(--bw) / 2)) solid var(--scr-line);
+  margin-left: calc(8px * var(--fz));
+}
+.timeline__item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: calc(2px * var(--fz));
+  padding-bottom: calc(20px * var(--fz));
+}
+.timeline__item:last-child {
+  padding-bottom: 0;
+}
+.timeline__dot {
+  position: absolute;
+  left: calc(-28px * var(--fz) - 9px * var(--fz));
+  top: 0;
+  display: grid;
+  place-items: center;
+  width: calc(18px * var(--fz));
+  height: calc(18px * var(--fz));
+  background: var(--scr-bg);
+  border: max(1px, calc(var(--bw) / 2)) solid var(--scr-title-dim);
+  color: var(--scr-title);
+}
+
+/* MEDALLAS: vitrina */
+.badge-case {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: calc(8px * var(--fz));
+  margin: 0;
+  padding: calc(8px * var(--fz));
+  list-style: none;
+  background: var(--scr-surface);
+  border: max(1px, calc(var(--bw) / 2)) solid var(--scr-line);
+}
+@container screen (min-width: 560px) {
   .badge-case {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
-.badge-empty {
-  min-height: calc(96px * var(--fz));
-  border: var(--bw) dashed var(--scr-line);
+.badge-slot {
+  display: flex;
+  width: 100%;
+  min-height: calc(112px * var(--fz));
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: calc(6px * var(--fz));
+  padding: calc(8px * var(--fz));
+  background: var(--scr-bg);
+  border: max(1px, calc(var(--bw) / 2)) solid transparent;
+  color: var(--scr-ink);
+  font: inherit;
+  text-align: center;
+}
+.badge-slot:hover,
+.badge-slot[aria-current] {
+  background: var(--scr-surface-2);
+  border-color: var(--scr-title-dim);
+}
+.badge-slot--empty {
+  border-style: dashed;
+  border-color: var(--scr-line);
   color: var(--scr-line);
+}
+.badge-slot__name {
+  min-height: 1.4em;
+  line-height: 1.2;
 }
 
 /* Opciones */
@@ -670,4 +865,31 @@ body {
 .options__row:hover,
 .options__row.is-selected {
   background: var(--scr-surface-2);
+}
+
+/* Retrato y medallas: escalado entero */
+.portrait {
+  display: block;
+  flex: none;
+  width: round(down, calc(96px * var(--fz)), 24px);
+  height: auto;
+  image-rendering: pixelated;
+}
+.portrait__head {
+  animation: breathe 1.6s steps(1, end) infinite;
+}
+@keyframes breathe {
+  50% {
+    transform: translateY(1px);
+  }
+}
+.medal {
+  display: block;
+  width: round(down, calc(48px * var(--fz)), 16px);
+  height: auto;
+}
+@media (prefers-reduced-motion: reduce) {
+  .portrait__head {
+    animation: none;
+  }
 }
