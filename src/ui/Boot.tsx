@@ -1,24 +1,24 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { play } from '../audio/sfx'
 import { useGame } from '../store/game'
-import { useReducedMotion } from './useReducedMotion'
 
-/** Encendido: ≤ 1 s, no bloquea (deja pasar clics) y solo en la primera visita. */
+/**
+ * Encendido: ≤ 1 s, no bloquea (deja pasar clics) y solo en la primera visita.
+ * Siempre está en el HTML, pero solo se ve con data-first-boot en <html>, que
+ * pone el script del <head> antes del primer pintado.
+ */
 export function Boot() {
-  const seenBoot = useGame((s) => s.seen.boot)
   const markSeen = useGame((s) => s.markSeen)
-  const reduced = useReducedMotion()
-  const [show, setShow] = useState(!seenBoot && !reduced)
 
   useEffect(() => {
+    const root = document.documentElement
+    if (!('firstBoot' in root.dataset)) return
     markSeen('boot')
-    if (!show) return
     play('power')
-    const timer = window.setTimeout(() => setShow(false), 950)
+    const timer = window.setTimeout(() => delete root.dataset.firstBoot, 950)
     return () => clearTimeout(timer)
-  }, [show, markSeen])
+  }, [markSeen])
 
-  if (!show) return null
   return (
     <div className="boot" aria-hidden="true">
       <span className="boot__logo scr-title">

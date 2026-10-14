@@ -27,6 +27,9 @@ function loadSettings(): Settings {
 type Seen = { boot?: boolean; tip?: boolean; lid?: boolean }
 
 type GameState = Settings & {
+  /** Lee lo guardado en localStorage. Se llama una vez, después de hidratar,
+   *  para que el primer render del navegador sea igual al HTML prerenderizado. */
+  hydrate: () => void
   visited: string[]
   seen: Seen
   optionsOpen: boolean
@@ -52,9 +55,15 @@ export const useGame = create<GameState>((set, get) => {
     writeJSON(SETTINGS_KEY, { sound, palette, shell, textSpeed })
   }
   return {
-    ...loadSettings(),
-    visited: readJSON<string[]>(VISITED_KEY, []),
-    seen: readJSON<Seen>(SEEN_KEY, {}),
+    ...defaults,
+    visited: [],
+    seen: {},
+    hydrate: () =>
+      set({
+        ...loadSettings(),
+        visited: readJSON<string[]>(VISITED_KEY, []),
+        seen: readJSON<Seen>(SEEN_KEY, {}),
+      }),
     optionsOpen: false,
     tv: false,
     toast: null,

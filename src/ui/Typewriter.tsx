@@ -43,7 +43,7 @@ export function Typewriter({ text, complete = false, start = true, onDone, class
       <span className="sr-only">{text}</span>
       <span aria-hidden="true">
         {text.slice(0, visible)}
-        <span className="invisible">{text.slice(visible)}</span>
+        <span className="tw-pending">{text.slice(visible)}</span>
       </span>
     </p>
   )

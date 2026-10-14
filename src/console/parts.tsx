@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react'
 import { Link } from 'react-router'
 import { play } from '../audio/sfx'
-import type { Lang } from '../config'
+import { cvLink, type Lang } from '../config'
 import { getContent, type UiText } from '../content'
 import { recruiterPath, sectionPath } from '../routes'
 import { useGame } from '../store/game'
@@ -87,14 +87,20 @@ function KeyLabel({ icon, children }: { icon: keyof typeof KEY_ICONS; children: 
 
 /** CV, Contacto, Modo TV y Modo reclutador: teclas de goma siempre visibles. */
 export function ShellKeys({ lang, ui }: { lang: Lang; ui: ConsoleUi }) {
-  const cv = getContent(lang).profile.cv[lang]
+  const cv = cvLink(lang)
   const pill = <span className="rkey__pill" aria-hidden="true" />
   return (
     <div className="keys">
       <div className="rkey">
-        <a className="rkey__hit" href={cv} download aria-label={ui.cv} title={ui.cv} onClick={() => play('confirm')}>
-          {pill}
-        </a>
+        {cv.download ? (
+          <a className="rkey__hit" href={cv.href} download aria-label={ui.cv} title={ui.cv} onClick={() => play('confirm')}>
+            {pill}
+          </a>
+        ) : (
+          <Link className="rkey__hit" to={cv.href} aria-label={ui.cvPage} title={ui.cvPage} onClick={() => play('confirm')}>
+            {pill}
+          </Link>
+        )}
         <KeyLabel icon="cv">{ui.labels.cv}</KeyLabel>
       </div>
       <div className="rkey">

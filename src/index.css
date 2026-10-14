@@ -1,5 +1,21 @@
 @import 'tailwindcss';
 
+/* Fuentes autoalojadas (subconjunto latin, OFL 1.1): ver public/fonts/. */
+@font-face {
+  font-family: 'Press Start 2P';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/press-start-2p-latin.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Pixelify Sans';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/fonts/pixelify-sans-latin.woff2') format('woff2');
+}
+
 /* ==================================================================
    Tokens
    ================================================================== */
@@ -171,7 +187,6 @@ body {
 
 body {
   min-height: 100dvh;
-  overflow: hidden;
   font-variant-ligatures: none;
   -webkit-tap-highlight-color: transparent;
 }
@@ -407,6 +422,12 @@ body {
   white-space: nowrap;
 }
 
+/* Máquina de escribir: el texto pendiente solo se oculta si hay JavaScript
+   (sin JS, o para buscadores que no lo ejecutan, se lee completo). */
+:root[data-js] .tw-pending {
+  visibility: hidden;
+}
+
 /* Iconos pixel: siempre en múltiplos enteros de 8×8 */
 .px-icon {
   display: inline-block;
@@ -432,8 +453,9 @@ body {
   animation: px-flash 420ms steps(6, end) both;
 }
 
-/* Globo de diálogo de la primera visita */
+/* Globo de diálogo de la primera visita (solo con data-first-tip) */
 .tip {
+  display: none;
   position: absolute;
   left: 50%;
   bottom: calc(16px * var(--fz));
@@ -452,6 +474,9 @@ body {
   text-align: center;
   pointer-events: none;
   animation: tip-in 300ms steps(3, end) both;
+}
+:root[data-first-tip] .tip {
+  display: block;
 }
 .tip::after {
   content: '';
@@ -486,12 +511,12 @@ body {
   border-color: var(--scr-title);
 }
 
-/* Encendido */
+/* Encendido (solo con data-first-boot y sin reduced-motion) */
 .boot {
   position: absolute;
   inset: 0;
   z-index: 80;
-  display: grid;
+  display: none;
   place-items: center;
   background: var(--scr-bg);
   pointer-events: none;
@@ -500,6 +525,14 @@ body {
 .boot__logo {
   font-size: var(--t-title);
   animation: boot-drop 450ms steps(6, end) both;
+}
+:root[data-first-boot] .boot {
+  display: grid;
+}
+@media (prefers-reduced-motion: reduce) {
+  :root[data-first-boot] .boot {
+    display: none;
+  }
 }
 @keyframes boot-drop {
   from {

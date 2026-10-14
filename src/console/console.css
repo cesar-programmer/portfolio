@@ -1,6 +1,13 @@
 /* Carcasa original con el acabado de las portátiles de 1989 y la forma de las
-   de 2001 (horizontal y concha). Sin marcas.
-   Medidas en unidades de diseño: calc(var(--u) * N). */
+   de 2001. Sin marcas. Medidas en unidades de diseño: calc(var(--u) * N).
+
+   La distribución (horizontal, compacta o concha) y el tamaño se resuelven
+   solo con CSS —media queries, min() y max()—, así el HTML prerenderizado ya
+   se pinta en su tamaño final: sin saltos de diseño ni medición en JS.
+   Un solo árbol de elementos; cada distribución los coloca con CSS Grid.
+
+   Tablet y escritorio: la consola no pasa del 90% del ancho ni del 88% del
+   alto del viewport. Celular: casi todo el viewport, con 8px por lado. */
 
 .stage {
   position: fixed;
@@ -14,8 +21,18 @@
 }
 
 .console {
+  /* Horizontal (por defecto): 956 × 548 unidades, pantalla 576 × 384 (3:2). */
+  --u: clamp(0.5px, min(calc(90vw / 956), calc(88vh / 548)), 2px);
+  --u: clamp(0.5px, min(calc(90vw / 956), calc(88dvh / 548)), 2px);
+  --scr-w: calc(var(--u) * 576);
+  --scr-h: calc(var(--u) * 384);
   position: relative;
   flex: none;
+  display: grid;
+  width: calc(var(--u) * 956);
+  height: calc(var(--u) * 548);
+  grid-template-columns: calc(var(--u) * 150) calc(var(--u) * 656) calc(var(--u) * 150);
+  grid-template-rows: calc(var(--u) * 18) calc(var(--u) * 20) calc(var(--u) * 432) calc(var(--u) * 78);
   color: var(--shell-ink);
   font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   font-weight: 800;
@@ -24,9 +41,8 @@
 }
 
 /* Plástico: degradado sutil, luz arriba, sombra abajo y sombra suave debajo. */
-.console__body,
-.lid,
-.base {
+.plate,
+.lid {
   background:
     radial-gradient(120% 80% at 30% 0%, rgb(255 255 255 / 0.18), transparent 60%),
     linear-gradient(180deg, var(--shell-hi) 0%, var(--shell) 22%, var(--shell) 70%, var(--shell-lo) 100%);
@@ -68,184 +84,60 @@
   height: calc(var(--u) * 8);
 }
 
-/* ---------------- Horizontal ---------------- */
-.console--horizontal {
-  width: calc(var(--u) * 956);
-  height: calc(var(--u) * 548);
-}
-.console--horizontal .console__body {
-  position: absolute;
-  inset: calc(var(--u) * 18) 0 0 0;
-  z-index: 1;
-  display: grid;
-  grid-template-columns: calc(var(--u) * 150) calc(var(--u) * 656) calc(var(--u) * 150);
+/* ---------------- Horizontal (escritorio y pantallas horizontales) ---------------- */
+.plate--body {
+  grid-row: 2 / 5;
+  grid-column: 1 / 4;
   border-radius: calc(var(--u) * 96) calc(var(--u) * 96) calc(var(--u) * 140) calc(var(--u) * 140) /
     calc(var(--u) * 84) calc(var(--u) * 84) calc(var(--u) * 150) calc(var(--u) * 150);
 }
-.console--horizontal .console__center {
-  display: flex;
-  flex-direction: column;
-  padding-top: calc(var(--u) * 20);
+.plate--base,
+.hinge-barrel {
+  display: none;
 }
-.console--horizontal .bezel {
+.lid {
+  /* En horizontal la tapa no existe: sus hijos son celdas de la rejilla. */
+  display: contents;
+}
+.bezel {
+  grid-row: 3;
+  grid-column: 2;
   padding: calc(var(--u) * 26) calc(var(--u) * 40) calc(var(--u) * 22);
 }
-.strip {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: calc(var(--u) * 12);
-  padding: 0 calc(var(--u) * 6);
+.brand-block {
+  grid-row: 4;
+  grid-column: 2;
+  justify-self: start;
+  align-self: center;
+  margin-left: calc(var(--u) * 6);
 }
-
-.wing {
+.keys {
+  grid-row: 4;
+  grid-column: 2;
+  justify-self: end;
+  align-self: center;
+  margin-right: calc(var(--u) * 6);
+}
+.wing-l,
+.wing-r {
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  grid-row: 2 / 5;
 }
-.console--horizontal .wing--left {
+.wing-l {
+  grid-column: 1;
   padding: 0 0 calc(var(--u) * 70) calc(var(--u) * 10);
 }
-.console--horizontal .wing--right {
+.wing-r {
+  grid-column: 3;
   gap: calc(var(--u) * 34);
   padding: calc(var(--u) * 20) calc(var(--u) * 10) calc(var(--u) * 20) 0;
 }
-
-/* ---------------- Horizontal compacta (celular acostado) ---------------- */
-.console--compact {
-  width: calc(var(--u) * 880);
-  height: calc(var(--u) * 434);
-  --dpad-size: 92;
-  --ab-size: 40;
-}
-.console--compact .console__body {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  grid-template-columns: calc(var(--u) * 130) calc(var(--u) * 620) calc(var(--u) * 130);
-  align-items: center;
-  border-radius: calc(var(--u) * 60) / calc(var(--u) * 80);
-}
-.console--compact .bezel {
-  padding: calc(var(--u) * 18) calc(var(--u) * 22) calc(var(--u) * 12);
-}
-.console--compact .wing {
-  height: 100%;
-  justify-content: space-between;
-  padding: calc(var(--u) * 12) 0 calc(var(--u) * 16);
-  box-sizing: border-box;
-}
-.console--compact .keys {
-  display: grid;
-  grid-template-columns: repeat(2, auto);
-  gap: calc(var(--u) * 6) calc(var(--u) * 4);
-}
-.console--compact .rkey .engraved {
-  font-size: calc(var(--u) * 8);
-}
-
-/* ---------------- Concha abierta (vertical) ---------------- */
-.console--clamshell {
-  display: flex;
-  flex-direction: column;
-  --dpad-size: 120;
-  --ab-size: 52;
-}
-.lid {
-  flex: none;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: calc(var(--u) * 10) calc(var(--u) * 10) calc(var(--u) * 6);
-  border-radius: calc(var(--u) * 22) calc(var(--u) * 22) calc(var(--u) * 8) calc(var(--u) * 8);
-  transform-origin: 50% 100%;
-}
-.lid .brand-block {
-  align-items: center;
-  gap: calc(var(--u) * 3);
-  height: calc(var(--u) * 34);
-  margin-top: calc(var(--u) * 5);
-}
-.lid .brand {
-  font-size: calc(var(--u) * 12);
-}
-.lid .brand-tagline {
-  font-size: calc(var(--u) * 6.5);
-}
-.lid--opening {
-  animation: lid-open 800ms cubic-bezier(0.2, 0.8, 0.25, 1) both;
-}
-@keyframes lid-open {
-  from {
-    transform: perspective(900px) rotateX(-82deg);
-    filter: brightness(0.6);
-  }
-  to {
-    transform: none;
-    filter: none;
-  }
-}
-.console--clamshell .bezel {
-  padding: calc(var(--u) * 16) calc(var(--u) * 8) calc(var(--u) * 8);
-  border-radius: calc(var(--u) * 10) calc(var(--u) * 10) calc(var(--u) * 24) calc(var(--u) * 10);
-}
-.console--clamshell .bezel__label {
-  top: calc(var(--u) * 4);
-  left: calc(var(--u) * 52);
-  right: calc(var(--u) * 10);
-  font-size: calc(var(--u) * 6);
-}
-.console--clamshell .led {
-  left: calc(var(--u) * 10);
-  top: calc(var(--u) * 4);
-  flex-direction: row;
-  font-size: calc(var(--u) * 5);
-}
-.console--clamshell .led::before {
-  width: calc(var(--u) * 5);
-  height: calc(var(--u) * 5);
-}
-.hinge {
-  flex: none;
-  height: calc(var(--u) * 30);
-  display: flex;
-  align-items: center;
-  gap: calc(var(--u) * 6);
-  padding: 0 calc(var(--u) * 4);
-}
-.hinge__barrel {
-  flex: 1;
-  height: calc(var(--u) * 18);
-  border-radius: calc(var(--u) * 9);
-  background: linear-gradient(180deg, var(--shell-hi), var(--shell) 45%, var(--shell-lo));
-  box-shadow: 0 calc(var(--u) * 2) calc(var(--u) * 3) rgb(0 0 0 / 0.35);
-}
-.base {
-  flex: 1;
-  min-height: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: calc(var(--u) * 12) calc(var(--u) * 18) calc(var(--u) * 12);
-  border-radius: calc(var(--u) * 8) calc(var(--u) * 8) calc(var(--u) * 30) calc(var(--u) * 30);
-}
-.console--clamshell .keys {
-  justify-content: space-around;
-}
-.base__controls {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: calc(var(--u) * 4) calc(var(--u) * 6);
-}
-.base__bottom {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  padding-left: calc(var(--u) * 50);
+.speaker {
+  align-self: center;
 }
 
 /* ---------------- Marco de la pantalla ---------------- */
@@ -302,6 +194,8 @@
 }
 .scr-frame {
   position: relative;
+  width: var(--scr-w);
+  height: var(--scr-h);
   overflow: hidden;
   background: var(--scr-bg);
   box-shadow: inset 0 0 0 calc(var(--u) * 1) rgb(0 0 0 / 0.4);
@@ -507,19 +401,6 @@
   right: calc(var(--u) * 72);
   border-radius: calc(var(--u) * 12) calc(var(--u) * 40) 0 0;
 }
-.console--compact .shoulder,
-.console--clamshell .shoulder {
-  position: static;
-  width: calc(var(--u) * 84);
-  height: calc(var(--u) * 24);
-  min-height: 32px;
-  align-items: center;
-  padding: 0;
-  border-radius: calc(var(--u) * 12);
-  box-shadow:
-    inset 0 calc(var(--u) * 1.5) 0 rgb(255 255 255 / 0.35),
-    0 calc(var(--u) * 2) calc(var(--u) * 3) rgb(0 0 0 / 0.3);
-}
 
 /* ---------------- Bocina (interruptor de sonido) ---------------- */
 .speaker {
@@ -559,10 +440,6 @@
 .speaker:hover .speaker__icon,
 .speaker[aria-pressed='true'] .speaker__icon {
   opacity: 1;
-}
-.console--compact .speaker__slots span,
-.console--clamshell .speaker__slots span {
-  height: calc(var(--u) * 22);
 }
 
 /* ---------------- Logo e identidad ---------------- */
@@ -638,14 +515,261 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .lid--opening {
+  :root[data-first-lid] .lid {
     animation: none;
   }
   .rkey__pill {
     transition: none;
   }
 }
-.console--compact .shoulder,
-.console--clamshell .shoulder {
-  background: linear-gradient(180deg, var(--shell-hi), var(--shell-lo));
+
+/* ================= Distribuciones responsivas (van al final para ganar) ================= */
+
+/* ---------------- Horizontal compacta (celular acostado) ---------------- */
+@media (max-height: 499px) and (orientation: landscape) {
+  .console {
+    --u: min(calc(90vw / 880), calc(88vh / 434));
+    --u: min(calc(90vw / 880), calc(88dvh / 434));
+    --dpad-size: 92;
+    --ab-size: 40;
+    width: calc(var(--u) * 880);
+    height: calc(var(--u) * 434);
+    grid-template-columns: calc(var(--u) * 130) calc(var(--u) * 620) calc(var(--u) * 130);
+    grid-template-rows: calc(var(--u) * 12) calc(var(--u) * 28) 1fr auto auto calc(var(--u) * 16);
+  }
+  .plate--body {
+    grid-row: 1 / -1;
+    grid-column: 1 / -1;
+    border-radius: calc(var(--u) * 60) / calc(var(--u) * 80);
+  }
+  .bezel {
+    grid-row: 1 / -1;
+    align-self: center;
+    padding: calc(var(--u) * 18) calc(var(--u) * 22) calc(var(--u) * 12);
+  }
+  .brand-block,
+  .led {
+    display: none;
+  }
+  .wing-l,
+  .wing-r {
+    display: contents;
+  }
+  .wing-l > *,
+  .wing-r > *,
+  .keys {
+    grid-column: 1;
+    justify-self: center;
+    margin: 0;
+  }
+  .wing-r > * {
+    grid-column: 3;
+  }
+  .shoulder {
+    grid-row: 2;
+  }
+  .dpad,
+  .ab {
+    grid-row: 3;
+    align-self: center;
+  }
+  .keys {
+    grid-row: 4 / 6;
+    align-self: end;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: calc(var(--u) * 6) calc(var(--u) * 4);
+  }
+  .keys .engraved {
+    font-size: calc(var(--u) * 8);
+  }
+  .pills {
+    grid-row: 4;
+  }
+  .speaker {
+    grid-row: 5;
+  }
 }
+
+/* ---------------- Concha abierta (celular y tablet en vertical) ---------------- */
+@media (max-width: 1023px) and (orientation: portrait) {
+  .console {
+    /* La tapa ocupa el alto que no necesitan los controles (≥ 3:2, hasta ~1:1.3).
+       Fijo en unidades: tapa 79 + bisagra 30 + base 290 = 399. */
+    --ch: 88vh;
+    --ch: 88dvh;
+    --cw: min(90vw, 640px, calc(var(--ch) / 1.6042));
+    --u: calc(var(--cw) / 400);
+    --scr-w: calc(var(--cw) - var(--u) * 36);
+    --scr-h: max(min(calc(var(--ch) - var(--u) * 399), calc(var(--scr-w) * 1.3)), calc(var(--scr-w) * 2 / 3));
+    --dpad-size: 120;
+    --ab-size: 52;
+    width: var(--cw);
+    height: var(--ch);
+    grid-template-columns: calc(var(--u) * 10) calc(var(--u) * 8) 1fr calc(var(--u) * 8) calc(var(--u) * 10);
+    grid-template-rows: auto calc(var(--u) * 30) calc(var(--u) * 12) auto 1fr auto calc(var(--u) * 12);
+  }
+  .plate--body {
+    display: none;
+  }
+  .plate--base {
+    display: block;
+    grid-row: 3 / -1;
+    grid-column: 1 / -1;
+    border-radius: calc(var(--u) * 8) calc(var(--u) * 8) calc(var(--u) * 30) calc(var(--u) * 30);
+  }
+  .lid {
+    display: flex;
+    grid-row: 1;
+    grid-column: 1 / -1;
+    flex-direction: column;
+    align-items: center;
+    padding: calc(var(--u) * 10) calc(var(--u) * 10) calc(var(--u) * 6);
+    border-radius: calc(var(--u) * 22) calc(var(--u) * 22) calc(var(--u) * 8) calc(var(--u) * 8);
+    transform-origin: 50% 100%;
+  }
+  .bezel {
+    padding: calc(var(--u) * 16) calc(var(--u) * 8) calc(var(--u) * 8);
+    border-radius: calc(var(--u) * 10) calc(var(--u) * 10) calc(var(--u) * 24) calc(var(--u) * 10);
+  }
+  .bezel__label {
+    top: calc(var(--u) * 4);
+    left: calc(var(--u) * 52);
+    right: calc(var(--u) * 10);
+    font-size: calc(var(--u) * 6);
+  }
+  .led {
+    left: calc(var(--u) * 10);
+    top: calc(var(--u) * 4);
+    flex-direction: row;
+    font-size: calc(var(--u) * 5);
+  }
+  .led::before {
+    width: calc(var(--u) * 5);
+    height: calc(var(--u) * 5);
+  }
+  .brand-block {
+    align-items: center;
+    gap: calc(var(--u) * 3);
+    height: calc(var(--u) * 34);
+    margin: calc(var(--u) * 5) 0 0;
+  }
+  .brand {
+    font-size: calc(var(--u) * 12);
+  }
+  .brand-tagline {
+    font-size: calc(var(--u) * 6.5);
+  }
+  .hinge-barrel {
+    display: block;
+    grid-row: 2;
+    grid-column: 1 / -1;
+    align-self: center;
+    height: calc(var(--u) * 18);
+    margin: 0 calc(var(--u) * 96);
+    border-radius: calc(var(--u) * 9);
+    background: linear-gradient(180deg, var(--shell-hi), var(--shell) 45%, var(--shell-lo));
+    box-shadow: 0 calc(var(--u) * 2) calc(var(--u) * 3) rgb(0 0 0 / 0.35);
+  }
+  .wing-l,
+  .wing-r {
+    display: contents;
+  }
+  .shoulder {
+    grid-row: 2;
+    grid-column: 1 / -1;
+    align-self: center;
+  }
+  .shoulder--l {
+    justify-self: start;
+    margin-left: calc(var(--u) * 4);
+  }
+  .shoulder--r {
+    justify-self: end;
+    margin-right: calc(var(--u) * 4);
+  }
+  .keys {
+    grid-row: 4;
+    grid-column: 2 / 5;
+    justify-self: stretch;
+    justify-content: space-around;
+    margin: 0;
+  }
+  .dpad,
+  .ab {
+    grid-row: 5;
+    grid-column: 2 / 5;
+    align-self: center;
+  }
+  .dpad {
+    justify-self: start;
+    margin-left: calc(var(--u) * 6);
+  }
+  .ab {
+    justify-self: end;
+    margin-right: calc(var(--u) * 6);
+  }
+  .pills,
+  .speaker {
+    grid-row: 6;
+    grid-column: 2 / 5;
+    align-self: end;
+  }
+  .pills {
+    justify-self: start;
+    margin-left: calc(var(--u) * 50);
+  }
+  .speaker {
+    justify-self: end;
+  }
+  .console-hint {
+    display: none;
+  }
+  /* Primera visita: la tapa se abre (≤ 1 s). La decide el script del <head>. */
+  :root[data-first-lid] .lid {
+    animation: lid-open 800ms cubic-bezier(0.2, 0.8, 0.25, 1) both;
+  }
+}
+@media (max-width: 599px) and (orientation: portrait) {
+  .console {
+    --ch: calc(100vh - 16px);
+    --ch: calc(100dvh - 16px);
+    --cw: min(calc(100vw - 16px), 640px, calc(var(--ch) / 1.6042));
+  }
+}
+@keyframes lid-open {
+  from {
+    transform: perspective(900px) rotateX(-82deg);
+    filter: brightness(0.6);
+  }
+  to {
+    transform: none;
+    filter: none;
+  }
+}
+@media (max-height: 499px) and (orientation: landscape) {
+  .console-hint {
+    display: none;
+  }
+}
+
+/* Gatillos y bocina en celular (acostado o concha): botones pequeños */
+@media (max-height: 499px) and (orientation: landscape), (max-width: 1023px) and (orientation: portrait) {
+  .shoulder {
+    position: static;
+    width: calc(var(--u) * 84);
+    height: calc(var(--u) * 24);
+    min-height: 32px;
+    align-items: center;
+    padding: 0;
+    border-radius: calc(var(--u) * 12);
+    background: linear-gradient(180deg, var(--shell-hi), var(--shell-lo));
+    box-shadow:
+      inset 0 calc(var(--u) * 1.5) 0 rgb(255 255 255 / 0.35),
+      0 calc(var(--u) * 2) calc(var(--u) * 3) rgb(0 0 0 / 0.3);
+  }
+  .speaker__slots span {
+    height: calc(var(--u) * 22);
+  }
+}
+

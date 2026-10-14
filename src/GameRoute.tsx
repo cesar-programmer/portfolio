@@ -1,37 +1,28 @@
-import { useEffect } from 'react'
-import { Navigate, useLocation, useNavigate } from 'react-router'
+import { useNavigate, useLocation } from 'react-router'
 import { Backdrop } from './ambient/Backdrop'
 import { play } from './audio/sfx'
 import { Console } from './console/Console'
 import { useControls } from './console/useControls'
 import type { Lang } from './config'
 import { getContent } from './content'
-import { isLang, parsePath, preferredLang, SECTIONS, sectionPath, translatePath, type GameLocation } from './routes'
+import { NotFound } from './NotFound'
+import { parsePath, SECTIONS, sectionPath, translatePath, type GameLocation } from './routes'
 import { GameScreen } from './screens/GameScreen'
 import { useGame } from './store/game'
 
-export function GameRoute() {
+/** Consola en cualquier ruta del juego; rutas o proyectos inexistentes → GAME OVER (404). */
+export default function GameRoute({ path }: { path?: string }) {
   const { pathname } = useLocation()
-  const loc = parsePath(pathname)
-  if (!loc) {
-    const first = pathname.split('/').filter(Boolean)[0]
-    return <Navigate to={sectionPath(isLang(first) ? first : preferredLang(), 'projects')} replace />
-  }
+  const loc = parsePath(path ?? pathname)
+  if (!loc) return <NotFound />
   const content = getContent(loc.lang)
-  if (loc.project && !content.projects.some((p) => p.slug === loc.project)) {
-    return <Navigate to={sectionPath(loc.lang, 'projects')} replace />
-  }
+  if (loc.project && !content.projects.some((p) => p.slug === loc.project)) return <NotFound />
   return <Game loc={loc} />
 }
 
 function Game({ loc }: { loc: GameLocation }) {
   const navigate = useNavigate()
   const content = getContent(loc.lang)
-
-  useEffect(() => {
-    document.documentElement.lang = loc.lang
-    document.title = content.ui.meta.title
-  }, [loc.lang, content])
 
   const switchLang = (lang: Lang) => navigate(translatePath(loc, lang), { replace: true })
 

@@ -9,5 +9,6 @@ function subscribe(cb: () => void) {
 }
 
 export function useReducedMotion() {
-  return useSyncExternalStore(subscribe, () => window.matchMedia(QUERY).matches)
+  // En el servidor (prerender) se asume movimiento normal; al hidratar se corrige.
+  return useSyncExternalStore(subscribe, () => window.matchMedia(QUERY).matches, () => false)
 }

@@ -1,5 +1,7 @@
 import { useRef, useState } from 'react'
+import { Link } from 'react-router'
 import { play } from '../audio/sfx'
+import { cvLink } from '../config'
 import type { Content } from '../content'
 import { PixelIcon } from '../ui/PixelIcon'
 import { SectionHead } from './SectionHead'
@@ -69,12 +71,19 @@ export function ContactTab({ content }: { content: Content }) {
           {c.cv.toUpperCase()}
         </SectionHead>
         <div className="flex flex-wrap gap-3">
-          <a data-nav className="px-btn px-btn--primary" href={profile.cv.es} download>
-            <PixelIcon name="down" size="sm" /> {c.cvEs}
-          </a>
-          <a data-nav className="px-btn px-btn--primary" href={profile.cv.en} download>
-            <PixelIcon name="down" size="sm" /> {c.cvEn}
-          </a>
+          {(['es', 'en'] as const).map((l) => {
+            const cv = cvLink(l)
+            const label = l === 'es' ? c.cvEs : c.cvEn
+            return cv.download ? (
+              <a key={l} data-nav className="px-btn px-btn--primary" href={cv.href} download>
+                <PixelIcon name="down" size="sm" /> {label}
+              </a>
+            ) : (
+              <Link key={l} data-nav className="px-btn px-btn--primary" to={cv.href}>
+                {label} →
+              </Link>
+            )
+          })}
         </div>
       </section>
     </div>

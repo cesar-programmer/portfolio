@@ -1,8 +1,4 @@
 {
-  "meta": {
-    "title": "CESAR.DEV — Cesar Cordova · AI & Backend Developer",
-    "description": "Portafolio de Cesar Cordova Contreras, AI & Backend Developer (Python · JS) en Tijuana, B.C. Proyectos de IA, RAG, agentes y backend en producción."
-  },
   "console": {
     "hint": "Haz clic en cualquier opción · ← ↑ → ↓ · Enter / Esc · Q/E o L/R: pestañas · M: menú · I: idioma · F: Modo TV",
     "screenLabel": "Pantalla del portafolio",
@@ -36,7 +32,8 @@
       "tv": "TV",
       "recruiter": "RECLUTADOR"
     },
-    "recruiter": "Modo reclutador: versión de una sola página, sin juego"
+    "recruiter": "Modo reclutador: versión de una sola página, sin juego",
+    "cvPage": "CV: abrir la versión de una página"
   },
   "tip": "¡Haz clic en cualquier opción o usa las flechas!",
   "tabs": {
@@ -151,7 +148,65 @@
     "unlocked": "¡Medalla desbloqueada!"
   },
   "recruiter": {
-    "soon": "El Modo reclutador llega en la siguiente fase.",
-    "backToGame": "▶ Volver al juego"
+    "backToGame": "▶ Volver a la consola",
+    "contact": "Contacto",
+    "summary": "Resumen",
+    "projects": "Proyectos destacados",
+    "experience": "Experiencia",
+    "skills": "Habilidades",
+    "badges": "Certificaciones y logros",
+    "education": "Formación",
+    "seeProject": "Ver ficha en la consola",
+    "downloadCv": "Descargar CV (PDF)",
+    "print": "Imprimir",
+    "privateCode": "Código privado",
+    "code": "Código",
+    "demo": "Demo",
+    "location": "Ubicación",
+    "languages": "Idiomas"
+  },
+  "seo": {
+    "suffix": "Cesar Cordova · AI & Backend Developer",
+    "home": {
+      "title": "CESAR.DEV — Cesar Cordova · AI & Backend Developer",
+      "description": "Portafolio de Cesar Cordova Contreras, AI & Backend Developer (Python · JS) en Tijuana, B.C.: agentes, RAG y backend en producción para la UABC y el Gobierno de B.C."
+    },
+    "about": {
+      "title": "Sobre mí",
+      "description": "Cesar Cordova: desarrollador backend y de IA en Tijuana, B.C. Español nativo, inglés B2, Ingeniería en Software en la UABC."
+    },
+    "skills": {
+      "title": "Habilidades",
+      "description": "Python, FastAPI, LangChain, LangGraph, RAG, Node.js, PostgreSQL, React y más, con los proyectos donde usé cada una."
+    },
+    "missions": {
+      "title": "Experiencia y formación",
+      "description": "Full-Stack Developer en Clever Cloud, prácticas profesionales en el Gobierno del Estado de B.C. e Ingeniería en Software en la UABC."
+    },
+    "badges": {
+      "title": "Medallas y certificaciones",
+      "description": "AWS Academy Graduate (Cloud Architecting), TensorFlow Developer (DeepLearning.AI) y NASA Space Apps Challenge 2025 como líder del equipo Sofonques."
+    },
+    "contact": {
+      "title": "Contacto",
+      "description": "Escríbeme por email o encuéntrame en GitHub. Descarga mi CV en español o en inglés."
+    },
+    "cv": {
+      "title": "CV",
+      "description": "CV de una página de Cesar Cordova, AI & Backend Developer: proyectos destacados, experiencia, habilidades, certificaciones y formación."
+    },
+    "notFound": {
+      "title": "GAME OVER · Esta ruta no existe",
+      "description": "La página que buscas no existe."
+    },
+    "ogAlt": "CESAR.DEV — Cesar Cordova, AI & Backend Developer"
+  },
+  "notFound": {
+    "heading": "GAME OVER",
+    "text": "Esta ruta no existe.",
+    "continue": "Continuar"
+  },
+  "live": {
+    "section": "Sección: {name}"
   }
 }

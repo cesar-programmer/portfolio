@@ -1,14 +1,20 @@
 import { useEffect } from 'react'
 import { useGame } from '../store/game'
 
-/** Globo de ayuda de la primera visita. Se cierra solo o con cualquier interacción. */
+/**
+ * Globo de ayuda de la primera visita. Se cierra solo o con cualquier
+ * interacción. Se ve solo con data-first-tip en <html> (script del <head>).
+ */
 export function TipBubble({ text }: { text: string }) {
-  const seen = useGame((s) => s.seen.tip)
   const markSeen = useGame((s) => s.markSeen)
 
   useEffect(() => {
-    if (seen) return
-    const close = () => markSeen('tip')
+    const root = document.documentElement
+    if (!('firstTip' in root.dataset)) return
+    const close = () => {
+      delete root.dataset.firstTip
+      markSeen('tip')
+    }
     const timer = window.setTimeout(close, 7000)
     // Pequeña espera para no cerrarlo con el mismo clic que cargó la página.
     const arm = window.setTimeout(() => {
@@ -23,9 +29,8 @@ export function TipBubble({ text }: { text: string }) {
       window.removeEventListener('keydown', close)
       window.removeEventListener('wheel', close)
     }
-  }, [seen, markSeen])
+  }, [markSeen])
 
-  if (seen) return null
   return (
     <div className="tip" role="status">
       {text}

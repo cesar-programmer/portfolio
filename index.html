@@ -1,18 +1,34 @@
 <!doctype html>
-<html lang="es">
+<html lang="es" data-palette="arcade" data-shell="classic">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="theme-color" content="#1b1d22" />
-    <title>CESAR.DEV — Cesar Cordova · AI & Backend Developer</title>
-    <meta name="description" content="Portafolio de Cesar Cordova Contreras, AI & Backend Developer (Python · JS) en Tijuana, B.C." />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;600&family=Press+Start+2P&display=swap" rel="stylesheet" />
+    <meta name="theme-color" content="#0e0c14" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="preload" href="/fonts/press-start-2p-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/pixelify-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <script>
+      // Antes del primer pintado: paleta, carcasa y animaciones de primera visita,
+      // leídas de localStorage. Así no hay parpadeos ni saltos al hidratar.
+      var d = document.documentElement
+      d.dataset.js = ''
+      try {
+        var s = JSON.parse(localStorage.getItem('cesardev:settings') || '{}')
+        if (['arcade', 'classic', 'pocket'].indexOf(s.palette) >= 0) d.dataset.palette = s.palette
+        if (['classic', 'indigo', 'silver', 'black'].indexOf(s.shell) >= 0) d.dataset.shell = s.shell
+        var seen = JSON.parse(localStorage.getItem('cesardev:seen') || '{}')
+        if (!seen.boot) d.dataset.firstBoot = ''
+        if (!seen.tip) d.dataset.firstTip = ''
+        if (!seen.lid) d.dataset.firstLid = ''
+      } catch (e) {}
+    </script>
+    <!--head-->
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root"><!--app--></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
