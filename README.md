@@ -12,4 +12,4 @@ npm run lint
 
 - Textos: `src/content/{es,en}/*.json` · metadatos sin idioma: `src/content/shared/`.
 - URL pública: variable `VITE_SITE_URL` (ver `.env.example` y `src/config.ts`).
-- Controles: flechas/WASD, Enter/Z (A), Esc/X/Backspace (B), M (START), L (SELECT), o clic/toque en la carcasa.
+- Controles: clic o toque en cualquier opción; flechas/WASD, Enter/Z (A), Esc/X/Backspace (B), Q/E o L/R (pestañas), M (menú), I (idioma), F (Modo TV).

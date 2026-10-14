@@ -1,7 +1,7 @@
 // Bus de entrada único: teclado, botones de la carcasa (clic y táctil)
 // y cualquier otro origen emiten las mismas acciones.
 
-export type Action = 'up' | 'down' | 'left' | 'right' | 'a' | 'b' | 'start' | 'select'
+export type Action = 'up' | 'down' | 'left' | 'right' | 'a' | 'b' | 'start' | 'select' | 'l' | 'r' | 'tv'
 export const DIRECTIONS: Action[] = ['up', 'down', 'left', 'right']
 
 /** Devuelve true si consumió la acción; si no, pasa al siguiente handler de la pila. */
@@ -51,43 +51,50 @@ const KEYMAP: Record<string, Action> = {
   Escape: 'b',
   x: 'b',
   Backspace: 'b',
+  q: 'l',
+  l: 'l',
+  e: 'r',
+  r: 'r',
   m: 'start',
-  l: 'select',
+  i: 'select',
+  f: 'tv',
 }
 
 function isTextField(el: Element | null) {
-  return !!el && (el.matches('input, textarea, select, [contenteditable="true"]'))
+  return !!el && el.matches('input, textarea, select, [contenteditable="true"]')
 }
 
 /**
  * Enter solo se intercepta cuando el foco está en el cuerpo de la página o en
- * una opción de menú: así los botones normales (carcasa, enlaces sueltos)
- * conservan su comportamiento nativo.
+ * una opción con cursor: los enlaces y botones normales conservan su
+ * comportamiento nativo (abrir, descargar, copiar…).
  */
 function shouldInterceptEnter(el: Element | null) {
   if (!el || el === document.body) return true
-  if (el.closest('[data-gb-button]')) return false
   return el.matches('[data-menu-item], #screen')
+}
+
+function keyOf(e: KeyboardEvent) {
+  return e.key.length === 1 ? e.key.toLowerCase() : e.key
 }
 
 export function installKeyboard() {
   const down = (e: KeyboardEvent) => {
-    if (e.ctrlKey || e.metaKey || e.altKey) return
+    if (e.ctrlKey || e.metaKey || e.altKey || e.defaultPrevented) return
     const active = document.activeElement
     if (isTextField(active)) return
-    const key = e.key.length === 1 ? e.key.toLowerCase() : e.key
+    const key = keyOf(e)
     const action = KEYMAP[key]
     if (!action) return
     if (key === 'Enter' && !shouldInterceptEnter(active)) return
     e.preventDefault()
-    // Las direcciones pueden repetirse al mantener la tecla; A/B/START/SELECT no.
+    // Las direcciones pueden repetirse al mantener la tecla; el resto no.
     if (e.repeat && !DIRECTIONS.includes(action)) return
     emitPress(action, true)
     dispatch(action)
   }
   const up = (e: KeyboardEvent) => {
-    const key = e.key.length === 1 ? e.key.toLowerCase() : e.key
-    const action = KEYMAP[key]
+    const action = KEYMAP[keyOf(e)]
     if (action) emitPress(action, false)
   }
   window.addEventListener('keydown', down)

@@ -1,161 +1,314 @@
 @import 'tailwindcss';
 
-/* ------------------------------------------------------------------
-   Paleta de la pantalla (4 tonos). Cada paleta redefine los mismos
-   tokens; el resto del sitio solo usa los tokens.
-   ------------------------------------------------------------------ */
+/* ==================================================================
+   Tokens
+   ================================================================== */
 :root {
-  --gb-darkest: #0f380f;
-  --gb-dark: #306230;
-  --gb-light: #8bac0f;
-  --gb-lightest: #9bbc0f;
-  /* Acentos: en las paletas de 4 tonos caen en los mismos tonos. */
-  --gb-accent: var(--gb-darkest);
-  --gb-accent-2: var(--gb-dark);
-  --gb-skin: var(--gb-dark);
-  --gb-hair: var(--gb-darkest);
+  /* Pantalla — paleta "Arcade" (por defecto) */
+  --scr-bg: #140c2e;
+  --scr-surface: #1e1442;
+  --scr-surface-2: #2a1c5c;
+  --scr-line: #4b3796;
+  --scr-ink: #f3eeff;
+  --scr-muted: #bfb2e8;
+  --scr-title: #ffb000;
+  --scr-title-shadow: #a3195b;
+  --scr-accent: #38e8ff;
+  --scr-accent-2: #ff4fa3;
+  --scr-shadow: #07041a;
+  --scr-on-accent: #140c2e;
 
-  /* Carcasa (no depende del tema del sistema: es un objeto físico). */
-  --shell: #cbc8c0;
-  --shell-hi: #dedbd3;
-  --shell-lo: #a9a69d;
-  --shell-ink: #2f3a8a;
-  --bezel: #4a4e5a;
-  --bezel-lo: #383b45;
-  --btn-ab: #9a2453;
-  --btn-ab-lo: #6c1739;
-  --dpad: #24262c;
-  --pill: #8d8f98;
-  --page-bg: #1b1d22;
-  --page-ink: #c9ccd4;
+  /* Carcasa — índigo (por defecto) */
+  --shell: #4b3fa8;
+  --shell-hi: #6a5ecf;
+  --shell-lo: #2f2678;
+  --shell-edge: #241d5c;
+  --shell-ink: #e6e1ff;
+  --shell-ink-muted: #b4abef;
+  --bezel: #17142b;
+  --bezel-ink: #8d86b8;
+  --btn-ab: #2a2540;
+  --btn-ab-hi: #463f66;
+  --btn-ab-ink: #e6e1ff;
+  --dpad: #1d1a2e;
+  --dpad-hi: #34304d;
+  --pill: #2a2540;
+  --shoulder: #3a2f8c;
+  --shell-key: #2a2160;
+  --shell-key-ink: #f1edff;
 
-  /* Unidad lógica: 1 píxel de la pantalla de 160×144. JS la recalcula. */
-  --px: 2px;
+  --page-bg: #07040f;
   color-scheme: dark;
 }
 
+/* Pantalla: easter eggs */
+:root[data-palette='classic'] {
+  --scr-bg: #9bbc0f;
+  --scr-surface: #8bac0f;
+  --scr-surface-2: #8bac0f;
+  --scr-line: #306230;
+  --scr-ink: #0f380f;
+  --scr-muted: #306230;
+  --scr-title: #0f380f;
+  --scr-title-shadow: #8bac0f;
+  --scr-accent: #0f380f;
+  --scr-accent-2: #306230;
+  --scr-shadow: #306230;
+  --scr-on-accent: #9bbc0f;
+}
 :root[data-palette='pocket'] {
-  --gb-darkest: #1e1f1c;
-  --gb-dark: #55574f;
-  --gb-light: #a2a59a;
-  --gb-lightest: #c5c8bc;
+  --scr-bg: #c5c8bc;
+  --scr-surface: #b0b3a7;
+  --scr-surface-2: #a2a59a;
+  --scr-line: #55574f;
+  --scr-ink: #1e1f1c;
+  --scr-muted: #3f413a;
+  --scr-title: #1e1f1c;
+  --scr-title-shadow: #a2a59a;
+  --scr-accent: #1e1f1c;
+  --scr-accent-2: #55574f;
+  --scr-shadow: #55574f;
+  --scr-on-accent: #c5c8bc;
 }
 
-:root[data-palette='color'] {
-  --gb-darkest: #1d2346;
-  --gb-dark: #4a6aa3;
-  --gb-light: #b7d0c2;
-  --gb-lightest: #f1eedd;
-  --gb-accent: #d6473b;
-  --gb-accent-2: #e8a33b;
-  --gb-skin: #9a5f3a;
-  --gb-hair: #2a1b14;
+/* Carcasa: variantes */
+:root[data-shell='silver'] {
+  --shell: #b9bcc6;
+  --shell-hi: #dcdee5;
+  --shell-lo: #8e919c;
+  --shell-edge: #6f727c;
+  --shell-ink: #2c2f3a;
+  --shell-ink-muted: #555966;
+  --bezel: #23242b;
+  --bezel-ink: #8a8d98;
+  --shoulder: #9da0aa;
+  --shell-key: #8a8d98;
+  --shell-key-ink: #1d1f26;
+}
+:root[data-shell='black'] {
+  --shell: #25252b;
+  --shell-hi: #3b3b44;
+  --shell-lo: #141418;
+  --shell-edge: #0b0b0e;
+  --shell-ink: #d9d9e3;
+  --shell-ink-muted: #8f8f9c;
+  --bezel: #0e0e12;
+  --bezel-ink: #6f6f7c;
+  --btn-ab: #3a3a44;
+  --btn-ab-hi: #565663;
+  --dpad: #101014;
+  --dpad-hi: #2a2a33;
+  --pill: #3a3a44;
+  --shoulder: #1c1c22;
+  --shell-key: #3a3a44;
+  --shell-key-ink: #ececf5;
 }
 
 @theme inline {
-  --color-gb-darkest: var(--gb-darkest);
-  --color-gb-dark: var(--gb-dark);
-  --color-gb-light: var(--gb-light);
-  --color-gb-lightest: var(--gb-lightest);
-  --color-gb-accent: var(--gb-accent);
-  --color-gb-accent-2: var(--gb-accent-2);
+  --color-scr-bg: var(--scr-bg);
+  --color-scr-surface: var(--scr-surface);
+  --color-scr-surface-2: var(--scr-surface-2);
+  --color-scr-line: var(--scr-line);
+  --color-scr-ink: var(--scr-ink);
+  --color-scr-muted: var(--scr-muted);
+  --color-scr-title: var(--scr-title);
+  --color-scr-accent: var(--scr-accent);
+  --color-scr-accent-2: var(--scr-accent-2);
+  --color-scr-on-accent: var(--scr-on-accent);
 
   --font-pixel: 'Press Start 2P', ui-monospace, monospace;
   --font-body: 'Pixelify Sans', ui-monospace, monospace;
 
-  /* Tamaños en píxeles lógicos de la pantalla. */
-  --text-px6: calc(var(--px) * 6);
-  --text-px6--line-height: 1.5;
-  --text-px8: calc(var(--px) * 8);
-  --text-px8--line-height: 1.5;
-  --text-px9: calc(var(--px) * 9);
-  --text-px9--line-height: 1.35;
-  --text-px10: calc(var(--px) * 10);
-  --text-px10--line-height: 1.3;
-  --text-px12: calc(var(--px) * 12);
-  --text-px12--line-height: 1.25;
-  --text-px16: calc(var(--px) * 16);
-  --text-px16--line-height: 1.2;
+  /* Tamaños de texto de la pantalla: dependen del tamaño real de la pantalla
+     (container queries en .scr), siempre múltiplos de 8px. */
+  --text-tag: var(--t-tag);
+  --text-tag--line-height: 1.5;
+  --text-head: var(--t-head);
+  --text-head--line-height: 1.5;
+  --text-title: var(--t-title);
+  --text-title--line-height: 1.35;
+  --text-body: var(--t-body);
+  --text-body--line-height: 1.4;
+  --text-small: var(--t-small);
+  --text-small--line-height: 1.35;
 }
 
 html,
 body {
   margin: 0;
   background: var(--page-bg);
-  color: var(--page-ink);
+  color: var(--scr-ink);
 }
 
 body {
   min-height: 100dvh;
-  -webkit-font-smoothing: none;
+  overflow: hidden;
   font-variant-ligatures: none;
   -webkit-tap-highlight-color: transparent;
 }
 
-/* ------------------------------------------------------------------
-   Pantalla
-   ------------------------------------------------------------------ */
-.gb-screen {
+/* ==================================================================
+   Pantalla del juego
+   ================================================================== */
+.scr {
+  /* Escala de contenido: 1 · 1.5 · 2 según el tamaño real de la pantalla. */
+  --fz: 1;
+  --t-tag: 8px;
+  --t-head: 8px;
+  --t-title: 16px;
+  --t-body: 16px;
+  --t-small: 16px;
+  --spacing: calc(4px * var(--fz));
+  --bw: 2px;
+
   position: relative;
-  width: calc(var(--px) * 160);
-  height: calc(var(--px) * 144);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
-  background: var(--gb-lightest);
-  color: var(--gb-darkest);
+  background: var(--scr-bg);
+  color: var(--scr-ink);
+  font-family: var(--font-body);
+  font-size: var(--t-body);
+  line-height: 1.4;
   image-rendering: pixelated;
-  font-family: var(--font-pixel);
-  font-size: calc(var(--px) * 8);
-  line-height: 1.5;
-  transition:
-    background-color 300ms steps(3),
-    color 300ms steps(3);
+  -webkit-font-smoothing: none;
 }
 
-/* Rejilla de píxeles, muy tenue. */
-.gb-screen::after {
+.scr-frame {
+  container: screen / size;
+}
+
+@container screen (min-width: 640px) {
+  .scr {
+    --t-head: 16px;
+  }
+}
+@container screen (min-width: 1000px) {
+  .scr {
+    --fz: 1.5;
+    --t-tag: 16px;
+    --t-title: 24px;
+    --t-body: 24px;
+    --bw: 3px;
+  }
+}
+@container screen (min-width: 1700px) {
+  .scr {
+    --fz: 2;
+    --t-head: 24px;
+    --t-title: 32px;
+    --t-body: 32px;
+    --t-small: 24px;
+    --bw: 4px;
+  }
+}
+
+/* Líneas de barrido muy tenues */
+.scr::after {
   content: '';
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: 0.09;
-  background-image:
-    linear-gradient(to right, var(--gb-darkest) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--gb-darkest) 1px, transparent 1px);
-  background-size: var(--px) var(--px);
-  z-index: 50;
+  z-index: 60;
+  opacity: 0.07;
+  background: repeating-linear-gradient(to bottom, #000 0 1px, transparent 1px 3px);
+}
+:root[data-palette='classic'] .scr::after,
+:root[data-palette='pocket'] .scr::after {
+  opacity: 0.05;
 }
 
-.gb-screen img,
-.gb-pixelated {
-  image-rendering: pixelated;
-}
-
-/* Contenido desplazable dentro de la pantalla (texto largo). */
-.gb-scroll {
+.scr-scroll {
   overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
   scrollbar-width: thin;
-  scrollbar-color: var(--gb-darkest) var(--gb-light);
+  scrollbar-color: var(--scr-line) transparent;
 }
 
-/* Ventana con borde doble, como las cajas de texto de los RPG. */
-.gb-window {
-  background: var(--gb-lightest);
-  color: var(--gb-darkest);
-  border: calc(var(--px) * 1) solid var(--gb-darkest);
-  box-shadow:
-    inset 0 0 0 var(--px) var(--gb-lightest),
-    inset 0 0 0 calc(var(--px) * 2) var(--gb-darkest);
-  padding: calc(var(--px) * 5) calc(var(--px) * 6);
+/* Título ámbar con sombra pixel dura */
+.scr-title {
+  font-family: var(--font-pixel);
+  color: var(--scr-title);
+  text-shadow: calc(var(--bw)) calc(var(--bw)) 0 var(--scr-title-shadow);
 }
 
-/* Foco visible real (lectores de pantalla / teclado). */
-.gb-screen :focus-visible {
-  outline: var(--px) dashed var(--gb-darkest);
-  outline-offset: var(--px);
+/* Caja con borde pixel y sombra dura */
+.px-box {
+  background: var(--scr-surface);
+  border: var(--bw) solid var(--scr-line);
+  box-shadow: calc(var(--bw) * 2) calc(var(--bw) * 2) 0 var(--scr-shadow);
 }
 
-/* Cursor ▶ parpadeante en pasos discretos. */
-@keyframes gb-blink {
+/* Etiqueta tipo chip */
+.px-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: calc(var(--bw) * 1.5) calc(var(--bw) * 2.5);
+  font-family: var(--font-pixel);
+  font-size: var(--t-tag);
+  line-height: 1.2;
+  border: var(--bw) solid currentColor;
+  white-space: nowrap;
+}
+
+/* Todo lo seleccionable se ve tocable */
+.scr a,
+.scr button,
+.scr [role='button'] {
+  cursor: pointer;
+}
+
+.scr :focus-visible {
+  outline: var(--bw) solid var(--scr-accent);
+  outline-offset: var(--bw);
+}
+
+/* Botón pixel */
+.px-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  padding: calc(var(--bw) * 2) calc(var(--bw) * 5);
+  background: var(--scr-surface-2);
+  color: var(--scr-ink);
+  border: var(--bw) solid var(--scr-line);
+  box-shadow: var(--bw) var(--bw) 0 var(--scr-shadow);
+  font-family: var(--font-body);
+  font-size: var(--t-body);
+  line-height: 1.2;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.px-btn:hover {
+  border-color: var(--scr-accent);
+  color: var(--scr-accent);
+}
+.px-btn:active {
+  transform: translate(var(--bw), var(--bw));
+  box-shadow: none;
+}
+.px-btn--primary {
+  background: var(--scr-accent);
+  border-color: var(--scr-accent);
+  color: var(--scr-on-accent);
+}
+.px-btn--primary:hover {
+  color: var(--scr-on-accent);
+  filter: brightness(1.1);
+}
+.px-btn[aria-disabled='true'] {
+  opacity: 0.7;
+  cursor: default;
+  border-style: dashed;
+}
+
+/* Parpadeo en pasos */
+@keyframes px-blink {
   0%,
   49% {
     opacity: 1;
@@ -165,45 +318,28 @@ body {
     opacity: 0;
   }
 }
-.gb-blink {
-  animation: gb-blink 1s steps(1, end) infinite;
+.px-blink {
+  animation: px-blink 1s steps(1, end) infinite;
 }
 
-@keyframes gb-power-on {
-  0% {
-    opacity: 0;
-    filter: brightness(1.6);
-  }
+@keyframes px-flash {
+  0%,
   100% {
-    opacity: 1;
-    filter: none;
+    opacity: 0;
   }
-}
-.gb-power-on {
-  animation: gb-power-on 600ms steps(4, end) both;
+  20%,
+  60% {
+    opacity: 1;
+  }
+  40% {
+    opacity: 0.2;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .gb-blink {
+  .px-blink {
     animation: none;
   }
-  .gb-power-on {
-    animation: none;
-  }
-}
-
-/* ------------------------------------------------------------------
-   Carcasa
-   ------------------------------------------------------------------ */
-.shell-btn {
-  touch-action: manipulation;
-  user-select: none;
-  -webkit-user-select: none;
-  cursor: pointer;
-}
-.shell-btn:focus-visible {
-  outline: 2px solid #f4f1e8;
-  outline-offset: 2px;
 }
 
 .sr-only-focusable:not(:focus) {
@@ -213,4 +349,282 @@ body {
   overflow: hidden;
   clip: rect(0 0 0 0);
   white-space: nowrap;
+}
+
+/* Iconos pixel: siempre en múltiplos enteros de 8×8 */
+.px-icon {
+  display: inline-block;
+  flex: none;
+  vertical-align: middle;
+  shape-rendering: crispEdges;
+}
+.px-icon--sm {
+  width: round(nearest, calc(8px * var(--fz, 1)), 8px);
+  height: round(nearest, calc(8px * var(--fz, 1)), 8px);
+}
+.px-icon--md {
+  width: calc(16px * var(--fz, 1));
+  height: calc(16px * var(--fz, 1));
+}
+
+/* Parpadeo blanco de "evolución" al pasar de pixel a color */
+.px-evolve {
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  pointer-events: none;
+  animation: px-flash 420ms steps(6, end) both;
+}
+
+/* Globo de diálogo de la primera visita */
+.tip {
+  position: absolute;
+  left: 50%;
+  bottom: calc(16px * var(--fz));
+  z-index: 40;
+  translate: -50% 0;
+  width: max-content;
+  max-width: 86%;
+  padding: calc(8px * var(--fz)) calc(12px * var(--fz));
+  background: var(--scr-ink);
+  color: var(--scr-bg);
+  border: var(--bw) solid var(--scr-bg);
+  box-shadow:
+    0 0 0 var(--bw) var(--scr-ink),
+    calc(var(--bw) * 3) calc(var(--bw) * 3) 0 var(--scr-shadow);
+  font-size: var(--t-body);
+  text-align: center;
+  pointer-events: none;
+  animation: tip-in 300ms steps(3, end) both;
+}
+.tip::after {
+  content: '';
+  position: absolute;
+  left: calc(50% - 8px);
+  top: 100%;
+  border: 8px solid transparent;
+  border-top-color: var(--scr-ink);
+}
+@keyframes tip-in {
+  from {
+    opacity: 0;
+    translate: -50% 12px;
+  }
+}
+
+.toast-slot {
+  position: absolute;
+  top: calc(56px * var(--fz));
+  left: 0;
+  right: 0;
+  z-index: 45;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+.toast {
+  padding: calc(8px * var(--fz)) calc(16px * var(--fz));
+  font-family: var(--font-pixel);
+  font-size: var(--t-head);
+  color: var(--scr-title);
+  border-color: var(--scr-title);
+}
+
+/* Encendido */
+.boot {
+  position: absolute;
+  inset: 0;
+  z-index: 80;
+  display: grid;
+  place-items: center;
+  background: var(--scr-bg);
+  pointer-events: none;
+  animation: boot-out 950ms steps(1, end) both;
+}
+.boot__logo {
+  font-size: var(--t-title);
+  animation: boot-drop 450ms steps(6, end) both;
+}
+@keyframes boot-drop {
+  from {
+    transform: translateY(-300%);
+  }
+}
+@keyframes boot-out {
+  0%,
+  75% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 0.6;
+  }
+  92% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tip {
+    animation: none;
+  }
+}
+
+/* Pestañas */
+.tabs {
+  flex: none;
+  background: var(--scr-surface);
+  border-bottom: var(--bw) solid var(--scr-line);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.tabs::-webkit-scrollbar {
+  display: none;
+}
+.tabs ul {
+  display: flex;
+  margin: 0;
+  padding: 0 calc(4px * var(--fz));
+  list-style: none;
+  min-width: max-content;
+}
+.tabs li {
+  flex: 1 0 auto;
+}
+.tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: calc(6px * var(--fz));
+  padding: calc(8px * var(--fz)) calc(10px * var(--fz)) calc(6px * var(--fz));
+  color: var(--scr-muted);
+  font-family: var(--font-body);
+  font-size: var(--t-body);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  white-space: nowrap;
+  border-bottom: calc(var(--bw) * 2) solid transparent;
+}
+.tab:hover {
+  color: var(--scr-ink);
+  background: var(--scr-surface-2);
+}
+.tab[aria-current='page'] {
+  color: var(--scr-title);
+  border-bottom-color: var(--scr-accent-2);
+  background: var(--scr-bg);
+}
+/* Pantalla muy angosta: icono arriba, etiqueta abajo */
+@container screen (max-width: 520px) {
+  .tab {
+    flex-direction: column;
+    gap: 4px;
+    padding: 6px 8px 4px;
+  }
+}
+
+/* Proyectos: lista + vista previa */
+.projects-grid {
+  display: grid;
+  gap: calc(12px * var(--fz));
+}
+@container screen (min-width: 640px) {
+  .projects-grid {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    align-items: start;
+  }
+  .projects-preview {
+    position: sticky;
+    top: calc(8px * var(--fz));
+  }
+}
+.proj-item {
+  display: flex;
+  align-items: flex-start;
+  gap: calc(8px * var(--fz));
+  padding: calc(6px * var(--fz)) calc(6px * var(--fz));
+  color: var(--scr-ink);
+  text-decoration: none;
+  border: var(--bw) solid transparent;
+}
+.proj-item > .px-icon:first-child {
+  margin-top: calc(2px * var(--fz));
+}
+.proj-item:hover,
+.proj-item.is-selected {
+  background: var(--scr-surface-2);
+  border-color: var(--scr-line);
+}
+.proj-item.is-selected {
+  border-color: var(--scr-accent);
+}
+
+/* Ficha de proyecto */
+.detail-grid {
+  display: grid;
+  gap: calc(12px * var(--fz));
+}
+@container screen (min-width: 700px) {
+  .detail-grid {
+    grid-template-columns: minmax(0, 4fr) minmax(0, 6fr);
+    align-items: start;
+  }
+  .detail-media {
+    position: sticky;
+    top: calc(8px * var(--fz));
+  }
+}
+
+/* Vitrina de medallas */
+.badge-case {
+  display: grid;
+  gap: calc(8px * var(--fz));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+@container screen (min-width: 640px) {
+  .badge-case {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+.badge-empty {
+  min-height: calc(96px * var(--fz));
+  border: var(--bw) dashed var(--scr-line);
+  color: var(--scr-line);
+}
+
+/* Opciones */
+.options-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  padding: calc(12px * var(--fz));
+  background: rgb(0 0 0 / 0.55);
+}
+.options {
+  width: min(100%, calc(460px * var(--fz)));
+  max-height: 100%;
+  overflow-y: auto;
+  padding: calc(12px * var(--fz));
+}
+.options__row {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: calc(8px * var(--fz));
+  padding: calc(6px * var(--fz)) calc(8px * var(--fz));
+  background: transparent;
+  color: var(--scr-ink);
+  border: var(--bw) solid transparent;
+  font: inherit;
+}
+.options__row:hover,
+.options__row.is-selected {
+  background: var(--scr-surface-2);
+  border-color: var(--scr-accent);
 }

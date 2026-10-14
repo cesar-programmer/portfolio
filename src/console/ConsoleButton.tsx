@@ -1,4 +1,4 @@
-import { useEffect, useRef, type CSSProperties, type ReactNode } from 'react'
+import { useEffect, useRef, type ReactNode } from 'react'
 import { DIRECTIONS, dispatch, emitPress, type Action } from './input'
 import { usePressed } from './useControls'
 
@@ -6,7 +6,6 @@ type Props = {
   action: Action
   label: string
   className?: string
-  style?: CSSProperties
   children?: ReactNode
 }
 
@@ -18,7 +17,7 @@ const REPEAT_EVERY = 130
  * ratón), repite las direcciones al mantenerlo, y sigue siendo un <button>
  * real para teclado y lectores de pantalla.
  */
-export function ConsoleButton({ action, label, className = '', style, children }: Props) {
+export function ConsoleButton({ action, label, className = '', children }: Props) {
   const pressed = usePressed(action)
   const timers = useRef<number[]>([])
 
@@ -38,8 +37,7 @@ export function ConsoleButton({ action, label, className = '', style, children }
     dispatch(action)
     if (DIRECTIONS.includes(action)) {
       const delay = window.setTimeout(() => {
-        const repeat = window.setInterval(() => dispatch(action), REPEAT_EVERY)
-        timers.current.push(repeat)
+        timers.current.push(window.setInterval(() => dispatch(action), REPEAT_EVERY))
       }, REPEAT_DELAY)
       timers.current.push(delay)
     }
@@ -53,7 +51,6 @@ export function ConsoleButton({ action, label, className = '', style, children }
       title={label}
       className={`shell-btn ${className}`}
       data-pressed={pressed || undefined}
-      style={style}
       onPointerDown={start}
       onPointerUp={stop}
       onPointerCancel={stop}

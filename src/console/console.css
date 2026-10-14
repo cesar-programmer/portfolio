@@ -1,0 +1,567 @@
+/* Carcasa original inspirada en las portátiles de 2001 (horizontal y concha).
+   Sin marcas. Medidas en unidades de diseño: calc(var(--u) * N). */
+
+.stage {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  box-sizing: border-box;
+}
+.stage--compact,
+.stage--clamshell {
+  padding: 0;
+}
+
+.console {
+  position: relative;
+  flex: none;
+  color: var(--shell-ink);
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 800;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.plastic,
+.console__body,
+.lid,
+.base {
+  background: linear-gradient(180deg, var(--shell-hi) 0%, var(--shell) 14%, var(--shell) 72%, var(--shell-lo) 100%);
+  box-shadow:
+    inset 0 calc(var(--u) * -5) 0 var(--shell-lo),
+    inset 0 calc(var(--u) * 2) 0 var(--shell-hi),
+    0 calc(var(--u) * 18) calc(var(--u) * 40) rgb(0 0 0 / 0.55);
+}
+
+.shell-btn {
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+}
+.console :focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+
+/* ---------------- Horizontal ---------------- */
+.console--horizontal {
+  width: calc(var(--u) * 1000);
+  height: calc(var(--u) * 536);
+}
+.console--horizontal .console__body {
+  position: absolute;
+  inset: calc(var(--u) * 36) 0 0 0;
+  display: grid;
+  grid-template-columns: calc(var(--u) * 190) calc(var(--u) * 620) calc(var(--u) * 190);
+  border-radius: calc(var(--u) * 130) calc(var(--u) * 130) calc(var(--u) * 190) calc(var(--u) * 190) /
+    calc(var(--u) * 120) calc(var(--u) * 120) calc(var(--u) * 200) calc(var(--u) * 200);
+  z-index: 1;
+}
+.console--horizontal .console__center {
+  display: flex;
+  flex-direction: column;
+  padding-top: calc(var(--u) * 18);
+}
+.console--horizontal .bezel {
+  padding: calc(var(--u) * 22);
+  border-radius: calc(var(--u) * 16);
+}
+.strip {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: calc(var(--u) * 12);
+  padding: 0 calc(var(--u) * 8);
+}
+
+.wing {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: calc(var(--u) * 26);
+}
+.console--horizontal .wing--left {
+  padding-bottom: calc(var(--u) * 40);
+}
+.console--horizontal .wing--right {
+  position: relative;
+  padding-bottom: calc(var(--u) * 20);
+}
+.console--horizontal .speaker {
+  position: absolute;
+  right: calc(var(--u) * 52);
+  bottom: calc(var(--u) * 40);
+}
+
+/* ---------------- Horizontal compacta (celular acostado) ---------------- */
+.console--compact {
+  width: calc(var(--u) * 896);
+  height: calc(var(--u) * 404);
+  --dpad-size: 104;
+  --ab-size: 44;
+}
+.console--compact .console__body {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: calc(var(--u) * 150) calc(var(--u) * 596) calc(var(--u) * 150);
+  border-radius: calc(var(--u) * 70) / calc(var(--u) * 90);
+}
+.console--compact .bezel {
+  padding: calc(var(--u) * 10);
+  border-radius: calc(var(--u) * 12);
+}
+.console--compact .wing {
+  justify-content: space-between;
+  gap: calc(var(--u) * 10);
+  padding: calc(var(--u) * 10) 0 calc(var(--u) * 14);
+}
+.console--compact .shoulder {
+  position: static;
+  width: calc(var(--u) * 110);
+  height: calc(var(--u) * 32);
+  border-radius: calc(var(--u) * 14);
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+.console--compact .keys {
+  flex-wrap: wrap;
+  justify-content: center;
+  width: calc(var(--u) * 130);
+  gap: calc(var(--u) * 6);
+}
+.console--compact .shell-key--wide {
+  order: 3;
+  width: 100%;
+}
+.console--compact .speaker {
+  margin-top: calc(var(--u) * -4);
+}
+.console--compact .led {
+  display: none;
+}
+
+/* ---------------- Concha abierta (vertical) ---------------- */
+.console--clamshell {
+  display: flex;
+  flex-direction: column;
+  --dpad-size: 132;
+  --ab-size: 60;
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+  box-sizing: border-box;
+}
+.lid {
+  flex: none;
+  padding: calc(var(--u) * 10);
+  border-radius: calc(var(--u) * 26) calc(var(--u) * 26) calc(var(--u) * 10) calc(var(--u) * 10);
+  transform-origin: 50% 100%;
+}
+.lid--opening {
+  animation: lid-open 800ms cubic-bezier(0.2, 0.8, 0.25, 1) both;
+}
+@keyframes lid-open {
+  from {
+    transform: perspective(900px) rotateX(-82deg);
+    filter: brightness(0.6);
+  }
+  to {
+    transform: none;
+    filter: none;
+  }
+}
+.console--clamshell .bezel {
+  padding: calc(var(--u) * 8);
+  border-radius: calc(var(--u) * 14);
+}
+.console--clamshell .led {
+  left: calc(var(--u) * 3);
+  top: calc(var(--u) * 3);
+  width: calc(var(--u) * 4);
+  height: calc(var(--u) * 4);
+}
+.hinge {
+  flex: none;
+  height: calc(var(--u) * 34);
+  display: flex;
+  align-items: center;
+  gap: calc(var(--u) * 8);
+  padding: 0 calc(var(--u) * 6);
+}
+.hinge__barrel {
+  flex: 1;
+  height: calc(var(--u) * 20);
+  border-radius: calc(var(--u) * 10);
+  background: linear-gradient(180deg, var(--shell-hi), var(--shell-lo) 70%, var(--shell-edge));
+}
+.console--clamshell .shoulder {
+  position: static;
+  width: calc(var(--u) * 92);
+  height: calc(var(--u) * 30);
+  border-radius: calc(var(--u) * 12);
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+.base {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: calc(var(--u) * 14) calc(var(--u) * 18) calc(var(--u) * 16);
+  border-radius: calc(var(--u) * 10) calc(var(--u) * 10) calc(var(--u) * 30) calc(var(--u) * 30);
+}
+.base__keys {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: calc(var(--u) * 8);
+}
+.base__controls {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: calc(var(--u) * 8) calc(var(--u) * 4);
+}
+.base__bottom {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+.console--clamshell .brand {
+  font-size: calc(var(--u) * 14);
+}
+
+/* ---------------- Bisel y pantalla ---------------- */
+.bezel {
+  position: relative;
+  background: var(--bezel);
+  box-shadow:
+    inset 0 calc(var(--u) * 2) calc(var(--u) * 4) rgb(0 0 0 / 0.6),
+    0 calc(var(--u) * 1) 0 var(--shell-hi);
+}
+.led {
+  position: absolute;
+  left: calc(var(--u) * 8);
+  top: calc(var(--u) * 8);
+  width: calc(var(--u) * 6);
+  height: calc(var(--u) * 6);
+  border-radius: 50%;
+  background: #4dff8a;
+  box-shadow: 0 0 calc(var(--u) * 6) #4dff8a;
+}
+.scr-frame {
+  position: relative;
+  overflow: hidden;
+  background: var(--scr-bg);
+  border-radius: calc(var(--u) * 3);
+}
+
+/* ---------------- Cruceta ---------------- */
+.dpad {
+  position: relative;
+  flex: none;
+  width: calc(var(--u) * var(--dpad-size, 124));
+  height: calc(var(--u) * var(--dpad-size, 124));
+  display: grid;
+  grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+  filter: drop-shadow(0 calc(var(--u) * 3) 0 rgb(0 0 0 / 0.45));
+}
+.dpad::before {
+  /* hueco de la carcasa alrededor de la cruceta */
+  content: '';
+  position: absolute;
+  inset: calc(var(--u) * -10);
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--shell-lo) 55%, transparent 72%);
+  opacity: 0.6;
+  z-index: -1;
+}
+.dpad__center {
+  grid-area: 2 / 2;
+  background: var(--dpad);
+}
+.dpad__btn {
+  border: 0;
+  padding: 0;
+  background: linear-gradient(180deg, var(--dpad-hi), var(--dpad) 60%);
+  color: rgb(255 255 255 / 0.35);
+  font-size: calc(var(--u) * 12);
+  display: grid;
+  place-items: center;
+}
+.dpad__btn:hover {
+  color: rgb(255 255 255 / 0.7);
+}
+.dpad__btn[data-pressed] {
+  background: var(--dpad);
+  color: #fff;
+  transform: scale(0.94);
+}
+.dpad__btn--up {
+  grid-area: 1 / 2;
+  border-radius: calc(var(--u) * 6) calc(var(--u) * 6) 0 0;
+}
+.dpad__btn--down {
+  grid-area: 3 / 2;
+  border-radius: 0 0 calc(var(--u) * 6) calc(var(--u) * 6);
+}
+.dpad__btn--left {
+  grid-area: 2 / 1;
+  border-radius: calc(var(--u) * 6) 0 0 calc(var(--u) * 6);
+}
+.dpad__btn--right {
+  grid-area: 2 / 3;
+  border-radius: 0 calc(var(--u) * 6) calc(var(--u) * 6) 0;
+}
+
+/* ---------------- A / B ---------------- */
+.ab {
+  display: flex;
+  align-items: flex-start;
+  gap: calc(var(--u) * 14);
+}
+.ab__item--b {
+  margin-top: calc(var(--u) * 30);
+}
+.ab__btn {
+  width: calc(var(--u) * var(--ab-size, 54));
+  height: calc(var(--u) * var(--ab-size, 54));
+  border-radius: 50%;
+  border: 0;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  font-size: calc(var(--u) * 18);
+  color: var(--btn-ab-ink);
+  background: radial-gradient(circle at 35% 30%, var(--btn-ab-hi), var(--btn-ab) 60%);
+  box-shadow:
+    0 calc(var(--u) * 4) 0 rgb(0 0 0 / 0.45),
+    0 0 0 calc(var(--u) * 4) var(--shell-lo);
+}
+.ab__btn:hover {
+  filter: brightness(1.25);
+}
+.ab__btn[data-pressed] {
+  transform: translateY(calc(var(--u) * 3));
+  box-shadow: 0 0 0 calc(var(--u) * 4) var(--shell-lo);
+}
+
+/* ---------------- START / SELECT ---------------- */
+.pills {
+  display: flex;
+  gap: calc(var(--u) * 16);
+}
+.pills__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(var(--u) * 5);
+  font-size: calc(var(--u) * 11);
+  letter-spacing: 0.06em;
+  color: var(--shell-ink-muted);
+}
+.pills__btn {
+  width: calc(var(--u) * 44);
+  height: calc(var(--u) * 14);
+  border-radius: calc(var(--u) * 8);
+  border: 0;
+  padding: 0;
+  background: var(--pill);
+  box-shadow:
+    0 calc(var(--u) * 2) 0 rgb(0 0 0 / 0.45),
+    0 0 0 calc(var(--u) * 3) var(--shell-lo);
+}
+.pills__btn:hover {
+  filter: brightness(1.4);
+}
+.pills__btn[data-pressed] {
+  transform: translateY(calc(var(--u) * 2));
+}
+
+/* ---------------- Gatillos L / R ---------------- */
+.shoulder {
+  position: absolute;
+  top: 0;
+  z-index: 0;
+  display: flex;
+  align-items: flex-start;
+  width: calc(var(--u) * 230);
+  height: calc(var(--u) * 60);
+  padding: calc(var(--u) * 10) calc(var(--u) * 40) 0;
+  box-sizing: border-box;
+  border: 0;
+  background: linear-gradient(180deg, var(--shell-hi), var(--shoulder) 40%);
+  color: var(--shell-ink);
+  font-size: calc(var(--u) * 12);
+  letter-spacing: 0.08em;
+  box-shadow: 0 calc(var(--u) * -2) 0 var(--shell-edge) inset;
+}
+.shoulder:hover {
+  filter: brightness(1.15);
+}
+.shoulder[data-pressed] {
+  transform: translateY(calc(var(--u) * 3));
+}
+.shoulder--l {
+  left: calc(var(--u) * 50);
+  border-radius: calc(var(--u) * 50) calc(var(--u) * 16) 0 0;
+}
+.shoulder--r {
+  right: calc(var(--u) * 50);
+  justify-content: flex-end;
+  border-radius: calc(var(--u) * 16) calc(var(--u) * 50) 0 0;
+}
+
+/* ---------------- Teclas de la carcasa: CV, Contacto, TV ---------------- */
+.keys {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--u) * 10);
+}
+.shell-key {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(var(--u) * 30);
+  padding: 0 calc(var(--u) * 14);
+  box-sizing: border-box;
+  border: 0;
+  border-radius: calc(var(--u) * 15);
+  background: var(--shell-key);
+  color: var(--shell-key-ink);
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 800;
+  font-size: calc(var(--u) * 12);
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  box-shadow:
+    0 calc(var(--u) * 3) 0 rgb(0 0 0 / 0.4),
+    inset 0 calc(var(--u) * 1) 0 rgb(255 255 255 / 0.15);
+}
+.shell-key:hover {
+  filter: brightness(1.3);
+}
+.shell-key:active,
+.shell-key[data-pressed] {
+  transform: translateY(calc(var(--u) * 2));
+  box-shadow: none;
+}
+.shell-key--icon {
+  padding: 0 calc(var(--u) * 10);
+  font-size: calc(var(--u) * 14);
+}
+
+/* ---------------- Bocina ---------------- */
+.speaker {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: calc(var(--u) * 54);
+  height: calc(var(--u) * 54);
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--shell-ink);
+}
+.speaker__grille {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--shell-edge) 30%, transparent 32%) 0 0 / calc(var(--u) * 9) calc(var(--u) * 9);
+  opacity: 0.8;
+}
+.speaker__icon {
+  position: relative;
+  width: calc(var(--u) * 22);
+  height: calc(var(--u) * 22);
+  padding: calc(var(--u) * 4);
+  border-radius: calc(var(--u) * 6);
+  background: var(--shell-key);
+  color: var(--shell-key-ink);
+}
+.speaker:hover .speaker__icon {
+  filter: brightness(1.3);
+}
+.console--clamshell .speaker,
+.console--compact .speaker {
+  width: calc(var(--u) * 40);
+  height: calc(var(--u) * 40);
+}
+
+/* ---------------- Logo ---------------- */
+.brand {
+  font-family: 'Press Start 2P', monospace;
+  font-weight: 400;
+  font-size: calc(var(--u) * 16);
+  font-style: italic;
+  color: var(--shell-ink);
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+.brand span {
+  color: var(--shell-ink-muted);
+}
+
+.console-hint {
+  margin: 12px 0 0;
+  font-family: 'Pixelify Sans', monospace;
+  font-size: 16px;
+  color: #a79fcf;
+  text-align: center;
+  text-shadow: 0 2px 0 #000;
+}
+
+/* ---------------- Modo TV ---------------- */
+:root[data-tv] .console,
+:root[data-tv] .console-hint {
+  visibility: hidden;
+}
+:root[data-tv] .scr-frame {
+  visibility: visible;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  border: 6px solid #0b0816;
+  border-radius: 0;
+  box-sizing: border-box;
+}
+.tv-exit {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  z-index: 70;
+  padding: 6px 10px;
+  border: 2px solid var(--scr-line);
+  background: var(--scr-surface);
+  color: var(--scr-ink);
+  font-size: 16px;
+  cursor: pointer;
+  opacity: 0.55;
+}
+.tv-exit:hover,
+.tv-exit:focus-visible {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lid--opening {
+    animation: none;
+  }
+}

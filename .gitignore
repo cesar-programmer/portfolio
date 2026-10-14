@@ -30,3 +30,6 @@ dist-ssr
 .vercel
 *.tsbuildinfo
 coverage
+
+# Capturas de revisión (locales)
+docs/capturas/
