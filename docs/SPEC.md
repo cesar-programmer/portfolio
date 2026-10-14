@@ -1,55 +1,67 @@
-# CESAR.DEV — Portafolio estilo Game Boy
+# CESAR.DEV — Portafolio estilo consola portátil retro
 
-Especificación para construir el portafolio de Cesar Cordova Contreras con Claude Code.
-Léela completa antes de escribir código. Si algo aquí contradice una instrucción más reciente de Cesar, gana la instrucción de Cesar.
+Especificación del portafolio de Cesar Cordova Contreras.
+Si algo aquí contradice una instrucción más reciente de Cesar, gana la instrucción de Cesar.
 
 ---
 
 ## 1. Objetivo
 
 Un portafolio que consiga entrevistas para puestos de **AI Developer / Backend Developer (Python · JS)**.
-El estilo Game Boy es el gancho para que lo recuerden; el contenido es lo que consigue el trabajo. Reglas que nunca se rompen:
+La estética retro es el gancho para que lo recuerden; el contenido es lo que consigue el trabajo. Reglas que nunca se rompen:
 
 1. Un reclutador debe poder ver **quién es Cesar, qué sabe hacer y cómo contactarlo en menos de 30 segundos**, sin tener que "jugar".
 2. Todo el contenido es **HTML real** (no canvas): se puede seleccionar, indexar (SEO), leer con lector de pantalla y traducir.
 3. Funciona perfecto en **celular**, que es donde muchos reclutadores abren el link desde LinkedIn.
 4. **Bilingüe ES / EN** de principio a fin.
 
+### Regla de oro: mínimo de clics
+- Cualquier sección a **1 clic**, cualquier proyecto a **1 clic**, siguiente proyecto a **1 clic**, CV y contacto a **1 clic**.
+- Nada importante depende del teclado ni del menú.
+
 ---
 
 ## 2. Dirección visual
 
 ### Referencia
-Game Boy original (DMG) con el lenguaje de interfaz de los RPG de esa consola: menús con cursor ▶, cajas de texto con borde doble, efecto máquina de escribir, mapa de región con rutas y nodos.
+Consolas portátiles de la era Game Boy Advance (horizontal y de concha) con el lenguaje de interfaz de los menús arcade y RPG retro: cursor ▶, cajas con borde pixel, efecto máquina de escribir.
 **Homenaje, no copia**: nada de logos, nombres, personajes ni sprites de Nintendo o Pokémon. Todo el arte y los nombres son originales.
 
-### Paleta (4 tonos, como la pantalla real)
-| Token | Hex | Uso |
+### Pantalla a color (por defecto) — paleta "Arcade"
+Referencia: menús arcade retro tipo "START GAME / PLAYER 1". Pixel duro siempre (sombras sin desenfoque).
+
+| Token | Valor | Uso |
 |---|---|---|
-| `--gb-darkest` | `#0f380f` | texto, bordes, sombras |
-| `--gb-dark` | `#306230` | elementos secundarios |
-| `--gb-light` | `#8bac0f` | fondos de cajas |
-| `--gb-lightest` | `#9bbc0f` | fondo de pantalla |
+| `--scr-bg` | `#140c2e` | fondo de la pantalla |
+| `--scr-surface` / `--scr-surface-2` | `#1e1442` / `#2a1c5c` | cajas y elementos elevados |
+| `--scr-ink` | `#f3eeff` | texto |
+| `--scr-muted` | `#bfb2e8` | texto secundario |
+| `--scr-title` | `#ffb000` | títulos (ámbar, con sombra pixel dura) |
+| `--scr-accent` | `#38e8ff` | acento cian (cursor, foco, enlaces) |
+| `--scr-accent-2` | `#ff4fa3` | acento rosa (etiquetas, avisos) |
 
-**Easter egg:** en Opciones se puede cambiar la paleta de la pantalla: *Verde clásico* (default), *Pocket* (grises) y *Color* (variante con acentos de color). Se guarda en `localStorage` dentro de try/catch.
+**Easter eggs en Opciones:** paleta *Verde clásico* (los 4 tonos `#0f380f · #306230 · #8bac0f · #9bbc0f`) y *Pocket* (grises). Se guardan en `localStorage` con try/catch.
 
-### La consola
-- **Escritorio:** la pantalla queda dentro de una carcasa de Game Boy dibujada con CSS/SVG (original, sin marcas), centrada. La cruceta, A, B, START y SELECT **funcionan con clic**. Debajo de la carcasa va un texto pequeño: "Usa ← ↑ → ↓, Enter y Esc · o haz clic".
-- **Celular:** la carcasa ocupa toda la pantalla en vertical; la cruceta y los botones son **los controles táctiles reales**. Así el formato del Game Boy resuelve la navegación móvil de forma natural.
-- Proporción de pantalla 10:9 (160×144), escalada a múltiplos enteros cuando se pueda (`image-rendering: pixelated`).
-- Efectos sutiles: rejilla de píxeles con baja opacidad, leve "ghosting" en transiciones y encendido con fundido de la pantalla. Nada que canse la vista.
+### Carcasa
+- Color por defecto: **morado índigo**. Opciones: **plateado** y **negro**. Todo con tokens CSS (`data-shell` en `<html>`).
+- Rótulos: START = **"MENÚ"**, SELECT = **"ES/EN"**, L = **"◀ L"**, R = **"R ▶"**.
+- Botones físicos siempre visibles, fuera de la pantalla:
+  - **"CV ⬇"**: descarga directa del CV en el idioma activo.
+  - **"✉ CONTACTO"**: abre la pestaña Contacto.
+  - **"📺"**: Modo TV (§7).
+  - **Bocina**: activa/silencia el sonido (empieza silenciado).
 
 ### Tipografía
-- Menús y títulos: **Press Start 2P** (Google Fonts).
-- Texto largo (descripciones de proyectos): **Pixelify Sans** o **VT323**, en un tamaño legible (mínimo 16px equivalentes en móvil).
+- Títulos, pestañas de la carcasa y etiquetas: **Press Start 2P** en múltiplos de 8px.
+- Texto largo: **Pixelify Sans**. Cuerpo mínimo **16px reales** (24px y 32px en pantallas grandes).
 
 ### Sonido
-- Efectos chiptune generados con **Web Audio API** (onda cuadrada: cursor, confirmar, cancelar, logro, encendido). Sin archivos de audio.
-- **Silenciado por defecto.** Un icono de bocina en la carcasa lo activa.
+- Efectos chiptune con **Web Audio API** (onda cuadrada: cursor, confirmar, cancelar, pestaña, logro). Sin archivos de audio.
+- **Silenciado por defecto.**
 
 ### Movimiento
-- Animaciones con **Framer Motion** (o CSS) en pasos discretos (`steps()`) para que se sientan de 8 bits.
-- Con `prefers-reduced-motion`: sin parpadeos ni sacudidas; el texto aparece completo, sin efecto máquina de escribir.
+- Animaciones en pasos discretos (`steps()`).
+- Con `prefers-reduced-motion`: sin parpadeos, sin parallax, sin animación de concha; el texto aparece completo.
 
 ---
 
@@ -57,215 +69,211 @@ Game Boy original (DMG) con el lenguaje de interfaz de los RPG de esa consola: m
 
 | Entrada | Acción |
 |---|---|
-| Flechas / WASD / cruceta | Mover cursor |
-| Enter / Z / botón **A** | Confirmar, avanzar texto |
-| Esc / X / Backspace / botón **B** | Regresar, saltar texto |
-| **START** | Abrir menú principal desde cualquier pantalla |
-| **SELECT** | Cambiar idioma ES ⇄ EN |
-| Clic / toque | Funciona directamente sobre cualquier opción |
+| Clic / toque | Funciona directamente sobre cualquier opción (siempre con cursor de mano) |
+| Hover | El cursor ▶ salta a esa opción; en Proyectos cambia la vista previa |
+| Flechas / WASD / cruceta | Mover cursor; ← → en una ficha = proyecto anterior/siguiente |
+| Enter / Z / botón **A** | Confirmar, completar texto |
+| Esc / X / Backspace / botón **B** | Regresar |
+| **Q / E**, **L / R** o gatillos **L / R** | Pestaña anterior / siguiente |
+| **M** o **START (MENÚ)** | Abrir/cerrar Opciones |
+| **I** o **SELECT (ES/EN)** | Cambiar idioma |
+| **F** o botón **📺** | Modo TV (Esc sale) |
+| Rueda del mouse / gesto táctil | Scroll dentro de la pantalla |
 
-Todo es accesible con teclado y con foco visible (borde ▶ parpadeante y `outline` real para lectores de pantalla).
+Texto de ayuda bajo la consola (escritorio): "Haz clic en cualquier opción · ← ↑ → ↓ · Enter / Esc · Q/E o L/R: pestañas · M: menú · I: idioma · F: Modo TV".
 
-> Implementación: START = tecla **M**, SELECT = tecla **L** (ver `src/console/input.ts`).
+Primera visita: globo de diálogo dentro de la pantalla ("¡Haz clic en cualquier opción o usa las flechas!"). Se cierra solo o con cualquier interacción; se recuerda en `localStorage`.
+
+Todo es accesible con teclado y con foco visible (`outline` real).
 
 ---
 
 ## 4. Flujo de pantallas
 
 ```
-Encendido → Título (PRESS START) → Menú principal
-                                    ├── MAPA DE PROYECTOS → Ficha de proyecto
-                                    ├── TARJETA DE ENTRENADOR (sobre mí)
-                                    ├── MOCHILA (habilidades)
-                                    ├── DIARIO (experiencia y educación)
-                                    ├── MEDALLAS (certificaciones)
-                                    ├── GUARDAR (contacto + CV)
-                                    └── OPCIONES (idioma, sonido, paleta, modo reclutador)
+Encendido (≤ 1 s, no bloqueante, solo primera visita)
+  └─> PESTAÑAS fijas arriba de la pantalla:
+      PROYECTOS · YO · SKILLS · MISIONES · MEDALLAS · CONTACTO
+      PROYECTOS → Ficha de proyecto (◀ ▶ anterior/siguiente)
+START (MENÚ) → ventana de Opciones (sobre cualquier pestaña)
 ```
 
-### 4.1 Encendido (≤ 2.5 s, se salta con cualquier tecla)
-Pantalla en blanco → el logo original **CESAR.DEV** baja desde arriba → "ding" de dos notas → transición al título.
-Solo se reproduce en la primera visita de la sesión.
+Ya no hay "PRESS START" obligatorio, menú principal ni mapa con sprite caminando.
 
-### 4.2 Título
-- Sprite original de Cesar (pixel art, de frente, animación de respiración de 2 cuadros).
-- "CESAR CORDOVA" / "AI & Backend Developer".
-- **PRESS START** parpadeando.
-- Esquina superior: botón visible **"Modo reclutador ⏩"** (ver §6). Debe verse desde el primer segundo.
+### 4.1 Encendido
+≤ 1 s, no bloquea la interacción y solo aparece en la primera visita. Después entra **directo** a PROYECTOS.
 
-### 4.3 Menú principal
-Caja a la derecha con cursor ▶, como el menú de pausa de un RPG. Al lado, un pequeño texto que describe la opción seleccionada.
+### 4.2 Pestañas
+- Fila fija arriba, dentro de la pantalla, siempre visible.
+- Gatillos L/R y teclas Q/E cambian a la pestaña anterior/siguiente.
+- En pantallas angostas: iconos con etiqueta y scroll horizontal.
+- Cada pestaña y cada proyecto tiene su URL por idioma (§7).
 
-### 4.4 Mapa de proyectos (el selector de niveles)
-Un mapa de región original con **3 zonas** unidas por rutas. Cada proyecto es un nodo.
-- Mover el cursor entre nodos hace que un pequeño sprite de Cesar camine por la ruta hasta el nodo (animación automática; el usuario no controla al personaje).
-- Una caja inferior muestra: nombre del nivel, stack en iconos y "dificultad" (★).
-- **A** entra a la ficha del proyecto. **B** vuelve al menú.
-- Los nodos visitados quedan marcados ✓ (se guarda en `localStorage`).
-- Visitar todos los proyectos desbloquea la medalla secreta "Explorador" con sonido de logro.
+### 4.3 PROYECTOS (estilo enciclopedia)
+- Encabezado compacto: nombre, "AI & Backend Developer" y botón **"Modo reclutador ⏩"**.
+- **Lista** a la izquierda agrupada por mundo (**IA / Producción / Sistemas**) con filtro rápido. Visitados marcados ✓. Al final, "Zona clásica" colapsada (solo enlaces).
+- **Vista previa** a la derecha (imagen o ilustración, misión, stack, etiquetas como EN PRODUCCIÓN, NASA 2025, PRIVADO) que cambia con **hover** o con las flechas, sin clic.
+- **Un clic (o A)** abre la ficha. Si el espacio es angosto, lista y vista previa se apilan.
+- Visitar todos los proyectos desbloquea la medalla secreta **"Explorador"** con sonido de logro.
 
-Zonas y niveles en §5.
+### 4.4 Ficha de proyecto
+1. **Imagen.** Captura real: se muestra reducida a la paleta de la pantalla (dithering) y "Ver a color" la transforma con un parpadeo blanco. Sin captura: **ilustración pixel art** con datos ficticios, etiqueta "Ilustración", sin "Ver a color".
+2. **Nombre**, rol de Cesar (en grande cuando es liderazgo) y año.
+3. **Misión** — 1–2 frases (máquina de escribir; A la completa).
+4. **Lo que hice** — 3 viñetas máximo.
+5. **Jefe final** — el reto técnico más difícil y cómo se resolvió (máquina de escribir).
+6. **Stack**.
+7. **Botones:** `Ver demo` · `Ver código` · `Caso de estudio` (solo los que existan; si es privado: "Código privado 🔒").
+8. **◀ ▶** para ir al proyecto anterior/siguiente sin cerrar; ← → también. B / Esc vuelve a la lista.
 
-### 4.5 Ficha de proyecto ("Entrada de la enciclopedia")
-Estructura fija para cada proyecto:
-1. **Imagen.** Si hay captura real: se muestra convertida a la paleta de 4 tonos (dithering) y al presionar **A** o "Ver a color" se transforma con una animación de "evolución" (parpadeo blanco) en la captura a todo color. Si no hay captura (proyectos privados o entregados): se usa una **ilustración en pixel art** de la interfaz hecha para el portafolio, con datos ficticios, con la etiqueta "Ilustración" y sin la opción de ver a color.
-2. **Nombre**, rol de Cesar y año.
-3. **Misión** — el problema, en 1–2 frases.
-4. **Lo que hice** — 3 viñetas máximo, con verbos de acción.
-5. **Jefe final** — el reto técnico más difícil y cómo se resolvió.
-6. **Stack** — iconos pixel.
-7. **Botones:** `Ver demo` · `Ver código` · `Caso de estudio` (solo los que existan; si el código es privado se muestra "Código privado 🔒").
+### 4.5 YO (Sobre mí)
+Credencial: nombre, clase "AI / Backend Dev", base "Tijuana, B.C.", idiomas, estudios y resumen de 2–3 líneas.
+**Habilidades especiales** (estilo movimientos de RPG): nombre + una línea con evidencia concreta. Sin valores numéricos ni barras.
 
-El texto de Misión y Jefe final aparece con efecto máquina de escribir; **A** lo completa al instante.
+### 4.6 SKILLS (Mochila)
+Bolsillos: IA & ML · Backend · Frontend · Herramientas. Al elegir un ítem se ve en qué proyectos se usó (enlaces a las fichas).
 
-### 4.6 Tarjeta de entrenador (Sobre mí)
-Formato de credencial: sprite de Cesar, nombre, clase "AI / Backend Dev", base "Tijuana, B.C.", idiomas (Español nativo · Inglés B2), estudios (Ingeniería en Software — UABC) y un resumen de 2–3 líneas.
-Estadísticas en barras de 8 segmentos para las soft skills (Comunicación, Trabajo en equipo, Resolución de problemas, Organización, Pensamiento crítico, Proactividad, Empatía).
+### 4.7 MISIONES (Experiencia y educación)
+Bitácora: Clever Cloud (Full-Stack, mar–sep 2025), Gobierno del Estado de B.C. (prácticas, Mesa Espejo), formación UABC y SDGKU (2024).
 
-### 4.7 Mochila (Habilidades)
-Inventario con pestañas como bolsillos:
-- **IA & ML:** Python, TensorFlow, LangChain, LangGraph, OpenAI API, RAG (embeddings, vector DBs, retrieval), FastAPI, MCP, MediaPipe / visión por computadora, n8n.
-- **Backend:** Node.js, Express, PHP (POO), Medoo, PostgreSQL / PostGIS / pgvector, MySQL, REST APIs, JWT, Docker.
-- **Frontend:** JavaScript, TypeScript, React, Next.js, Vue.js, Vite, Tailwind, Bootstrap.
-- **Herramientas:** Git/GitHub, Supabase, Playwright, Vitest, Agile/Scrum, CI/CD.
+### 4.8 MEDALLAS
+Vitrina de 8 huecos: AWS Academy Graduate — Cloud Architecting · DeepLearning.AI — TensorFlow Developer · **NASA Space Apps 2025 — líder del equipo Sofonques** · (secreta) **Explorador**. Huecos vacíos con "???". Cada medalla abre su detalle y enlace de verificación si existe.
 
-Al seleccionar un ítem, la caja inferior dice en qué proyectos se usó (enlaces a esas fichas). Esto conecta habilidades con pruebas.
+### 4.9 CONTACTO
+Email `cesarcordova.developer@gmail.com` (copiar → "¡Copiado!"), LinkedIn, GitHub `cesar-programmer`, descarga del CV (ES y EN). **Sin teléfono** en ninguna parte del sitio.
 
-### 4.8 Diario (Experiencia y educación)
-Formato de bitácora de misiones:
-- **Misión completada — Full-Stack Developer, Clever Cloud** (mar–sep 2025): Vue.js + PHP con arquitectura limpia; APIs REST con Medoo y documentación técnica; entregas continuas en Agile/Scrum.
-- **Misión completada — Prácticas profesionales, Gobierno del Estado de B.C.** (Coordinación de Gabinete): Mesa Espejo.
-- **Formación:** Ingeniería en Software — UABC · Full Stack Developer — San Diego Global Knowledge University (2024).
-
-### 4.9 Medallas (Certificaciones)
-Vitrina con 8 huecos (como estuche de medallas). Desbloqueadas:
-- AWS Academy Graduate — Cloud Architecting
-- DeepLearning.AI — TensorFlow Developer Specialization
-- (Secreta) Explorador — visitar todos los proyectos
-
-Huecos vacíos con "???" (sugiere crecimiento). Cada medalla abre su detalle y enlace de verificación si existe.
-
-### 4.10 Guardar (Contacto)
-"¿Quieres guardar tu progreso?" → **SÍ** muestra la caja de contacto:
-- Email `cesarcordova.developer@gmail.com` (botón copiar con "¡Copiado!")
-- LinkedIn, GitHub `cesar-programmer`
-- **Descargar CV** (PDF, versión ES y EN)
-- **Sin teléfono** en ninguna parte del sitio (decisión de Cesar).
-
-Animación "GUARDANDO… ▓▓▓▓▓░░" antes de mostrar los datos (≤ 1 s).
-
-### 4.11 Opciones
-Idioma · Sonido · Paleta · Velocidad de texto (lenta / normal / instantánea) · **Modo reclutador**.
+### 4.10 Opciones (START / MENÚ)
+Idioma · Sonido · Paleta de pantalla · Color de carcasa · Velocidad de texto (lenta / normal / instantánea) · Modo reclutador.
 
 ---
 
 ## 5. Contenido de proyectos
 
-Los textos viven en `src/content/{es,en}/projects.json` y los metadatos (stack, enlaces, estrellas, imágenes) en `src/content/shared/projects.json`.
+Textos en `src/content/{es,en}/projects.json`; metadatos sin idioma (stack, enlaces, estrellas, imágenes, año) en `src/content/shared/projects.json`.
 
-### Zona 1 — LABORATORIO IA (lo que respalda el título "AI Developer")
-- **★★★★★ Stepable** — jefe de la zona, primer nodo destacado. Repo público `cesar-programmer/stepable`. Capturas: `docs/assets/recorrido.png`, `asistente.png`, `editor.png` del repo.
-- **★★★★ Vector Service API** — segundo nodo; conectado por una ruta a Stepable y al NPC "El Profesor". Repo público (recomendado renombrarlo a `vector-service-api`). Capturas: panel Streamlit y `/docs` de FastAPI. En su ficha, un "¿Sabías que…?" indica que será el cerebro del NPC (fase 6).
-- **★★★★ Sofonques Explorer — NASA Space Apps Challenge 2025** — equipo Sofonques; Cesar fue **líder del equipo y desarrollador backend** (mostrar el rol en grande). Repo privado `base-nasa-proyect` → "Código privado 🔒". El nodo tiene forma de estrella y su ficha muestra una medalla "Space Apps 2025".
-- **★★ Finance Chatbot** (nivel bonus, 2024) — repo `financeChatbot-`, primer RAG con Chainlit. "Primer paso" en la línea de tiempo de IA.
+### Mundo IA
+- **★★★★★ Stepable** (2026) — repo público `cesar-programmer/stepable`. Capturas del repo (`docs/assets/recorrido.png`, `asistente.png`, `editor.png`).
+- **★★★★ Vector Service API** (2025) — repo público (recomendado renombrarlo a `vector-service-api`). "¿Sabías que…?": será el cerebro del NPC "El Profesor".
+- **★★★★ Sofonques Explorer — NASA Space Apps Challenge 2025** — Cesar fue **líder del equipo y desarrollador backend** (rol en grande). Repo privado. Etiqueta y medalla "NASA 2025".
+- **★★ Finance Chatbot** (2024, bonus) — primer RAG con Chainlit.
 
-### Zona 2 — CIUDAD (software en producción para clientes e instituciones reales)
-- **★★★★★ Mesa Espejo** — jefe de la zona. Prácticas, Gobierno del Estado de B.C. **Caso de estudio, sin enlace al código y solo con datos ficticios**. Ilustraciones pixel art (semáforos, mapa de calor, tabla de incidencias) marcadas como "Ilustración".
-- **★★★★ Sistema de Reportes Docentes — UABC** — en producción. Repo privado. Etiqueta "EN PRODUCCIÓN" parpadeante en la ficha y en el nodo.
-- **★★ Koa Caffe — Menú digital** (cliente real) — repo público `coffe-menu`, GitHub Pages + QR.
+### Mundo Producción
+- **★★★★★ Mesa Espejo** — prácticas, Gobierno del Estado de B.C. **Caso de estudio con datos ficticios**, sin código ni capturas reales. Año: pendiente.
+- **★★★★ Sistema de Reportes Docentes — UABC** (2025) — **EN PRODUCCIÓN**. Repo privado.
+- **★★ Koa Caffe — Menú digital** (2026, cliente real) — repo `coffe-menu`, GitHub Pages + QR.
 
-### Zona 3 — TALLER (móvil, tiempo real y sistemas)
-- **★★★★★ Ecosistema Antigravity** — jefe de la zona. Repo privado `newsbot`. **Proyecto de ingeniería de sistemas, no promesa de ganancias**: sin rendimientos, saldos ni nombres de cuentas.
-- **★★★★ Alerta ACV** — UABC & Cruz Roja Mexicana. Repo privado `stroke`. Ilustraciones de las pruebas (rostro, brazos, habla) y botón de emergencia.
-- **★★ WalletG** (nivel bonus) — Django REST (`WalletG-backend`) + React (`WalletG-Front`).
+### Mundo Sistemas
+- **★★★★★ Ecosistema Antigravity** (2026) — repo privado `newsbot`. **Proyecto de ingeniería, no promesa de ganancias**: sin rendimientos, saldos ni cuentas.
+- **★★★★ Alerta ACV** (2025) — UABC & Cruz Roja Mexicana. Repo privado. Jefe final: lograr que MediaPipe analizara el rostro en tiempo real dentro de una app Flutter con rendimiento aceptable en Android; se resolvió con un módulo nativo en Kotlin (CameraX + MediaPipe) conectado por method channel.
+- **★★ WalletG** (2024, bonus) — Django REST + React.
 
-**Zona clásica (colapsada, "Ver más")**: ecommerceShopy, machineLearningJS, proyectos del bootcamp. Solo lista con enlaces, sin ficha.
+**Zona clásica** (colapsada): ecommerceShopy, machineLearningJS, proyectos del bootcamp. Solo enlaces.
 
-> No incluir: ElotApp, `langchain-notes`, `test-m` (código de Mesa Espejo; nunca enlazarlo), SmartMaq.
+> No incluir: ElotApp, `langchain-notes`, `test-m` (nunca enlazarlo), SmartMaq.
 
 ---
 
 ## 6. Modo reclutador
 
-Ruta propia: `/es/cv` y `/en/cv`. Se llega desde el botón del título, desde Opciones o directamente por URL.
-- Una sola página limpia, sin carcasa ni animaciones: encabezado con nombre, título y contacto; resumen; proyectos destacados (Stepable, Ecosistema Antigravity, Mesa Espejo, Sofonques Explorer, Sistema de Reportes Docentes, Vector Service API, Alerta ACV); experiencia; habilidades; certificaciones; educación; botón de descargar CV.
-- Conserva la paleta y la tipografía pixel en títulos, con texto de cuerpo en fuente normal.
-- Imprimible (`@media print`).
-- Botón "▶ Volver al juego".
+Ruta propia: `/es/cv` y `/en/cv`. Se llega desde el encabezado de PROYECTOS, desde Opciones o por URL.
+- Una sola página limpia, sin consola ni animaciones: nombre, título y contacto; resumen; proyectos destacados (Stepable, Ecosistema Antigravity, Mesa Espejo, Sofonques Explorer, Reportes Docentes, Vector Service API, Alerta ACV); experiencia; habilidades; certificaciones; educación; descargar CV.
+- Usa la paleta a color y la tipografía pixel en títulos, con cuerpo en fuente normal.
+- Imprimible (`@media print`). Botón "▶ Volver al juego".
 
 ---
 
 ## 7. Técnico
 
 ### Stack
-- Vite + React + TypeScript · Tailwind CSS (tokens de la paleta como variables CSS) · Framer Motion · Zustand · React Router (rutas reales por pantalla y por idioma, p. ej. `/es/proyectos/stepable`) · textos en `src/content/{es,en}/*.json`, nunca dentro de los componentes.
-- Deploy en **Vercel** (`*.vercel.app` primero). La URL base vive en una sola variable (`VITE_SITE_URL`, ver `src/config.ts`).
+Vite + React + TypeScript · Tailwind CSS 4 · Zustand · React Router · textos en JSON por idioma · Deploy en Vercel (`VITE_SITE_URL` en `src/config.ts`).
+
+### Rutas (una por pestaña, proyecto e idioma)
+| ES | EN |
+|---|---|
+| `/es/proyectos`, `/es/proyectos/:slug` | `/en/projects`, `/en/projects/:slug` |
+| `/es/yo` | `/en/about` |
+| `/es/skills` | `/en/skills` |
+| `/es/misiones` | `/en/missions` |
+| `/es/medallas` | `/en/badges` |
+| `/es/contacto` | `/en/contact` |
+| `/es/cv` | `/en/cv` |
+
+`/` redirige según el idioma del navegador. Cambiar de idioma conserva la sección y el proyecto.
+
+### Distribución responsiva
+| Viewport | Consola |
+|---|---|
+| Celular vertical (< 600px) | **Concha abierta** a pantalla completa (`100dvh`); controles nunca tapados por la barra del navegador. Animación de apertura ≤ 1 s en la primera visita (saltable; desactivada con reduced-motion). |
+| Celular horizontal (alto < 500px) | **Horizontal compacta**: la pantalla llena casi toda la altura; controles reducidos a los lados. |
+| Tablet vertical (600–1023px) | Concha centrada con ancho máximo. |
+| Laptop (1024–1439px) | Horizontal ajustada a la altura; pantalla ≥ 55% del ancho de la consola. |
+| ≥ 1440px, 2K, 4K, ultra ancho | Horizontal con **tamaño máximo**, limitada por la altura. El espacio sobrante muestra un **fondo ambiental**: habitación arcade nocturna con neón y estrellas pixel, con parallax sutil (desactivado con reduced-motion). |
+
+- **Pantalla 3:2** en las consolas horizontales. En la concha la pantalla ocupa todo el alto disponible de la tapa (hasta ~1:1.1) para que el contenido sea legible en celular.
+- Escalado con una variable CSS (`--u`) calculada del ancho y alto disponibles, con mínimo y máximo.
+- El contenido de la pantalla usa **container queries sobre la pantalla** (no sobre el viewport).
+- Sprites, iconos y bordes pixel con escalado entero e `image-rendering: pixelated`. Fuentes pixel en múltiplos de 8px.
+
+### Modo TV
+Botón 📺 o tecla F: la pantalla llena el viewport con un marco delgado y la consola se oculta. Usa la Fullscreen API si está disponible. Esc o el mismo botón vuelve.
 
 ### Estructura
 ```
 src/
-  content/es|en/   profile.json, projects.json, skills.json, experience.json, badges.json, ui.json
-  content/shared/  metadatos sin idioma (stack, enlaces, estrellas, imágenes)
-  console/         Shell (carcasa), Screen, DPad, Buttons, input/useControls (teclado + táctil + clic)
-  ui/              TextBox (máquina de escribir), Menu (cursor ▶), Window, PixelImage (dithering ⇄ color)
-  screens/         Boot, Title, MainMenu, WorldMap, ProjectEntry, TrainerCard, Bag, Journal, Badges, Save, Options
+  content/es|en/   profile, projects, skills, experience, badges, ui (.json)
+  content/shared/  metadatos sin idioma
+  console/         Console (horizontal / concha), partes de la carcasa, input y useControls, useLayout, TV
+  ambient/         fondo arcade
+  screens/         GameScreen (pestañas), Projects, ProjectDetail, About, Skills, Missions, Badges, Contact, Options, Boot
+  ui/              Menu, Panel, Typewriter, PixelImage, PixelIcon, TipBubble, Toast
   recruiter/       RecruiterPage
-  audio/           sfx.ts (Web Audio)
-  store/           game.ts (Zustand)
+  audio/           sfx.ts
+  store/           game.ts
+  routes.ts        rutas por idioma
 public/
-  sprites/  screenshots/  illustrations/  cv/cesar-cordova-es.pdf  cv/cesar-cordova-en.pdf
+  screenshots/  illustrations/  cv/
 ```
 
 ### Calidad mínima
 - Lighthouse ≥ 90 en Performance, Accessibility, SEO y Best Practices.
-- Open Graph con imagen de vista previa estilo Game Boy.
-- `lang` correcto por idioma y `hreflang` entre ES y EN.
-- Sprites y capturas optimizados; fuentes con `font-display: swap`.
-- Sin API keys en el cliente.
+- Open Graph con imagen de vista previa; `lang` por idioma y `hreflang` ES/EN.
+- Imágenes optimizadas; fuentes con `font-display: swap`; sin API keys en el cliente.
 
 ### Arte
-Pixel art propio como SVG o PNG pequeños (16×16 o 32×32), en archivos sueltos.
-
-**Sprite de Cesar (genérico, no un retrato):** hombre joven, piel morena, cabello negro-café corto, lentes de armazón oscuro, sudadera o playera sencilla. Versiones: de frente con respiración (2 cuadros); caminando en 4 direcciones (2 cuadros cada una); retrato de busto 32×32. En 4 tonos, la piel usa el tono medio y el cabello el más oscuro; en la paleta "Color", piel café y cabello negro-café (`--gb-skin`, `--gb-hair`).
-
-**Ilustraciones de proyectos sin captura** (Mesa Espejo, Reportes Docentes, Antigravity, Alerta ACV): pantallas simplificadas en pixel art con datos ficticios. El dithering de capturas se hace en build o en runtime con un `<canvas>` oculto; la imagen visible sigue siendo `<img>` con `alt`.
+Pixel art propio (SVG/PNG pequeños). Ilustraciones de proyectos sin captura (Mesa Espejo, Reportes Docentes, Antigravity, Alerta ACV, Sofonques, WalletG, Finance Chatbot) con datos ficticios. El dithering de capturas se hace en runtime con un `<canvas>` oculto; la imagen visible sigue siendo `<img>` con `alt`.
 
 ---
 
 ## 8. Fases
 
-Trabajar en este orden y mostrar el resultado al terminar cada fase.
+1. **Base** ✅ — proyecto, tokens, contenido ES/EN, controles.
+2. **Rediseño de consola y Proyectos** ✅ — consola horizontal y de concha, botones de la carcasa, paleta a color, pestañas con rutas, PROYECTOS completo (lista + vista previa + ficha con ◀ ▶), Opciones, Modo TV, fondo ambiental.
+3. **Resto de pestañas** — pulir YO, SKILLS, MISIONES, MEDALLAS y CONTACTO; ilustraciones pixel art de los proyectos sin captura.
+4. **Modo reclutador, accesibilidad, SEO, rendimiento y deploy** en Vercel.
+5. **NPC con IA — "El Profesor"** — responde preguntas sobre Cesar usando el **Vector Service API** (FastAPI + ChromaDB) con su CV y fichas indexadas, más un LLM. Cita la ficha de origen, límite de uso por visitante y respuesta de respaldo.
 
-1. **Base:** proyecto, tokens, fuentes, contenido JSON (ES + EN), carcasa responsive con controles (teclado, clic y táctil). ✅
-2. **Esqueleto del juego:** Encendido, Título, Menú principal, navegación con rutas reales, cambio de idioma con SELECT.
-3. **Mapa y fichas:** mapa de 3 zonas, sprite caminando entre nodos, ficha de proyecto completa con imagen dithering ⇄ color.
-4. **Resto de pantallas:** Tarjeta, Mochila, Diario, Medallas, Guardar, Opciones; sonido y paletas.
-5. **Modo reclutador, accesibilidad, SEO, rendimiento y deploy** en Vercel.
-6. **(Fase 2 del portafolio) NPC con IA — "El Profesor":** responde preguntas sobre Cesar usando el **Vector Service API** (FastAPI + ChromaDB) con su CV y fichas indexadas, más un LLM. Cita la ficha de origen. Límite de uso por visitante y respuesta de respaldo si el servicio no está disponible.
+Un commit por bloque de trabajo terminado; repo público `cesar-programmer/portfolio`.
 
 ---
 
 ## 9. Decisiones y pendientes
 
 ### Decidido
-- ElotApp **no** entra.
-- Sofonques: equipo **Sofonques**, **NASA Space Apps Challenge 2025**, Cesar fue **líder y desarrollador backend**.
-- Reportes Docentes: **en uso actualmente en la UABC**.
-- Antigravity (`newsbot`): **sí se muestra**, como proyecto de ingeniería, sin cifras de trading.
-- Mesa Espejo: **solo datos ficticios** e ilustraciones; sin código ni capturas reales.
-- Proyectos sin capturas: ilustraciones pixel art.
-- Teléfono: **no** aparece en el sitio.
-- Dominio propio: después; mientras tanto, `*.vercel.app`.
-- CV: versiones en **español e inglés**.
-- Sprite: genérico, piel morena, cabello negro-café, lentes.
+- ElotApp no entra. Teléfono no aparece. Dominio propio después (`*.vercel.app` mientras tanto).
+- Sofonques: NASA Space Apps Challenge 2025, Cesar **líder y backend**; también en la vitrina de Medallas.
+- Reportes Docentes en uso en la UABC. Antigravity sin cifras de trading. Mesa Espejo solo con datos ficticios.
+- "Lo que hice" condensado a 3 viñetas máximo.
+- Soft skills como "Habilidades especiales" con evidencia, sin números.
+- CV en español e inglés.
 
 ### Pendiente
-- [ ] Crear el CV en inglés (PDF) y ponerlo en `public/cv/`.
-- [ ] Revisar los textos de las fichas (en especial Reportes Docentes y Antigravity).
-- [ ] Repo `test-m` (código de Mesa Espejo) está **público**: valorar hacerlo privado.
-- [ ] Conseguir capturas de Alerta ACV, Stepable y Vector Service API si existen.
+- [ ] URL de LinkedIn.
+- [ ] Año de Mesa Espejo.
+- [ ] Revisar las Habilidades especiales propuestas (marcadas con `"review": true` en `profile.json`).
+- [ ] Revisar textos de "Jefe final" (Mesa Espejo, Reportes Docentes, Koa Caffe, Finance Chatbot, WalletG).
+- [ ] CV en PDF (ES y EN) en `public/cv/`.
+- [ ] Capturas de Vector Service API (panel Streamlit y `/docs`) y Koa Caffe.
 
 ## 10. Fuera del sitio (pero suma)
-- Fijar en GitHub: el repo del portafolio, Stepable, Vector Service API y Koa Caffe Menu.
-- Bio y README de perfil con enlace al portafolio.
-- Descripción y "About" en cada repo destacado; renombrar el microservicio vectorial.
+- Fijar en GitHub: portfolio, Stepable, Vector Service API y Koa Caffe Menu.
+- Bio y README de perfil con enlace al portafolio; "About" en cada repo destacado; renombrar el microservicio vectorial.
