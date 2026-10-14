@@ -1,0 +1,29 @@
+{
+  "missions": [
+    {
+      "id": "clever-cloud",
+      "status": "Misión completada",
+      "role": "Full-Stack Developer",
+      "org": "Clever Cloud",
+      "period": "mar 2025 – sep 2025",
+      "points": [
+        "Desarrollé con Vue.js y PHP siguiendo arquitectura limpia.",
+        "Construí APIs REST con Medoo y escribí su documentación técnica.",
+        "Entregué de forma continua en un equipo Agile/Scrum."
+      ]
+    },
+    {
+      "id": "gobierno-bc",
+      "status": "Misión completada",
+      "role": "Prácticas profesionales",
+      "org": "Gobierno del Estado de B.C. — Coordinación de Gabinete",
+      "period": null,
+      "points": ["Desarrollé Mesa Espejo, el dashboard de seguimiento escolar."],
+      "project": "mesa-espejo"
+    }
+  ],
+  "education": [
+    { "id": "uabc", "title": "Ingeniería en Software", "org": "UABC", "period": null },
+    { "id": "sdgku", "title": "Full Stack Developer", "org": "San Diego Global Knowledge University", "period": "2024" }
+  ]
+}

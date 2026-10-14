@@ -1,0 +1,95 @@
+{
+  "meta": {
+    "title": "CESAR.DEV — Cesar Cordova · AI & Backend Developer",
+    "description": "Portfolio of Cesar Cordova Contreras, AI & Backend Developer (Python · JS) based in Tijuana, Mexico. AI, RAG, agents and production backend projects."
+  },
+  "console": {
+    "hint": "Use ← ↑ → ↓, Enter and Esc · or click",
+    "hintExtra": "M: menu · L: language",
+    "screenLabel": "Portfolio screen",
+    "dpad": { "up": "Up", "down": "Down", "left": "Left", "right": "Right" },
+    "a": "A — confirm",
+    "b": "B — back",
+    "start": "START — main menu",
+    "select": "SELECT — switch language",
+    "soundOn": "Sound on. Click to mute.",
+    "soundOff": "Sound muted. Click to turn on.",
+    "power": "Power",
+    "skip": "Skip to content"
+  },
+  "title": {
+    "pressStart": "PRESS START",
+    "recruiter": "Recruiter mode ⏩",
+    "recruiterLabel": "See the single-page version, no game"
+  },
+  "menu": {
+    "heading": "MENU",
+    "items": {
+      "map": { "label": "PROJECTS", "description": "Project map: AI, production software and systems." },
+      "trainer": { "label": "ID CARD", "description": "Who I am: profile, languages and education." },
+      "bag": { "label": "BAG", "description": "Technical skills and where I used them." },
+      "journal": { "label": "JOURNAL", "description": "Work experience and education." },
+      "badges": { "label": "BADGES", "description": "Certifications and achievements." },
+      "save": { "label": "SAVE", "description": "Contact info and CV download." },
+      "options": { "label": "OPTIONS", "description": "Language, sound, palette and recruiter mode." }
+    }
+  },
+  "common": {
+    "back": "Back",
+    "yes": "YES",
+    "no": "NO",
+    "next": "Next",
+    "language": "Language",
+    "spanish": "Español",
+    "english": "English",
+    "illustration": "Illustration",
+    "viewColor": "View in color",
+    "viewDemo": "View demo",
+    "viewCode": "View code",
+    "caseStudy": "Case study",
+    "privateCode": "Private code 🔒",
+    "inProduction": "IN PRODUCTION",
+    "visited": "Visited",
+    "difficulty": "Difficulty",
+    "mission": "Mission",
+    "whatIDid": "What I did",
+    "finalBoss": "Final boss",
+    "stack": "Stack",
+    "role": "Role",
+    "year": "Year",
+    "seeMore": "See more",
+    "classicZone": "Classic zone",
+    "copy": "Copy",
+    "copied": "Copied!",
+    "downloadCv": "Download CV",
+    "cvEs": "CV in Spanish",
+    "cvEn": "CV in English",
+    "verify": "Verify",
+    "backToGame": "▶ Back to the game"
+  },
+  "save": {
+    "question": "Do you want to save your progress?",
+    "saving": "SAVING…",
+    "done": "Progress saved! Here's how to reach me:"
+  },
+  "options": {
+    "heading": "OPTIONS",
+    "sound": "Sound",
+    "on": "ON",
+    "off": "OFF",
+    "palette": "Palette",
+    "palettes": { "classic": "Classic green", "pocket": "Pocket", "color": "Color" },
+    "textSpeed": "Text speed",
+    "speeds": { "slow": "Slow", "normal": "Normal", "instant": "Instant" },
+    "recruiter": "Recruiter mode"
+  },
+  "achievements": {
+    "unlocked": "Badge unlocked!"
+  },
+  "phase1": {
+    "heading": "CONTROL TEST",
+    "lastInput": "Last input",
+    "none": "—",
+    "help": "SELECT switches language. A confirms."
+  }
+}

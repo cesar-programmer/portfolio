@@ -1,0 +1,95 @@
+{
+  "meta": {
+    "title": "CESAR.DEV — Cesar Cordova · AI & Backend Developer",
+    "description": "Portafolio de Cesar Cordova Contreras, AI & Backend Developer (Python · JS) en Tijuana, B.C. Proyectos de IA, RAG, agentes y backend en producción."
+  },
+  "console": {
+    "hint": "Usa ← ↑ → ↓, Enter y Esc · o haz clic",
+    "hintExtra": "M: menú · L: idioma",
+    "screenLabel": "Pantalla del portafolio",
+    "dpad": { "up": "Arriba", "down": "Abajo", "left": "Izquierda", "right": "Derecha" },
+    "a": "A — confirmar",
+    "b": "B — regresar",
+    "start": "START — menú principal",
+    "select": "SELECT — cambiar idioma",
+    "soundOn": "Sonido activado. Clic para silenciar.",
+    "soundOff": "Sonido silenciado. Clic para activar.",
+    "power": "Encendido",
+    "skip": "Saltar al contenido"
+  },
+  "title": {
+    "pressStart": "PRESS START",
+    "recruiter": "Modo reclutador ⏩",
+    "recruiterLabel": "Ver la versión de una sola página, sin juego"
+  },
+  "menu": {
+    "heading": "MENÚ",
+    "items": {
+      "map": { "label": "PROYECTOS", "description": "Mapa de proyectos: IA, software en producción y sistemas." },
+      "trainer": { "label": "TARJETA", "description": "Quién soy: perfil, idiomas y estudios." },
+      "bag": { "label": "MOCHILA", "description": "Habilidades técnicas y dónde las usé." },
+      "journal": { "label": "DIARIO", "description": "Experiencia laboral y formación." },
+      "badges": { "label": "MEDALLAS", "description": "Certificaciones y logros." },
+      "save": { "label": "GUARDAR", "description": "Contacto y descarga del CV." },
+      "options": { "label": "OPCIONES", "description": "Idioma, sonido, paleta y modo reclutador." }
+    }
+  },
+  "common": {
+    "back": "Regresar",
+    "yes": "SÍ",
+    "no": "NO",
+    "next": "Siguiente",
+    "language": "Idioma",
+    "spanish": "Español",
+    "english": "English",
+    "illustration": "Ilustración",
+    "viewColor": "Ver a color",
+    "viewDemo": "Ver demo",
+    "viewCode": "Ver código",
+    "caseStudy": "Caso de estudio",
+    "privateCode": "Código privado 🔒",
+    "inProduction": "EN PRODUCCIÓN",
+    "visited": "Visitado",
+    "difficulty": "Dificultad",
+    "mission": "Misión",
+    "whatIDid": "Lo que hice",
+    "finalBoss": "Jefe final",
+    "stack": "Stack",
+    "role": "Rol",
+    "year": "Año",
+    "seeMore": "Ver más",
+    "classicZone": "Zona clásica",
+    "copy": "Copiar",
+    "copied": "¡Copiado!",
+    "downloadCv": "Descargar CV",
+    "cvEs": "CV en español",
+    "cvEn": "CV en inglés",
+    "verify": "Verificar",
+    "backToGame": "▶ Volver al juego"
+  },
+  "save": {
+    "question": "¿Quieres guardar tu progreso?",
+    "saving": "GUARDANDO…",
+    "done": "¡Progreso guardado! Así puedes contactarme:"
+  },
+  "options": {
+    "heading": "OPCIONES",
+    "sound": "Sonido",
+    "on": "SÍ",
+    "off": "NO",
+    "palette": "Paleta",
+    "palettes": { "classic": "Verde clásico", "pocket": "Pocket", "color": "Color" },
+    "textSpeed": "Velocidad de texto",
+    "speeds": { "slow": "Lenta", "normal": "Normal", "instant": "Instantánea" },
+    "recruiter": "Modo reclutador"
+  },
+  "achievements": {
+    "unlocked": "¡Medalla desbloqueada!"
+  },
+  "phase1": {
+    "heading": "PRUEBA DE CONTROLES",
+    "lastInput": "Última entrada",
+    "none": "—",
+    "help": "SELECT cambia el idioma. A confirma la opción."
+  }
+}

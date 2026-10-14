@@ -1,0 +1,116 @@
+{
+  "tech": {
+    "python": "Python",
+    "tensorflow": "TensorFlow",
+    "langchain": "LangChain",
+    "langgraph": "LangGraph",
+    "openai": "OpenAI API",
+    "rag": "RAG",
+    "fastapi": "FastAPI",
+    "mcp": "MCP",
+    "mediapipe": "MediaPipe",
+    "n8n": "n8n",
+    "nodejs": "Node.js",
+    "express": "Express",
+    "php": "PHP (POO)",
+    "medoo": "Medoo",
+    "postgresql": "PostgreSQL",
+    "postgis": "PostGIS",
+    "pgvector": "pgvector",
+    "mysql": "MySQL",
+    "rest": "REST APIs",
+    "jwt": "JWT",
+    "docker": "Docker",
+    "javascript": "JavaScript",
+    "typescript": "TypeScript",
+    "react": "React",
+    "nextjs": "Next.js",
+    "vue": "Vue.js",
+    "vite": "Vite",
+    "tailwind": "Tailwind",
+    "bootstrap": "Bootstrap",
+    "git": "Git / GitHub",
+    "supabase": "Supabase",
+    "playwright": "Playwright",
+    "vitest": "Vitest",
+    "agile": "Agile / Scrum",
+    "cicd": "CI/CD",
+    "chromadb": "ChromaDB",
+    "onnx": "MiniLM-ONNX",
+    "streamlit": "Streamlit",
+    "beautifulsoup": "BeautifulSoup",
+    "uv": "uv",
+    "gemini": "Gemini 2.5",
+    "multer": "Multer",
+    "threejs": "Three.js / R3F",
+    "openseadragon": "OpenSeadragon",
+    "mui": "MUI",
+    "zustand": "Zustand",
+    "chainlit": "Chainlit",
+    "sqlalchemy": "SQLAlchemy async",
+    "alembic": "Alembic",
+    "mql5": "MQL5",
+    "nginx": "Nginx",
+    "github-actions": "GitHub Actions",
+    "flutter": "Flutter",
+    "kotlin": "Kotlin",
+    "camerax": "CameraX",
+    "sqlite": "SQLite",
+    "django": "Django REST"
+  },
+  "pockets": [
+    {
+      "id": "ai",
+      "items": [
+        { "id": "python", "projects": ["vector-service-api", "antigravity", "finance-chatbot", "walletg"] },
+        { "id": "tensorflow", "projects": [], "badges": ["tensorflow-developer"] },
+        { "id": "langchain", "projects": ["antigravity", "finance-chatbot"] },
+        { "id": "langgraph", "projects": ["antigravity"] },
+        { "id": "openai", "projects": ["stepable", "vector-service-api", "antigravity", "finance-chatbot"] },
+        { "id": "rag", "projects": ["stepable", "vector-service-api", "finance-chatbot"] },
+        { "id": "fastapi", "projects": ["vector-service-api", "antigravity"] },
+        { "id": "mcp", "projects": [] },
+        { "id": "mediapipe", "projects": ["alerta-acv"] },
+        { "id": "n8n", "projects": [] }
+      ]
+    },
+    {
+      "id": "backend",
+      "items": [
+        { "id": "nodejs", "projects": ["sofonques-explorer", "mesa-espejo", "reportes-docentes"] },
+        { "id": "express", "projects": ["sofonques-explorer", "mesa-espejo"] },
+        { "id": "php", "projects": [], "experience": ["clever-cloud"] },
+        { "id": "medoo", "projects": [], "experience": ["clever-cloud"] },
+        { "id": "postgresql", "projects": ["stepable", "mesa-espejo", "antigravity"] },
+        { "id": "mysql", "projects": ["reportes-docentes"] },
+        { "id": "rest", "projects": ["vector-service-api", "sofonques-explorer", "reportes-docentes", "antigravity"], "experience": ["clever-cloud"] },
+        { "id": "jwt", "projects": [] },
+        { "id": "docker", "projects": ["vector-service-api", "reportes-docentes", "antigravity"] }
+      ]
+    },
+    {
+      "id": "frontend",
+      "items": [
+        { "id": "javascript", "projects": ["sofonques-explorer", "mesa-espejo", "reportes-docentes", "koa-caffe"] },
+        { "id": "typescript", "projects": ["stepable"] },
+        { "id": "react", "projects": ["stepable", "sofonques-explorer", "mesa-espejo", "reportes-docentes", "koa-caffe", "walletg"] },
+        { "id": "nextjs", "projects": ["stepable"] },
+        { "id": "vue", "projects": [], "experience": ["clever-cloud"] },
+        { "id": "vite", "projects": ["koa-caffe"] },
+        { "id": "tailwind", "projects": ["koa-caffe"] },
+        { "id": "bootstrap", "projects": [] }
+      ]
+    },
+    {
+      "id": "tools",
+      "items": [
+        { "id": "git", "projects": ["stepable", "vector-service-api", "koa-caffe"] },
+        { "id": "supabase", "projects": ["stepable"] },
+        { "id": "playwright", "projects": ["stepable"] },
+        { "id": "vitest", "projects": ["stepable"] },
+        { "id": "agile", "projects": [], "experience": ["clever-cloud"] },
+        { "id": "cicd", "projects": ["antigravity"] }
+      ]
+    }
+  ]
+}

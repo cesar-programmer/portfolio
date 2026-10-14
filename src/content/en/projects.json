@@ -1,0 +1,151 @@
+{
+  "zones": {
+    "lab": { "name": "AI Lab", "tagline": "Agents, RAG and semantic search." },
+    "city": { "name": "City", "tagline": "Production software for real clients and institutions." },
+    "workshop": { "name": "Workshop", "tagline": "Mobile, real time and systems." }
+  },
+  "projects": {
+    "stepable": {
+      "name": "Stepable",
+      "role": "Creator · Full-Stack & AI",
+      "tag": "Zone boss",
+      "mission": "Turn a software team's documentation into interactive onboarding paths with exercises, plus an assistant that answers by citing that documentation.",
+      "did": [
+        "Generated learning paths with AI that go through human review before they are published.",
+        "Built an assistant with hybrid search (full text + pgvector embeddings) that drops any citation not backed by a retrieved chunk.",
+        "Enforced AI usage limits before every model call."
+      ],
+      "boss": "Keeping the AI from making things up. If the sources don't hold enough evidence, no content is generated.",
+      "imageAlt": "Stepable screenshot: onboarding path with lessons and progress.",
+      "galleryAlt": ["Stepable screenshot: assistant answering with verified citations.", "Stepable screenshot: path editor before publishing."]
+    },
+    "vector-service-api": {
+      "name": "Vector Service API",
+      "role": "Creator · Backend & AI",
+      "tag": "Linked to the Professor",
+      "mission": "A reusable microservice any app can call over HTTP to store documents and search them by meaning, without re-implementing the RAG layer in every project.",
+      "did": [
+        "Designed a FastAPI REST API: collections, ingestion of text, files and URLs (TXT, MD, PDF, DOCX, PPTX, web), semantic search with metadata filters, and selective deletion.",
+        "Made embeddings (OpenAI or local MiniLM-ONNX) and storage swappable, behind a BaseVectorStore interface with ChromaDB as the first implementation.",
+        "Added configurable chunking, optional Bearer token auth, a Streamlit admin panel and Docker Compose deployment."
+      ],
+      "boss": "Making one service work for very different projects. Solved by separating the API from the vector database through a backend interface and moving chunking and embeddings into configuration.",
+      "fact": "Did you know? This service will be the brain of the Professor, this portfolio's AI-powered NPC.",
+      "imageAlt": "Screenshot of the Vector Service API admin panel."
+    },
+    "sofonques-explorer": {
+      "name": "Sofonques Explorer",
+      "subtitle": "NASA Space Apps Challenge 2025",
+      "role": "Team lead and backend developer",
+      "tag": "International hackathon",
+      "mission": "Explore ultra-high-resolution astronomical images with the help of an AI assistant, for beginners and experts alike.",
+      "did": [
+        "Led team Sofonques through the whole hackathon.",
+        "Built the Node/Express backend that talks to Gemini: beginner mode with gemini-2.5-flash and expert/multimodal mode with gemini-2.5-pro, with file uploads and a status endpoint.",
+        "Coordinated the integration of the 3D galaxy viewer (React Three Fiber), the gigapixel image viewer (OpenSeadragon) and annotations."
+      ],
+      "boss": "Shipping a working, deployed product within the hackathon window while coordinating the team and building the backend.",
+      "imageAlt": "Illustration of the Sofonques Explorer viewer with a galaxy and the assistant panel."
+    },
+    "finance-chatbot": {
+      "name": "Finance Chatbot",
+      "role": "Creator",
+      "tag": "Bonus level · first step",
+      "mission": "My first RAG: a chatbot that answers finance questions from documents, built with Chainlit.",
+      "did": [
+        "Put together an end-to-end RAG pipeline: document loading, embeddings and retrieval.",
+        "Built the chat interface with Chainlit."
+      ],
+      "boss": "Understanding how retrieval and generation fit together. It was the starting point for everything in the Lab.",
+      "imageAlt": "Illustration of a conversation with the finance chatbot."
+    },
+    "mesa-espejo": {
+      "name": "Mesa Espejo",
+      "subtitle": "School follow-up dashboard",
+      "role": "Full-stack developer (professional internship)",
+      "tag": "Zone boss · Case study",
+      "mission": "Centralize and track information about schools, incidents, needs and institutional interventions.",
+      "did": [
+        "Built a dashboard with traffic-light indicators and geolocated heat maps using PostGIS.",
+        "Developed the referral, screening and institutional calendar modules.",
+        "Implemented 4-role access control and full auditing on a normalized 39-table model."
+      ],
+      "boss": "Modeling data from many institutions without losing traceability: a normalized 39-table schema with every change audited and role-based permissions.",
+      "note": "Delivered to the Government of Baja California. Shown as a case study with fictional data; the code is not public.",
+      "imageAlt": "Illustration with fictional data: dashboard with traffic lights, heat map and incident table."
+    },
+    "reportes-docentes": {
+      "name": "Faculty Reports System",
+      "subtitle": "UABC",
+      "role": "Full-stack developer",
+      "tag": "In production",
+      "mission": "Digitize how faculty submit and track their activity reports, with deadlines.",
+      "did": [
+        "Built the React frontend and the Node.js API on MySQL 8, with migrations and seeders.",
+        "Implemented reporting periods and submission deadlines.",
+        "Containerized the system with Docker Compose for development and production, and wrote the database, Docker and deployment manuals."
+      ],
+      "boss": "Going from prototype to a system the university uses every day: reproducible deployments and documentation so others can run it.",
+      "imageAlt": "Illustration with fictional data: list of faculty reports with statuses and deadlines."
+    },
+    "koa-caffe": {
+      "name": "Koa Caffe",
+      "subtitle": "Digital menu",
+      "role": "Developer · real client",
+      "tag": "Real client",
+      "mission": "Give a coffee shop a digital menu that customers open by scanning a QR code at the table.",
+      "did": [
+        "Built a single-page menu with React, Vite and Tailwind.",
+        "Published it on GitHub Pages and generated the QR code for the tables."
+      ],
+      "boss": "Delivering something small, fast and easy to maintain for a non-technical client.",
+      "imageAlt": "Screenshot of the Koa Caffe digital menu."
+    },
+    "antigravity": {
+      "name": "Antigravity Ecosystem",
+      "subtitle": "Algorithmic trading with a risk agent",
+      "role": "Creator · Architecture & backend",
+      "tag": "Zone boss",
+      "mission": "Trade on MetaTrader 5 with a modular Expert Advisor whose risk is watched by an external agent that blocks trades during macroeconomic news or when data is unreliable.",
+      "did": [
+        "Built the Guardian Agent in Python: async FastAPI API, async SQLAlchemy + PostgreSQL (Alembic) and a LangGraph graph that checks news and the macro calendar and decides the risk state. Fail-closed policy: no reliable sources, no trading.",
+        "Designed a multi-mode MQL5 Expert Advisor (single build, per-symbol profiles) with a risk engine, session and spread filters, fail-closed lot sizing and persisted, versioned risk state.",
+        "Added per-position telemetry to a data lake with a dead-letter queue and backfill, a Streamlit dashboard, Docker, Nginx for the VPS and GitHub Actions CI (Python and MQL5 builds)."
+      ],
+      "boss": "Avoiding overfitting. I defined a disciplined baseline → optimization → confirmation → out-of-sample validation method, with one rule: a profile is only frozen with quantitative evidence on its own symbol.",
+      "note": "Presented as a systems engineering project. No returns, balances or accounts are shown.",
+      "imageAlt": "Illustration with fictional data: dashboard with the Guardian Agent status and drawdown."
+    },
+    "alerta-acv": {
+      "name": "Alerta ACV",
+      "subtitle": "Early stroke detection",
+      "role": "Mobile developer · UABC & Mexican Red Cross",
+      "tag": "Zone boss",
+      "mission": "Digitize the FAST protocol to detect early signs of a stroke and assist during the emergency.",
+      "did": [
+        "Implemented real-time face analysis with MediaPipe in a native Kotlin module connected to Flutter through a method channel.",
+        "Developed the facial asymmetry, arm drift and speech tests, with voice guidance.",
+        "Added automatic calls and SMS to 911 with geolocation."
+      ],
+      "boss": "Running computer vision in real time on the phone: processing moved to a native Kotlin module with CameraX and MediaPipe, and Flutter only receives the results.",
+      "imageAlt": "Illustration: face, arms and speech test screens, and the emergency button."
+    },
+    "walletg": {
+      "name": "WalletG",
+      "role": "Creator",
+      "tag": "Bonus level",
+      "mission": "A personal finance app to track income and expenses.",
+      "did": [
+        "Built the backend with Django REST Framework.",
+        "Developed the React frontend that consumes the API."
+      ],
+      "boss": "Fully separating frontend and backend, talking through a REST API.",
+      "imageAlt": "Illustration of the WalletG app with a spending summary."
+    }
+  },
+  "classic": {
+    "ecommerce-shopy": { "name": "ecommerceShopy", "description": "Marketplace built with JavaScript and React." },
+    "machine-learning-js": { "name": "machineLearningJS", "description": "Linear regression with TensorFlow.js." },
+    "bootcamp": { "name": "Bootcamp projects", "description": "Exercises and projects from the Full Stack Developer program." }
+  }
+}

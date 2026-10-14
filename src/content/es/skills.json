@@ -1,0 +1,12 @@
+{
+  "pockets": { "ai": "IA & ML", "backend": "Backend", "frontend": "Frontend", "tools": "Herramientas" },
+  "notes": {
+    "rag": "Embeddings, bases vectoriales y recuperación.",
+    "mediapipe": "Visión por computadora.",
+    "postgresql": "Incluye PostGIS y pgvector."
+  },
+  "usedIn": "Usado en:",
+  "experienceIn": "En experiencia:",
+  "badgeIn": "Certificación:",
+  "noProof": "Aún sin ficha en el portafolio."
+}

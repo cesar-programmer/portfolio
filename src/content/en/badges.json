@@ -1,0 +1,10 @@
+{
+  "slots": 8,
+  "badges": [
+    { "id": "aws-cloud-architecting", "name": "AWS Academy Graduate", "detail": "Cloud Architecting", "issuer": "AWS Academy", "verifyUrl": null, "secret": false },
+    { "id": "tensorflow-developer", "name": "TensorFlow Developer", "detail": "Specialization", "issuer": "DeepLearning.AI", "verifyUrl": null, "secret": false },
+    { "id": "explorer", "name": "Explorer", "detail": "You visited every project on the map.", "issuer": "CESAR.DEV", "verifyUrl": null, "secret": true }
+  ],
+  "lockedLabel": "???",
+  "secretHint": "Secret badge. Explore the map…"
+}

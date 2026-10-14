@@ -1,0 +1,337 @@
+/* Carcasa original inspirada en las consolas portátiles de 1989. Sin marcas.
+   Todas las medidas en píxeles lógicos: calc(var(--px) * N). */
+
+.console {
+  --u: var(--px);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(160deg, var(--shell-hi), var(--shell) 40%, var(--shell-lo));
+  color: var(--shell-ink);
+  font-family: var(--font-pixel);
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.console--desktop {
+  width: calc(var(--u) * 224);
+  height: calc(var(--u) * 314);
+  border-radius: calc(var(--u) * 8) calc(var(--u) * 8) calc(var(--u) * 44) calc(var(--u) * 8);
+  box-shadow:
+    inset calc(var(--u) * -2) calc(var(--u) * -3) 0 var(--shell-lo),
+    inset calc(var(--u) * 1) calc(var(--u) * 1) 0 var(--shell-hi),
+    0 calc(var(--u) * 10) calc(var(--u) * 24) rgb(0 0 0 / 0.45);
+}
+
+.console--mobile {
+  width: 100vw;
+  height: 100dvh;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Franja superior con relieve */
+.console__top {
+  height: calc(var(--u) * 12);
+  margin: 0 calc(var(--u) * 6);
+  border-bottom: calc(var(--u) * 1) solid var(--shell-lo);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 calc(var(--u) * 8);
+  font-size: calc(var(--u) * 4);
+  color: var(--shell-lo);
+  flex: none;
+}
+.console--mobile .console__top {
+  height: calc(var(--u) * 8);
+  padding-top: env(safe-area-inset-top);
+  box-sizing: content-box;
+}
+
+/* Bisel oscuro alrededor de la pantalla */
+.console__bezel {
+  position: relative;
+  flex: none;
+  align-self: center;
+  margin-top: calc(var(--u) * 8);
+  padding: calc(var(--u) * 12) calc(var(--u) * 18) calc(var(--u) * 16);
+  background: var(--bezel);
+  border-radius: calc(var(--u) * 6) calc(var(--u) * 6) calc(var(--u) * 26) calc(var(--u) * 6);
+  box-shadow: inset 0 calc(var(--u) * -1) 0 var(--bezel-lo);
+}
+.console--mobile .console__bezel {
+  margin-top: calc(var(--u) * 4);
+  padding: calc(var(--u) * 8) calc(var(--u) * 11) calc(var(--u) * 12);
+}
+
+.console__bezel-label {
+  position: absolute;
+  left: calc(var(--u) * 18);
+  right: calc(var(--u) * 18);
+  top: calc(var(--u) * 4);
+  display: flex;
+  align-items: center;
+  gap: calc(var(--u) * 3);
+  font-size: calc(var(--u) * 3);
+  color: #a9adb9;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+}
+.console__bezel-label::before,
+.console__bezel-label::after {
+  content: '';
+  flex: 1;
+  height: calc(var(--u) * 1);
+  background: linear-gradient(var(--btn-ab) 0 50%, #2f3a8a 50% 100%);
+}
+.console--mobile .console__bezel-label {
+  top: calc(var(--u) * 2);
+  left: calc(var(--u) * 11);
+  right: calc(var(--u) * 11);
+}
+
+.console__led {
+  position: absolute;
+  left: calc(var(--u) * 5);
+  top: calc(var(--u) * 50);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(var(--u) * 2);
+  font-size: calc(var(--u) * 2.5);
+  color: #a9adb9;
+}
+.console__led::before {
+  content: '';
+  width: calc(var(--u) * 4);
+  height: calc(var(--u) * 4);
+  border-radius: 50%;
+  background: #e2312f;
+  box-shadow: 0 0 calc(var(--u) * 3) #ff4d3d;
+}
+.console--mobile .console__led {
+  left: calc(var(--u) * 3);
+}
+
+/* Logo de la carcasa */
+.console__brand {
+  flex: none;
+  margin: calc(var(--u) * 6) 0 0 calc(var(--u) * 16);
+  font-size: calc(var(--u) * 8);
+  font-style: italic;
+  letter-spacing: -0.02em;
+  color: var(--shell-ink);
+}
+.console__brand small {
+  font-size: calc(var(--u) * 4);
+  font-style: normal;
+  margin-left: calc(var(--u) * 3);
+  opacity: 0.8;
+}
+.console--mobile .console__brand {
+  margin-top: calc(var(--u) * 4);
+  font-size: calc(var(--u) * 6);
+}
+
+/* Controles */
+.console__controls {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+}
+
+.dpad {
+  position: absolute;
+  left: calc(var(--u) * 16);
+  top: calc(var(--u) * 18);
+  width: calc(var(--u) * var(--dpad-size, 50));
+  height: calc(var(--u) * var(--dpad-size, 50));
+  display: grid;
+  grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+}
+.dpad__center {
+  grid-area: 2 / 2;
+  background: var(--dpad);
+}
+.dpad__center::after {
+  content: '';
+  display: block;
+  width: 60%;
+  height: 60%;
+  margin: 20%;
+  border-radius: 50%;
+  background: radial-gradient(circle, #34373f, var(--dpad));
+}
+.dpad__btn {
+  background: var(--dpad);
+  border: 0;
+  padding: 0;
+  color: #4b4f5a;
+  font-size: calc(var(--u) * 4);
+  display: grid;
+  place-items: center;
+  box-shadow: 0 calc(var(--u) * 1.5) 0 #111216;
+  transition: transform 40ms steps(1);
+}
+.dpad__btn[data-pressed] {
+  transform: translateY(calc(var(--u) * 1));
+  box-shadow: none;
+  color: #9aa0ad;
+}
+.dpad__btn--up {
+  grid-area: 1 / 2;
+  border-radius: calc(var(--u) * 2) calc(var(--u) * 2) 0 0;
+}
+.dpad__btn--down {
+  grid-area: 3 / 2;
+  border-radius: 0 0 calc(var(--u) * 2) calc(var(--u) * 2);
+}
+.dpad__btn--left {
+  grid-area: 2 / 1;
+  border-radius: calc(var(--u) * 2) 0 0 calc(var(--u) * 2);
+}
+.dpad__btn--right {
+  grid-area: 2 / 3;
+  border-radius: 0 calc(var(--u) * 2) calc(var(--u) * 2) 0;
+}
+
+.ab {
+  position: absolute;
+  right: calc(var(--u) * 14);
+  top: calc(var(--u) * 20);
+  display: flex;
+  gap: calc(var(--u) * 8);
+  transform: rotate(-25deg);
+}
+.ab__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(var(--u) * 3);
+  font-size: calc(var(--u) * 5);
+}
+.ab__item:first-child {
+  margin-top: calc(var(--u) * 8);
+}
+.ab__btn {
+  width: calc(var(--u) * var(--ab-size, 22));
+  height: calc(var(--u) * var(--ab-size, 22));
+  border-radius: 50%;
+  border: 0;
+  background: radial-gradient(circle at 35% 30%, #c0436f, var(--btn-ab) 55%);
+  box-shadow: 0 calc(var(--u) * 2) 0 var(--btn-ab-lo);
+  transition: transform 40ms steps(1);
+}
+.ab__btn[data-pressed] {
+  transform: translateY(calc(var(--u) * 2));
+  box-shadow: none;
+}
+
+.pills {
+  position: absolute;
+  left: 50%;
+  bottom: calc(var(--u) * 14);
+  transform: translateX(-60%);
+  display: flex;
+  gap: calc(var(--u) * 6);
+}
+.pills__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(var(--u) * 3);
+  font-size: calc(var(--u) * 3.5);
+  transform: rotate(-25deg);
+}
+.pills__btn {
+  width: calc(var(--u) * 20);
+  height: calc(var(--u) * 6);
+  border-radius: calc(var(--u) * 4);
+  border: calc(var(--u) * 1) solid var(--shell-lo);
+  background: var(--pill);
+  padding: 0;
+  transition: transform 40ms steps(1);
+}
+.pills__btn[data-pressed] {
+  transform: translateY(calc(var(--u) * 1));
+  background: #6f717a;
+}
+
+/* Bocina: es el interruptor de sonido */
+.speaker {
+  position: absolute;
+  right: calc(var(--u) * 10);
+  bottom: calc(var(--u) * 8);
+  display: flex;
+  align-items: flex-end;
+  gap: calc(var(--u) * 3);
+  padding: calc(var(--u) * 2);
+  border: 0;
+  background: transparent;
+  color: var(--shell-ink);
+  transform: rotate(-25deg);
+}
+.speaker__slot {
+  width: calc(var(--u) * 2.5);
+  height: calc(var(--u) * 22);
+  border-radius: calc(var(--u) * 2);
+  background: var(--shell-lo);
+  box-shadow: inset calc(var(--u) * 0.5) calc(var(--u) * 0.5) 0 rgb(0 0 0 / 0.25);
+}
+.speaker__icon {
+  position: absolute;
+  left: 50%;
+  top: calc(var(--u) * -10);
+  transform: translateX(-50%) rotate(25deg);
+  width: calc(var(--u) * 9);
+  height: calc(var(--u) * 9);
+}
+
+/* Celular: controles más grandes, distribuidos en el espacio libre */
+.console--mobile .console__controls {
+  --dpad-size: 64;
+  --ab-size: 26;
+}
+.console--mobile .dpad {
+  left: calc(var(--u) * 10);
+  top: 50%;
+  translate: 0 -62%;
+}
+.console--mobile .ab {
+  right: calc(var(--u) * 8);
+  top: 50%;
+  translate: 0 -80%;
+}
+.console--mobile .pills {
+  bottom: calc(var(--u) * 8);
+}
+.console--mobile .speaker {
+  right: calc(var(--u) * 6);
+  bottom: calc(var(--u) * 4);
+}
+.console--mobile .speaker__slot {
+  height: calc(var(--u) * 16);
+}
+
+.console-hint {
+  margin-top: 14px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: #8f939e;
+  text-align: center;
+}
+.console-hint kbd {
+  font-family: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dpad__btn,
+  .ab__btn,
+  .pills__btn {
+    transition: none;
+  }
+}
+
+.console--mobile .console__led {
+  font-size: 0;
+}

@@ -1,0 +1,12 @@
+{
+  "pockets": { "ai": "AI & ML", "backend": "Backend", "frontend": "Frontend", "tools": "Tools" },
+  "notes": {
+    "rag": "Embeddings, vector databases and retrieval.",
+    "mediapipe": "Computer vision.",
+    "postgresql": "Includes PostGIS and pgvector."
+  },
+  "usedIn": "Used in:",
+  "experienceIn": "At work:",
+  "badgeIn": "Certification:",
+  "noProof": "No portfolio entry yet."
+}

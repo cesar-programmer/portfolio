@@ -1,0 +1,29 @@
+{
+  "missions": [
+    {
+      "id": "clever-cloud",
+      "status": "Mission complete",
+      "role": "Full-Stack Developer",
+      "org": "Clever Cloud",
+      "period": "Mar 2025 – Sep 2025",
+      "points": [
+        "Built features with Vue.js and PHP following clean architecture.",
+        "Built REST APIs with Medoo and wrote their technical documentation.",
+        "Shipped continuously in an Agile/Scrum team."
+      ]
+    },
+    {
+      "id": "gobierno-bc",
+      "status": "Mission complete",
+      "role": "Professional internship",
+      "org": "Government of Baja California — Cabinet Coordination Office",
+      "period": null,
+      "points": ["Built Mesa Espejo, the school follow-up dashboard."],
+      "project": "mesa-espejo"
+    }
+  ],
+  "education": [
+    { "id": "uabc", "title": "B.S. Software Engineering", "org": "UABC", "period": null },
+    { "id": "sdgku", "title": "Full Stack Developer", "org": "San Diego Global Knowledge University", "period": "2024" }
+  ]
+}

@@ -1,0 +1,151 @@
+{
+  "zones": {
+    "lab": { "name": "Laboratorio IA", "tagline": "Agentes, RAG y búsqueda semántica." },
+    "city": { "name": "Ciudad", "tagline": "Software en producción para clientes e instituciones reales." },
+    "workshop": { "name": "Taller", "tagline": "Móvil, tiempo real y sistemas." }
+  },
+  "projects": {
+    "stepable": {
+      "name": "Stepable",
+      "role": "Creador · Full-Stack & IA",
+      "tag": "Jefe de la zona",
+      "mission": "Convertir la documentación de un equipo de software en rutas de onboarding interactivas con ejercicios, y un asistente que responde citando esa documentación.",
+      "did": [
+        "Generé rutas de aprendizaje con IA que pasan por revisión humana antes de publicarse.",
+        "Construí un asistente con búsqueda híbrida (texto + embeddings en pgvector) que descarta citas que no corresponden a un fragmento recuperado.",
+        "Apliqué límites de consumo de IA antes de cada llamada al modelo."
+      ],
+      "boss": "Evitar que la IA invente. Si no hay evidencia suficiente en las fuentes, no se genera contenido.",
+      "imageAlt": "Captura de Stepable: recorrido de onboarding con lecciones y progreso.",
+      "galleryAlt": ["Captura de Stepable: asistente respondiendo con citas verificadas.", "Captura de Stepable: editor de rutas antes de publicar."]
+    },
+    "vector-service-api": {
+      "name": "Vector Service API",
+      "role": "Creador · Backend & IA",
+      "tag": "Conectado al Profesor",
+      "mission": "Un microservicio reutilizable que cualquier app conecta por HTTP para guardar documentos y buscarlos por significado, sin reimplementar la capa de RAG en cada proyecto.",
+      "did": [
+        "Diseñé una API REST con FastAPI: colecciones, ingesta de texto, archivos y URLs (TXT, MD, PDF, DOCX, PPTX, web), búsqueda semántica con filtros por metadatos y borrado selectivo.",
+        "Hice intercambiables los embeddings (OpenAI o MiniLM-ONNX local) y el almacenamiento, detrás de una interfaz BaseVectorStore con ChromaDB como primera implementación.",
+        "Agregué chunking configurable, autenticación opcional con Bearer token, panel de administración en Streamlit y despliegue con Docker Compose."
+      ],
+      "boss": "Que el mismo servicio sirva a proyectos distintos. Se resolvió separando la API de la base vectorial con una interfaz de backend y moviendo chunking y embeddings a configuración.",
+      "fact": "¿Sabías que…? Este servicio será el cerebro de El Profesor, el NPC con IA de este portafolio.",
+      "imageAlt": "Captura del panel de administración de Vector Service API."
+    },
+    "sofonques-explorer": {
+      "name": "Sofonques Explorer",
+      "subtitle": "NASA Space Apps Challenge 2025",
+      "role": "Líder del equipo y desarrollador backend",
+      "tag": "Hackathon internacional",
+      "mission": "Explorar imágenes astronómicas de altísima resolución con ayuda de un asistente de IA, para principiantes y para expertos.",
+      "did": [
+        "Dirigí al equipo Sofonques durante todo el hackathon.",
+        "Construí el backend en Node/Express que conecta con Gemini: modo principiante con gemini-2.5-flash y modo experto y multimodal con gemini-2.5-pro, con carga de archivos y endpoint de estado.",
+        "Coordiné la integración del visor de galaxias en 3D (React Three Fiber), el visor de imágenes gigantes (OpenSeadragon) y las anotaciones."
+      ],
+      "boss": "Entregar un producto funcional y desplegado en el tiempo del hackathon, coordinando al equipo mientras construía el backend.",
+      "imageAlt": "Ilustración del visor de Sofonques Explorer con una galaxia y el panel del asistente."
+    },
+    "finance-chatbot": {
+      "name": "Finance Chatbot",
+      "role": "Creador",
+      "tag": "Nivel bonus · primer paso",
+      "mission": "Mi primer RAG: un chatbot que responde preguntas de finanzas a partir de documentos, construido con Chainlit.",
+      "did": [
+        "Armé un pipeline de RAG de punta a punta: carga de documentos, embeddings y recuperación.",
+        "Monté la interfaz conversacional con Chainlit."
+      ],
+      "boss": "Entender cómo encajan recuperación y generación. Fue el punto de partida de todo lo que hay en el Laboratorio.",
+      "imageAlt": "Ilustración de una conversación con el chatbot de finanzas."
+    },
+    "mesa-espejo": {
+      "name": "Mesa Espejo",
+      "subtitle": "Dashboard de seguimiento escolar",
+      "role": "Desarrollador full-stack (prácticas profesionales)",
+      "tag": "Jefe de la zona · Caso de estudio",
+      "mission": "Centralizar y dar seguimiento a la información de escuelas, incidencias, necesidades e intervenciones institucionales.",
+      "did": [
+        "Construí un dashboard con indicadores tipo semáforo y mapas de calor geolocalizados con PostGIS.",
+        "Desarrollé los módulos de canalización, tamizajes y agenda institucional.",
+        "Implementé control de acceso por 4 roles y auditoría completa sobre un modelo normalizado de 39 tablas."
+      ],
+      "boss": "Modelar información de muchas instituciones sin perder trazabilidad: un esquema normalizado de 39 tablas con auditoría de cada cambio y permisos por rol.",
+      "note": "Proyecto entregado al Gobierno del Estado de B.C. Se muestra como caso de estudio con datos ficticios; el código no es público.",
+      "imageAlt": "Ilustración con datos ficticios: dashboard con semáforos, mapa de calor y tabla de incidencias."
+    },
+    "reportes-docentes": {
+      "name": "Sistema de Reportes Docentes",
+      "subtitle": "UABC",
+      "role": "Desarrollador full-stack",
+      "tag": "En producción",
+      "mission": "Digitalizar la entrega y el seguimiento de los reportes de actividades de los docentes, con fechas límite.",
+      "did": [
+        "Desarrollé el frontend en React y la API en Node.js sobre MySQL 8, con migraciones y seeders.",
+        "Implementé el manejo de periodos y fechas límite de entrega.",
+        "Empaqueté el sistema en contenedores con Docker Compose para desarrollo y producción, y escribí los manuales de base de datos, Docker y despliegue."
+      ],
+      "boss": "Pasar de prototipo a un sistema que la universidad usa todos los días: despliegue reproducible y documentación para que otros lo puedan operar.",
+      "imageAlt": "Ilustración con datos ficticios: lista de reportes docentes con estados y fechas límite."
+    },
+    "koa-caffe": {
+      "name": "Koa Caffe",
+      "subtitle": "Menú digital",
+      "role": "Desarrollador · cliente real",
+      "tag": "Cliente real",
+      "mission": "Darle a una cafetería un menú digital que sus clientes abren escaneando un código QR en la mesa.",
+      "did": [
+        "Construí un menú SPA con React, Vite y Tailwind.",
+        "Lo publiqué en GitHub Pages y generé el código QR para las mesas."
+      ],
+      "boss": "Entregar algo pequeño, rápido y fácil de mantener para un cliente que no es técnico.",
+      "imageAlt": "Captura del menú digital de Koa Caffe."
+    },
+    "antigravity": {
+      "name": "Ecosistema Antigravity",
+      "subtitle": "Trading algorítmico con agente de riesgo",
+      "role": "Creador · Arquitectura y backend",
+      "tag": "Jefe de la zona",
+      "mission": "Operar en MetaTrader 5 con un Expert Advisor modular cuyo riesgo está vigilado por un agente externo que bloquea operaciones cuando hay noticias macroeconómicas o datos poco confiables.",
+      "did": [
+        "Construí el Agente Guardián en Python: API asíncrona con FastAPI, SQLAlchemy async + PostgreSQL (Alembic) y un grafo de LangGraph que revisa noticias y calendario macro y decide el estado de riesgo. Política fail-closed: sin fuentes confiables, se bloquea.",
+        "Diseñé un Expert Advisor en MQL5 multi-modo (un solo build, perfiles por símbolo) con motor de riesgo, filtros de sesión y spread, cálculo de lote fail-closed y estado de riesgo persistido y versionado.",
+        "Agregué telemetría por posición hacia un data lake con cola dead-letter y backfill, dashboard en Streamlit, Docker, Nginx para VPS y CI en GitHub Actions (Python y compilación MQL5)."
+      ],
+      "boss": "Evitar el sobreajuste. Definí un método disciplinado de baseline → optimización → confirmación → validación fuera de muestra, con una regla: un perfil solo se congela con evidencia cuantitativa en su propio símbolo.",
+      "note": "Se presenta como proyecto de ingeniería de sistemas. No se muestran rendimientos, saldos ni cuentas.",
+      "imageAlt": "Ilustración con datos ficticios: dashboard con el estado del Agente Guardián y el drawdown."
+    },
+    "alerta-acv": {
+      "name": "Alerta ACV",
+      "subtitle": "Detección temprana de strokes",
+      "role": "Desarrollador móvil · UABC & Cruz Roja Mexicana",
+      "tag": "Jefe de la zona",
+      "mission": "Digitalizar el protocolo FAST para detectar signos tempranos de un ACV y asistir durante la emergencia.",
+      "did": [
+        "Implementé análisis facial en tiempo real con MediaPipe en un módulo nativo de Kotlin conectado a Flutter por method channel.",
+        "Desarrollé las pruebas de asimetría facial, caída de brazos y habla, con guía por voz.",
+        "Agregué llamada y SMS automáticos al 911 con geolocalización."
+      ],
+      "boss": "Correr visión por computadora en tiempo real en el teléfono: el procesamiento se movió a un módulo nativo en Kotlin con CameraX y MediaPipe, y Flutter solo recibe los resultados.",
+      "imageAlt": "Ilustración: pantallas de prueba de rostro, brazos y habla, y botón de emergencia."
+    },
+    "walletg": {
+      "name": "WalletG",
+      "role": "Creador",
+      "tag": "Nivel bonus",
+      "mission": "Una app de finanzas personales para registrar ingresos y gastos.",
+      "did": [
+        "Construí el backend con Django REST Framework.",
+        "Desarrollé el frontend en React que consume la API."
+      ],
+      "boss": "Separar por completo frontend y backend comunicados por una API REST.",
+      "imageAlt": "Ilustración de la app WalletG con un resumen de gastos."
+    }
+  },
+  "classic": {
+    "ecommerce-shopy": { "name": "ecommerceShopy", "description": "Marketplace con JavaScript y React." },
+    "machine-learning-js": { "name": "machineLearningJS", "description": "Regresión lineal con TensorFlow.js." },
+    "bootcamp": { "name": "Proyectos del bootcamp", "description": "Ejercicios y proyectos del Full Stack Developer." }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "name": "Cesar Cordova Contreras",
+  "shortName": "CESAR CORDOVA",
+  "title": "AI & Backend Developer",
+  "class": "AI / Backend Dev",
+  "base": "Tijuana, B.C., Mexico",
+  "languages": ["Spanish (native)", "English (B2)"],
+  "education": "B.S. Software Engineering — UABC",
+  "summary": "Backend and AI developer. I build APIs in Python and Node.js, RAG systems and agents that can go to production. I've shipped software used today by UABC and the Government of Baja California, and I led my team at the NASA Space Apps Challenge 2025.",
+  "lookingFor": "Looking for an AI Developer or Backend Developer role (Python · JS).",
+  "stats": [
+    { "id": "communication", "label": "Communication", "value": 7 },
+    { "id": "teamwork", "label": "Teamwork", "value": 8 },
+    { "id": "problem-solving", "label": "Problem solving", "value": 8 },
+    { "id": "organization", "label": "Organization", "value": 7 },
+    { "id": "critical-thinking", "label": "Critical thinking", "value": 7 },
+    { "id": "proactivity", "label": "Proactivity", "value": 8 },
+    { "id": "empathy", "label": "Empathy", "value": 7 }
+  ],
+  "contact": {
+    "email": "cesarcordova.developer@gmail.com",
+    "github": "https://github.com/cesar-programmer",
+    "githubHandle": "cesar-programmer",
+    "linkedin": null
+  },
+  "cv": { "es": "/cv/cesar-cordova-es.pdf", "en": "/cv/cesar-cordova-en.pdf" }
+}
