@@ -1,0 +1,50 @@
+// Retrato pixel de Cesar (genérico, no un retrato real): joven, piel morena,
+// cabello negro-café corto, lentes de armazón oscuro y sudadera. 24 × 30 px.
+// Lo usan el componente Portrait y el generador de imágenes Open Graph.
+
+export const ROWS = [
+  '........................',
+  '........HHHHHHHH........',
+  '......HHHHHHHHHHHH......',
+  '.....HHHHHHHHHHHHHH.....',
+  '....HHHHHHHHHHHHHHHH....',
+  '....HHHHHHHHHHHHHHHH....',
+  '....HHHSSSHHHHSSSSHH....',
+  '....HHSSSSSSSSSSSSSH....',
+  '...sHSSSSSSSSSSSSSSHs...',
+  '...sSGGGGGSSSSGGGGGSs...',
+  '...sSGWEWGGGGGGWEWGSs...',
+  '...sSGGGGGSSSSGGGGGSs...',
+  '....SSSSSSSsSSSSSSSS....',
+  '....SSSSSSSssSSSSSSS....',
+  '....SSSSSSSSSSSSSSSS....',
+  '.....SSSSMMMMMSSSSS.....',
+  '.....sSSSSSSSSSSSSs.....',
+  '......sSSSSSSSSSSs......',
+  '.......ssSSSSSSss.......',
+  '.........SSSSSS.........',
+  '.........sSSSSs.........',
+  '......CCCCsSSsCCCC......',
+  '....CCCCCCCsSCCCCCCC....',
+  '...CCCCCCCCcCCCCCCCCC...',
+  '..CCCCCCCCCcCCCCCCCCCC..',
+  '.CCCCCCCCCCcCCCCCCCCCCC.',
+  '.CCCCCCCDCCcCCDCCCCCCCC.',
+  'CCCCCCCCDCCcCCDCCCCCCCCC',
+  'CCCCCCCCCCCcCCCCCCCCCCCC',
+  'CCCCCCCCCCCcCCCCCCCCCCCC',
+]
+
+/** Color de cada letra del dibujo (tokens de la pantalla). */
+export const COLORS: Record<string, string> = {
+  H: 'var(--scr-hair)',
+  S: 'var(--scr-skin)',
+  s: 'var(--scr-skin-lo)',
+  M: 'var(--scr-skin-lo)',
+  G: 'var(--scr-glass)',
+  W: 'var(--scr-lens)',
+  E: 'var(--scr-glass)',
+  C: 'var(--scr-hoodie)',
+  c: 'var(--scr-hoodie-lo)',
+  D: 'var(--scr-lens)',
+}

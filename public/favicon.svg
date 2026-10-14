@@ -1,1 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" shape-rendering="crispEdges"><rect width="16" height="16" rx="2" fill="#0f380f"/><rect x="2" y="2" width="12" height="12" fill="#9bbc0f"/><path fill="#0f380f" d="M5 4h4v1H5zM4 5h1v6H4zM5 11h4v1H5zM9 4h1v2H9zM9 10h1v2H9zM11 6h1v4h-1z"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" shape-rendering="crispEdges">
+  <!-- Favicon pixel original de CESAR.DEV: una "C" ámbar en la pantalla morada. -->
+  <rect width="16" height="16" rx="3" fill="#15102a"/>
+  <path fill="#ffb000" d="M5 3h6v2H5zM3 5h2v6H3zM5 11h6v2H5zM11 4h2v2h-2zM11 10h2v2h-2z"/>
+  <path fill="#4a2c00" d="M5 5h6v1H5zM5 13h6v1H5zM13 6h1v1h-1zM13 12h1v1h-1z"/>
+  <rect x="12" y="7" width="2" height="2" fill="#38e8ff"/>
+</svg>
