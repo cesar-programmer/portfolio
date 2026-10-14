@@ -12,6 +12,7 @@
 
 .cv a {
   color: var(--scr-accent);
+  text-decoration: underline;
   text-underline-offset: 0.2em;
 }
 .cv :focus-visible {
@@ -49,7 +50,7 @@
   color: var(--scr-ink) !important;
   font: inherit;
   font-size: 15px;
-  text-decoration: none;
+  text-decoration: none !important;
   cursor: pointer;
 }
 .cv-btn:hover {

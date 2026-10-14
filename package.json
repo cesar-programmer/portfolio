@@ -8,7 +8,9 @@
     "build": "tsc -b && vite build && vite build --ssr src/entry-server.tsx --outDir dist-server && node scripts/prerender.mjs",
     "lint": "oxlint",
     "preview": "vite preview",
-    "og": "node scripts/og.mjs"
+    "og": "node scripts/og.mjs",
+    "test:a11y": "node scripts/a11y.mjs",
+    "serve": "node scripts/serve-dist.mjs"
   },
   "dependencies": {
     "react": "^19.2.8",

@@ -48,11 +48,11 @@
   --shell: #cbc8c0;
   --shell-hi: #e3e0d8;
   --shell-lo: #a9a69d;
-  --shell-ink: #2f3a8a;
+  --shell-ink: #27307a;
   --line-2: #2f3a8a;
   --bezel: #50545f;
   --bezel-lo: #3c3f48;
-  --bezel-ink: #b4b8c3;
+  --bezel-ink: #d0d3dc;
   --btn-ab: #9a2453;
   --btn-ab-hi: #c4497a;
   --btn-ab-lo: #651636;
@@ -72,12 +72,12 @@
   --scr-surface-2: #8bac0f;
   --scr-line: #306230;
   --scr-ink: #0f380f;
-  --scr-muted: #306230;
+  --scr-muted: #0f380f;
   --scr-title: #0f380f;
-  --scr-title-dim: #306230;
+  --scr-title-dim: #0f380f;
   --scr-title-shadow: #8bac0f;
   --scr-accent: #0f380f;
-  --scr-accent-2: #306230;
+  --scr-accent-2: #0f380f;
   --scr-shadow: #306230;
   --scr-on-accent: #9bbc0f;
   --scr-skin: #8bac0f;
@@ -94,12 +94,12 @@
   --scr-surface-2: #a2a59a;
   --scr-line: #55574f;
   --scr-ink: #1e1f1c;
-  --scr-muted: #3f413a;
+  --scr-muted: #33352f;
   --scr-title: #1e1f1c;
-  --scr-title-dim: #3f413a;
+  --scr-title-dim: #33352f;
   --scr-title-shadow: #a2a59a;
   --scr-accent: #1e1f1c;
-  --scr-accent-2: #55574f;
+  --scr-accent-2: #1e1f1c;
   --scr-shadow: #55574f;
   --scr-on-accent: #c5c8bc;
   --scr-skin: #a2a59a;
@@ -116,11 +116,11 @@
   --shell: #4b4868;
   --shell-hi: #615e82;
   --shell-lo: #36344d;
-  --shell-ink: #d9d6ee;
+  --shell-ink: #ebe8fa;
   --line-2: #8f8bc0;
   --bezel: #2b2a36;
   --bezel-lo: #22212b;
-  --bezel-ink: #8d8aa3;
+  --bezel-ink: #b5b2cc;
   --pill: #2b2a36;
   --pill-hi: #3e3c4d;
 }
@@ -128,21 +128,21 @@
   --shell: #b7bac3;
   --shell-hi: #d9dbe2;
   --shell-lo: #8e919b;
-  --shell-ink: #2a2e3d;
+  --shell-ink: #1d2030;
   --line-2: #2a2e3d;
   --bezel: #33353d;
   --bezel-lo: #26282e;
-  --bezel-ink: #9a9da8;
+  --bezel-ink: #c3c6cf;
 }
 :root[data-shell='black'] {
   --shell: #2b2b31;
   --shell-hi: #3d3d45;
   --shell-lo: #1a1a1e;
-  --shell-ink: #c9c9d4;
+  --shell-ink: #d6d6e0;
   --line-2: #6d6d7a;
   --bezel: #141418;
   --bezel-lo: #0e0e11;
-  --bezel-ink: #77778a;
+  --bezel-ink: #a3a3b5;
   --btn-ab: #46464f;
   --btn-ab-hi: #62626d;
   --btn-ab-lo: #222227;
@@ -891,7 +891,7 @@ body {
 .badge-slot--empty {
   border-style: dashed;
   border-color: var(--scr-line);
-  color: var(--scr-line);
+  color: var(--scr-muted);
 }
 .badge-slot__name {
   min-height: 1.4em;
