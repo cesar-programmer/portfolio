@@ -274,10 +274,12 @@ body {
   min-height: 0;
 }
 .scroll-box {
+  /* Solo hace scroll propio cuando el panel está fijo (pantallas anchas, ver
+     abajo). En celular es contenido normal: el gesto pasa a la pantalla.
+     Sin overscroll-behavior: contain, para que al llegar al final del panel
+     el dedo o la rueda sigan desplazando la pantalla. */
   min-height: 0;
   max-height: inherit;
-  overflow-y: auto;
-  overscroll-behavior: contain;
   scrollbar-width: thin;
   scrollbar-color: var(--scr-line) transparent;
 }
@@ -632,6 +634,9 @@ body {
     top: calc(8px * var(--fz));
     max-height: calc(100cqh - 32px * var(--fz));
   }
+  .projects-preview .scroll-box {
+    overflow-y: auto;
+  }
 }
 .proj-item {
   display: flex;
@@ -704,6 +709,9 @@ body {
     position: sticky;
     top: calc(8px * var(--fz));
     max-height: calc(100cqh - 32px * var(--fz));
+  }
+  .detail-media .scroll-box {
+    overflow-y: auto;
   }
 }
 
@@ -818,6 +826,9 @@ body {
     position: sticky;
     top: calc(8px * var(--fz));
     max-height: calc(100cqh - 32px * var(--fz));
+  }
+  .skills-detail .scroll-box {
+    overflow-y: auto;
   }
 }
 
