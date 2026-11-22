@@ -214,7 +214,8 @@ function antigravity(): Px[] {
   ]
   candles.forEach(([top, body, low, up], i) => {
     const x = 6 + i * 4
-    p.push([x + 1, top - 2, 1, low - top + body + 4, C.muted])
+    // Mecha: siempre cruza el cuerpo (2 px arriba y abajo) y llega hasta `low` si está más abajo.
+    p.push([x + 1, top - 2, 1, Math.max(body + 4, low - top + body + 4), C.muted])
     p.push([x, top, 3, body, up ? C.ink : C.line])
   })
   // Zona bloqueada por noticias (fail-closed)

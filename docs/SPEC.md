@@ -205,7 +205,7 @@ Ruta propia: `/es/cv` y `/en/cv`. Se llega desde la tecla **RECLUTADOR** de la c
 ## 7. Técnico
 
 ### Stack
-Vite + React + TypeScript · Tailwind CSS 4 · Zustand · React Router · textos en JSON por idioma · Deploy en Vercel (`VITE_SITE_URL` en `src/config.ts`).
+Vite + React + TypeScript · Tailwind CSS 4 · Zustand · React Router · textos en JSON por idioma · Deploy en Vercel con dominio propio **https://cesarcordova.dev** (URL base en `src/config.ts`; `VITE_SITE_URL` opcional para cambiarla).
 
 ### Rutas (una por pestaña, proyecto e idioma)
 | ES | EN |
@@ -279,7 +279,7 @@ Un commit por bloque de trabajo terminado; repo público `cesar-programmer/portf
 ## 9. Decisiones y pendientes
 
 ### Decidido
-- ElotApp no entra. Teléfono no aparece. Dominio propio después (`*.vercel.app` mientras tanto).
+- ElotApp no entra. Teléfono no aparece. Dominio: **cesarcordova.dev** (comprado en Hostinger, servido por Vercel).
 - Sofonques: NASA Space Apps Challenge 2025, Cesar **líder y backend**; también en la vitrina de Medallas.
 - Reportes Docentes en uso en la UABC. Antigravity sin cifras de trading. Mesa Espejo solo con datos ficticios.
 - "Lo que hice" condensado a 3 viñetas máximo.

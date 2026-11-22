@@ -7,10 +7,9 @@
     "dev": "vite",
     "build": "tsc -b && vite build && vite build --ssr src/entry-server.tsx --outDir dist-server && node scripts/prerender.mjs",
     "lint": "oxlint",
-    "preview": "vite preview",
+    "preview": "node scripts/serve-dist.mjs 4173",
     "og": "node scripts/og.mjs",
-    "test:a11y": "node scripts/a11y.mjs",
-    "serve": "node scripts/serve-dist.mjs"
+    "test:a11y": "node scripts/a11y.mjs"
   },
   "dependencies": {
     "react": "^19.2.8",
@@ -30,5 +29,8 @@
     "tailwindcss": "^4.3.3",
     "typescript": "~6.0.2",
     "vite": "^8.3.0"
+  },
+  "engines": {
+    "node": "24.x"
   }
 }
